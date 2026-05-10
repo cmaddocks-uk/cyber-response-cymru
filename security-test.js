@@ -132,7 +132,7 @@ setTimeout(() => {
     else {
       const connectSrc = connectMatch[1].trim();
       const allowed = connectSrc.split(/\s+/);
-      const expected = ["https://cyber-response.goatcounter.com"];
+      const expected = ["https://cyber-response-cymru.goatcounter.com"];
       const unexpected = allowed.filter(s => s !== "'none'" && s !== "'self'" && !expected.includes(s));
       if(unexpected.length > 0) issues.push(`CSP connect-src has unexpected entries: ${unexpected.join(", ")}`);
     }
