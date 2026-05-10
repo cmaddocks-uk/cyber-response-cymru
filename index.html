@@ -99,22 +99,21 @@
   }
   nav.tabs button:hover{background:rgba(255,255,255,.1)}
   nav.tabs button.active{background:#fff; color:var(--navy)}
-  /* Region switcher (UK / Wales) — sits at the right of the topbar,
-     wraps onto its own line on narrow viewports. Inline SVG flags so
-     rendering is reliable across all OS. */
-  .region-switch{display:flex; gap:4px; align-items:center; flex-shrink:0}
+  /* Region switcher (UK / Wales) — sits at the right of the topbar.
+     Flag-only design keeps the footprint compact so brand + 10 tabs +
+     switcher all fit on a single line at typical desktop widths.
+     Inline SVG flags so rendering is reliable across all OS. */
+  .region-switch{display:flex; gap:3px; align-items:center; flex-shrink:0}
   .region-switch a, .region-switch span.region-current{
-    display:inline-flex; align-items:center; gap:5px;
-    padding:3px 7px; border-radius:5px;
-    font-size:11px; font-weight:600; letter-spacing:.02em;
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:3px 5px; border-radius:5px;
     text-decoration:none; line-height:1;
     border:1px solid transparent;
   }
-  .region-switch a{color:#fff; background:transparent; transition:all .15s}
-  .region-switch a:hover{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.25)}
+  .region-switch a{background:transparent; opacity:.7; transition:all .15s}
+  .region-switch a:hover{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.25); opacity:1}
   .region-switch span.region-current{
-    background:#fff; color:var(--navy); border-color:#fff;
-    cursor:default;
+    background:#fff; border-color:#fff; cursor:default;
   }
   .region-switch svg{display:block; flex-shrink:0; border-radius:1px}
   /* Main */
@@ -308,6 +307,9 @@
     background:#fff; border:1px solid var(--line); border-radius:12px;
     border-top:4px solid var(--accent);
     padding:24px; box-shadow:var(--shadow);
+    /* flex:1 makes the card stretch to fill the column height so its
+       bottom edge aligns with the frameworks-panel on the left */
+    flex:1 1 auto;
   }
   .btn-cta{
     display:block; width:100%; padding:14px 18px; margin-bottom:10px;
@@ -712,7 +714,7 @@
   <div class="container topbar-inner">
     <div class="brand">
       <span class="logo">🛡️</span>
-      <span>Cyber Incident Response Planner <span style="opacity:.7; font-weight:500; margin-left:4px">· Wales / Cymru</span></span>
+      <span>Cyber Incident Response Planner</span>
     </div>
     <nav class="tabs" id="tabs">
       <button data-tab="home" class="active">Home</button>
@@ -727,8 +729,8 @@
       <button data-tab="about">About</button>
     </nav>
     <div class="region-switch" role="navigation" aria-label="Region switcher">
-      <a href="https://cmaddocks-uk.github.io/cyber-response/" title="Switch to the UK / English version">
-        <svg viewBox="0 0 60 30" width="20" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <a href="https://cmaddocks-uk.github.io/cyber-response/" aria-label="Switch to the UK / English version" title="Switch to the UK / English version">
+        <svg viewBox="0 0 60 30" width="22" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <clipPath id="ukclip-cy"><rect width="60" height="30"/></clipPath>
           <g clip-path="url(#ukclip-cy)">
             <rect width="60" height="30" fill="#012169"/>
@@ -739,15 +741,13 @@
             <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
           </g>
         </svg>
-        UK
       </a>
-      <span class="region-current" aria-current="true" title="You are here: Welsh-context version (Cymru)">
-        <svg viewBox="0 0 60 36" width="20" height="12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <span class="region-current" aria-current="true" aria-label="You are here: Welsh / Cymru version" title="Welsh / Cymru version (current)">
+        <svg viewBox="0 0 60 36" width="22" height="13" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect width="60" height="18" fill="#fff"/>
           <rect y="18" width="60" height="18" fill="#00803c"/>
           <path d="M19 16 c0 -3 3 -5 7 -5 c3 0 5 1 7 2 l4 -2 l-1 3 l4 0 l-3 2 l3 1 l-3 1 l2 3 l-4 -1 l1 3 l-4 -2 c-3 1 -7 0 -10 -2 c-2 -1 -3 -2 -3 -3 z" fill="#cf142b"/>
         </svg>
-        Cymru
       </span>
     </div>
   </div>
@@ -829,7 +829,7 @@
             <div class="fw-detail">Cyber Resilient Wales strategy</div>
             <div class="fw-arrow">→</div>
           </a>
-          <a class="fw-card fw-rpa" href="https://www.tarian-rocu.police.uk/" target="_blank" rel="noopener noreferrer">
+          <a class="fw-card fw-rpa" href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer">
             <div class="fw-name">TARIAN ROCU</div>
             <div class="fw-detail">Cyber PROTECT team (South Wales)</div>
             <div class="fw-arrow">→</div>
@@ -909,7 +909,7 @@
     <a class="status-link" href="#" onclick="shareTool(this); return false">🔗 Share</a>
     <a class="status-link" href="https://buymeacoffee.com/cmaddocks" target="_blank" rel="noopener noreferrer">🍺 Buy me a beer</a>
     <a class="status-link" href="https://www.gov.wales/cyber-resilient-wales-strategy" target="_blank" rel="noopener noreferrer">📘 Welsh Gov ↗</a>
-    <a class="status-link" href="https://www.tarian-rocu.police.uk/" target="_blank" rel="noopener noreferrer">🛡️ TARIAN ↗</a>
+    <a class="status-link" href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer">🛡️ TARIAN ↗</a>
     <a class="status-link" href="https://www.estyn.gov.wales/" target="_blank" rel="noopener noreferrer">🏛️ Estyn ↗</a>
     <a class="status-link" href="https://hwb.gov.wales/" target="_blank" rel="noopener noreferrer">🌐 HWB ↗</a>
     <a class="status-link" href="https://www.ncsc.gov.uk/collection/incident-management" target="_blank" rel="noopener noreferrer">🛡️ NCSC ↗</a>
@@ -1459,7 +1459,7 @@
       <div style="padding:12px 14px; background:#ecfeff; border-left:4px solid #0891b2; border-radius:0 6px 6px 0">
         <div style="font-weight:700; color:#0e7490; font-size:13px; margin-bottom:2px">TARIAN ROCU &amp; NWROCU &mdash; CYBER PROTECT</div>
         <p style="font-size:13px; margin:0">Welsh schools' regional cyber prevention support is provided through their local Regional Organised Crime Unit (ROCU) Cyber PROTECT team. <strong>TARIAN</strong> covers South Wales, Gwent and Dyfed-Powys; <strong>NWROCU</strong> covers North Wales. Both teams provide free pre-incident advice, training and exercises, and are the right first call for prevention guidance &mdash; this tool signposts them throughout.</p>
-        <a href="https://www.tarian-rocu.police.uk/" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">TARIAN &rarr;</a> &nbsp;
+        <a href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">TARIAN &rarr;</a> &nbsp;
         <a href="https://www.nwrocu.police.uk/" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">NWROCU &rarr;</a>
       </div>
       <div style="padding:12px 14px; background:#fff4e6; border-left:4px solid #a04500; border-radius:0 6px 6px 0">
@@ -1580,7 +1580,7 @@
         <ul style="padding-left:20px; font-size:13px; margin:0">
           <li><a href="https://www.ncsc.gov.uk/collection/incident-management" target="_blank" rel="noopener noreferrer">NCSC &mdash; Incident Management</a></li>
           <li><a href="https://www.gov.wales/cyber-resilient-wales-strategy" target="_blank" rel="noopener noreferrer">Welsh Government &mdash; Cyber Resilient Wales</a></li>
-          <li><a href="https://www.tarian-rocu.police.uk/" target="_blank" rel="noopener noreferrer">TARIAN ROCU (South Wales / Gwent / Dyfed-Powys)</a></li>
+          <li><a href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer">TARIAN ROCU (South Wales / Gwent / Dyfed-Powys)</a></li>
           <li><a href="https://www.nwrocu.police.uk/" target="_blank" rel="noopener noreferrer">NWROCU (North Wales)</a></li>
           <li><a href="https://www.estyn.gov.wales/inspection-guidance-resources" target="_blank" rel="noopener noreferrer">Estyn &mdash; Inspection guidance &amp; resources</a></li>
           <li><a href="https://hwb.gov.wales/" target="_blank" rel="noopener noreferrer">HWB &mdash; Welsh digital learning platform</a></li>
@@ -3251,7 +3251,7 @@ function renderPlaybooks(){
       key:"ransomware",
       title:"Ransomware",
       desc:"The most common high-impact incident type for UK schools. A working ransomware playbook is the single most valuable component of this plan.",
-      whyMatters:`The NCSC has issued repeated alerts since 2020 about <a href="https://www.ncsc.gov.uk/news/alert-targeted-ransomware-attacks-on-uk-education-sector" target="_blank" rel="noopener noreferrer">targeted ransomware attacks on the UK education sector</a>, including incidents that resulted in the loss of student coursework, school financial records and other critical data. The 2025 Cyber Security Breaches Survey found that <a href="https://www.gov.uk/government/statistics/cyber-security-breaches-survey-2025/cyber-security-breaches-survey-2025-education-institutions-findings" target="_blank" rel="noopener noreferrer">71% of secondary schools reported a cybersecurity incident in the last 12 months</a>. Welsh schools should contact their regional ROCU Cyber PROTECT team for free pre-incident advice: <a href="https://www.tarian-rocu.police.uk/" target="_blank" rel="noopener noreferrer">TARIAN</a> (South Wales, Gwent, Dyfed-Powys) or <a href="https://www.nwrocu.police.uk/" target="_blank" rel="noopener noreferrer">NWROCU</a> (North Wales). Once an incident is in progress, your local authority cyber lead and / or commercial cyber insurer should be the first call before engaging external incident responders.`,
+      whyMatters:`The NCSC has issued repeated alerts since 2020 about <a href="https://www.ncsc.gov.uk/news/alert-targeted-ransomware-attacks-on-uk-education-sector" target="_blank" rel="noopener noreferrer">targeted ransomware attacks on the UK education sector</a>, including incidents that resulted in the loss of student coursework, school financial records and other critical data. The 2025 Cyber Security Breaches Survey found that <a href="https://www.gov.uk/government/statistics/cyber-security-breaches-survey-2025/cyber-security-breaches-survey-2025-education-institutions-findings" target="_blank" rel="noopener noreferrer">71% of secondary schools reported a cybersecurity incident in the last 12 months</a>. Welsh schools should contact their regional ROCU Cyber PROTECT team for free pre-incident advice: <a href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer">TARIAN</a> (South Wales, Gwent, Dyfed-Powys) or <a href="https://www.nwrocu.police.uk/" target="_blank" rel="noopener noreferrer">NWROCU</a> (North Wales). Once an incident is in progress, your local authority cyber lead and / or commercial cyber insurer should be the first call before engaging external incident responders.`,
       examples:[
         "Who has authority to physically pull the network cable / switch off the core switch out of hours, and how to reach them",
         "Where the immutable / off-site backups live and the exact contact at the supplier (incl. account ref and out-of-hours number)",
@@ -5030,7 +5030,7 @@ function renderTabletopSelection(){
       <h2>🎯 Tabletop Exercise</h2>
       <p class="muted">Test your incident response plan against an example ransomware scenario. Each scenario walks through the timeline of a real-world-inspired incident &mdash; at every step, the relevant fields from your own plan are surfaced so you can see what your plan actually says to do, capture your team's intended response, and identify gaps where the plan is silent.</p>
       <div style="padding:10px 14px; background:#fdf3e2; border-left:3px solid var(--amber); border-radius:0 4px 4px 0; margin-bottom:10px; font-size:13px; line-height:1.5">
-        <strong>About these scenarios:</strong> the tabletops below are <strong>illustrative example scenarios</strong> covering common patterns of UK education-sector cyber incidents (ransomware, business email compromise, account takeover, insider threat). They are <strong>not affiliated with, not endorsed by, and do not represent any specific school or trust</strong> &mdash; figures, names, dates and details are fictional. For free pre-incident advice tailored to Welsh schools, contact your regional ROCU Cyber PROTECT team: <a href="https://www.tarian-rocu.police.uk/" target="_blank" rel="noopener noreferrer">TARIAN</a> (South Wales, Gwent, Dyfed-Powys) or <a href="https://www.nwrocu.police.uk/" target="_blank" rel="noopener noreferrer">NWROCU</a> (North Wales).
+        <strong>About these scenarios:</strong> the tabletops below are <strong>illustrative example scenarios</strong> covering common patterns of UK education-sector cyber incidents (ransomware, business email compromise, account takeover, insider threat). They are <strong>not affiliated with, not endorsed by, and do not represent any specific school or trust</strong> &mdash; figures, names, dates and details are fictional. For free pre-incident advice tailored to Welsh schools, contact your regional ROCU Cyber PROTECT team: <a href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer">TARIAN</a> (South Wales, Gwent, Dyfed-Powys) or <a href="https://www.nwrocu.police.uk/" target="_blank" rel="noopener noreferrer">NWROCU</a> (North Wales).
       </div>
       <p class="muted" style="font-size:13px"><strong>NCSC and most LA cyber cover arrangements expect annual testing of your plan</strong> &mdash; this counts. Each tabletop takes roughly 15&ndash;25 minutes. Complete it with your SLT digital lead, IT lead, comms lead and DPO &mdash; that's the minimum quorum. Print the summary at the end as your record of testing.</p>
     </div>
