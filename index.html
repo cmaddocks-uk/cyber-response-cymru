@@ -99,6 +99,24 @@
   }
   nav.tabs button:hover{background:rgba(255,255,255,.1)}
   nav.tabs button.active{background:#fff; color:var(--navy)}
+  /* Region switcher (UK / Wales) — sits at the right of the topbar,
+     wraps onto its own line on narrow viewports. Inline SVG flags so
+     rendering is reliable across all OS. */
+  .region-switch{display:flex; gap:4px; align-items:center; flex-shrink:0}
+  .region-switch a, .region-switch span.region-current{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:3px 7px; border-radius:5px;
+    font-size:11px; font-weight:600; letter-spacing:.02em;
+    text-decoration:none; line-height:1;
+    border:1px solid transparent;
+  }
+  .region-switch a{color:#fff; background:transparent; transition:all .15s}
+  .region-switch a:hover{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.25)}
+  .region-switch span.region-current{
+    background:#fff; color:var(--navy); border-color:#fff;
+    cursor:default;
+  }
+  .region-switch svg{display:block; flex-shrink:0; border-radius:1px}
   /* Main */
   main{padding:28px 0 60px}
   .card{
@@ -708,6 +726,30 @@
       <button data-tab="changelog">Changelog</button>
       <button data-tab="about">About</button>
     </nav>
+    <div class="region-switch" role="navigation" aria-label="Region switcher">
+      <a href="https://cmaddocks-uk.github.io/cyber-response/" title="Switch to the UK / English version">
+        <svg viewBox="0 0 60 30" width="20" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <clipPath id="ukclip-cy"><rect width="60" height="30"/></clipPath>
+          <g clip-path="url(#ukclip-cy)">
+            <rect width="60" height="30" fill="#012169"/>
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+            <path d="M0,0 L60,30" stroke="#C8102E" stroke-width="3" stroke-dasharray="30,30" stroke-dashoffset="0"/>
+            <path d="M60,0 L0,30" stroke="#C8102E" stroke-width="3" stroke-dasharray="30,30" stroke-dashoffset="30"/>
+            <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+          </g>
+        </svg>
+        UK
+      </a>
+      <span class="region-current" aria-current="true" title="You are here: Welsh-context version (Cymru)">
+        <svg viewBox="0 0 60 36" width="20" height="12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="60" height="18" fill="#fff"/>
+          <rect y="18" width="60" height="18" fill="#00803c"/>
+          <path d="M19 16 c0 -3 3 -5 7 -5 c3 0 5 1 7 2 l4 -2 l-1 3 l4 0 l-3 2 l3 1 l-3 1 l2 3 l-4 -1 l1 3 l-4 -2 c-3 1 -7 0 -10 -2 c-2 -1 -3 -2 -3 -3 z" fill="#cf142b"/>
+        </svg>
+        Cymru
+      </span>
+    </div>
   </div>
 </header>
 
