@@ -761,20 +761,20 @@
 <!-- ============================================================== -->
 <section id="tab-home" class="tab-panel">
 
-  <!-- HERO: bigger title, single primary CTA, slim trust pills -->
-  <div style="text-align:center; padding:40px 0 28px">
-    <div style="font-size:54px; margin-bottom:10px; line-height:1">🛡️</div>
-    <h1 style="font-size:40px; font-weight:800; color:var(--navy); letter-spacing:-.02em; margin:0 0 12px; line-height:1.1">Cyber Incident Response Planner <span style="font-size:24px; color:var(--accent); font-weight:600">— Wales / Cymru</span></h1>
-    <p style="font-size:16px; color:var(--muted); max-width:640px; margin:0 auto 22px; line-height:1.5">
+  <!-- HERO: compact, single primary CTA, slim trust pills -->
+  <div style="text-align:center; padding:24px 0 20px">
+    <div style="font-size:40px; margin-bottom:6px; line-height:1">🛡️</div>
+    <h1 style="font-size:30px; font-weight:800; color:var(--navy); letter-spacing:-.02em; margin:0 0 10px; line-height:1.15">Cyber Incident Response Planner <span style="font-size:19px; color:var(--accent); font-weight:600">— Wales / Cymru</span></h1>
+    <p style="font-size:15px; color:var(--muted); max-width:640px; margin:0 auto 18px; line-height:1.5">
       Free planning tool for schools and colleges in Wales. Build a school-specific Cyber Incident Response Plan, mapped to NCSC, Welsh Government Cyber Resilient Wales, Estyn arrangements and TARIAN / regional ROCU Cyber PROTECT guidance.
     </p>
-    <button class="btn-cta" onclick="goTab('readiness')" style="width:auto; min-width:280px; padding:14px 36px; font-size:16px; display:inline-block; box-shadow:0 2px 0 #1657b8, 0 6px 18px rgba(31,111,235,.18)">▶ Start readiness check</button>
-    <p style="font-size:13px; color:var(--muted); margin:12px 0 0">Takes around 15&ndash;25 minutes &middot; readiness check &middot; 10-section plan builder</p>
-    <div style="margin-top:18px; display:flex; flex-wrap:wrap; justify-content:center; gap:8px">
+    <button class="btn-cta" onclick="goTab('readiness')" style="width:auto; min-width:260px; padding:12px 32px; font-size:15px; display:inline-block; box-shadow:0 2px 0 #1657b8, 0 6px 18px rgba(31,111,235,.18)">▶ Start readiness check</button>
+    <p style="font-size:12px; color:var(--muted); margin:10px 0 0">Takes around 15&ndash;25 minutes &middot; readiness check &middot; 10-section plan builder</p>
+    <div style="margin-top:14px; display:flex; flex-wrap:wrap; justify-content:center; gap:8px">
       <span class="feature-pill">✓ Free &middot; browser-only &middot; no account</span>
       <span class="feature-pill">✓ Mapped to NCSC, Welsh Gov, Estyn &amp; TARIAN</span>
     </div>
-    <div style="font-size:11px; color:var(--muted); margin-top:16px; letter-spacing:.04em; text-transform:uppercase; font-weight:600">v0.1.0 (Welsh fork) &middot; <a href="#" onclick="goTab('changelog'); return false">changelog</a></div>
+    <div style="font-size:11px; color:var(--muted); margin-top:12px; letter-spacing:.04em; text-transform:uppercase; font-weight:600">v0.1.0 (Welsh fork) &middot; <a href="#" onclick="goTab('changelog'); return false">changelog</a></div>
   </div>
 
   <!-- Police CyberAlarm — compact, expandable -->
@@ -2387,11 +2387,11 @@ function initState(){
         // recovery sequencing).
         systems:[
           {name:"MIS (pupil records)", supplier:"", dataHeld:"Pupil records, attendance, contacts, ALN/ASN, FSM, safeguarding flags", hosting:"SaaS", rto:"<1 day", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
-          {name:"Email &amp; productivity", supplier:"", dataHeld:"All staff and pupil email, shared documents, calendars", hosting:"SaaS", rto:"<4 hours", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
+          {name:"Email & productivity", supplier:"", dataHeld:"All staff and pupil email, shared documents, calendars", hosting:"SaaS", rto:"<4 hours", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
           {name:"Safeguarding system", supplier:"", dataHeld:"Safeguarding concerns, chronologies, restricted access records", hosting:"SaaS", rto:"<1 day", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
           {name:"Finance / payroll", supplier:"", dataHeld:"Bank details, supplier payments, payroll, budget", hosting:"", rto:"<3 days", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
           {name:"Parent comms / payments", supplier:"", dataHeld:"Parent contact details, payment data, dinner money, trip payments", hosting:"SaaS", rto:"<3 days", priority:"2 — High", incidentContact:"", lastExport:"", notes:""},
-          {name:"Network &amp; wifi", supplier:"", dataHeld:"Connectivity for all school systems", hosting:"On-prem", rto:"<4 hours", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
+          {name:"Network & wifi", supplier:"", dataHeld:"Connectivity for all school systems", hosting:"On-prem", rto:"<4 hours", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
           {name:"Hwb-hosted services", supplier:"Welsh Government / HWB", dataHeld:"Welsh Gov digital learning platform — Office 365, Adobe, J2e, etc.", hosting:"SaaS", rto:"<1 day", priority:"2 — High", incidentContact:"hwb@gov.wales", lastExport:"", notes:""},
           {name:"Telephony", supplier:"", dataHeld:"Inbound/outbound calls; safeguarding-critical for emergencies", hosting:"", rto:"<1 day", priority:"2 — High", incidentContact:"", lastExport:"", notes:""}
         ],
@@ -4883,34 +4883,42 @@ function generateFirst30(){
   if(!out) return;
   const p = state.plan;
 
-  // Pull team members by role (best-effort matching — these are user-typed strings)
-  const findMember = (re) => (p.team.members || []).find(m => re.test(m.role || ""));
-  const sltLead = findMember(/SLT|digital lead|leadership|head/i) || (p.team.members || [])[0] || {};
-  const deputy = (p.team.members || []).find(m => m !== sltLead && /deputy|second|backup|cover/i.test(m.role || "")) || (p.team.members || [])[1] || {};
-  const itLead = findMember(/IT|network|technical/i) || {};
-  const commsLead = findMember(/comms|communications|press|media/i) || {};
-  const dpo = findMember(/dpo|data protection/i) || {};
-  const sltSponsor = findMember(/sponsor|head|principal|exec/i) || {};
+  // Team contacts — read directly from the named CIRT fields populated
+  // in section 2 of the Plan Builder. The previous implementation only
+  // searched p.team.members[] (the dynamic "Additional team members"
+  // array), so the F30 card showed "[not set]" even when Incident Lead,
+  // Deputy, IT Lead, DPO and Comms Lead were properly filled in.
+  const t = p.team || {};
+  const sltLead = { name: t.leadName, phone: t.leadPhone };
+  const deputy = { name: t.deputyName, phone: t.deputyPhone };
+  const itLead = { name: t.itLeadName, phone: t.itLeadPhone };
+  const commsLead = { name: t.commsLeadName, phone: t.commsLeadPhone };
+  const dpo = { name: t.dpoName, phone: t.dpoPhone };
+  // SLT Sponsor isn't a named CIRT role — best-effort match against
+  // additional members (Head / Principal / CEO / Chair / Exec), then
+  // fall back to the plan's "Approved by" name.
+  const sponsorMember = (t.members || []).find(m => /head|principal|exec|ceo|chair|sponsor/i.test(m.role || ""));
+  const sltSponsor = sponsorMember
+    ? { name: sponsorMember.name, phone: sponsorMember.phone }
+    : { name: p.meta.approvedBy, phone: "" };
 
-  // External contacts (free-form objects in p.external)
+  // External contacts — read direct state keys. `itProvider` is an
+  // object (name/contact/phone/email/outOfHours); the others are free-
+  // text strings. Previous implementation regex-searched key names and
+  // assumed all values were objects, which silently skipped every
+  // string-valued external contact.
   const ext = p.external || {};
-  const findExt = (re) => Object.entries(ext).find(([k,v]) => re.test(k) && v && (v.contact || v.phone || v.name));
-
-  const itSupport = findExt(/it.?support|managed.?service|msp/i);
-  const insurer = findExt(/insur|rpa|cover/i);
-  const broadband = findExt(/broadband|connectivity|isp/i);
-  const externalDpo = findExt(/dpo|data.?protection/i);
-
-  const fmtExt = ([key, v]) => {
-    if(!v) return null;
-    const parts = [v.name, v.contact || v.phone, v.email].filter(Boolean);
-    return parts.length ? parts.join(" &middot; ") : null;
-  };
-
-  const itSupportText = itSupport ? fmtExt(itSupport) : null;
-  const insurerText = insurer ? fmtExt(insurer) : null;
-  const broadbandText = broadband ? fmtExt(broadband) : null;
-  const externalDpoText = externalDpo ? fmtExt(externalDpo) : null;
+  const itp = ext.itProvider || {};
+  const itSupportText = (itp.name || itp.contact || itp.phone)
+    ? [itp.name, itp.contact, itp.phone].filter(Boolean).join(" &middot; ")
+    : null;
+  const insurerText = (ext.rpa || ext.cyberInsurer || "").toString().trim() || null;
+  const broadbandText = (ext.broadbandSupplier || "").toString().trim() || null;
+  // External DPO = if dpoOrg has any content (suggesting outsourced),
+  // show the DPO contact details.
+  const externalDpoText = (t.dpoOrg && t.dpoOrg.trim() && (t.dpoName || t.dpoPhone))
+    ? [t.dpoName, t.dpoOrg, t.dpoPhone].filter(Boolean).join(" &middot; ")
+    : null;
 
   out.innerHTML = `
     <div class="f30-header">
@@ -5808,6 +5816,20 @@ function generatePlaybooks(pbs){
         "Document the investigation. Engage legal advice if required.",
         "Review root cause — access controls, joiner/mover/leaver process, monitoring."
       ]
+    },
+    saasSupplierIncident: {
+      title:"SaaS supplier incident (Arbor / SIMS / Bromcom / ParentPay / CPOMS / M365 / Hwb services etc.)",
+      steps:[
+        "Verify the incident is real — confirm via the supplier's official channel (status page, account manager direct), NOT the email that told you about it. Phishing impersonating a supplier breach is increasingly common.",
+        "Get the supplier's official Incident Notification in writing for the school's evidence pack. Note the supplier's reference number, date/time of confirmation, and the precise scope they've identified.",
+        "Convene CIRT including the DPO. Determine the scope of YOUR school's data affected: categories (pupil records, safeguarding, finance, contact details), volume (number of pupils / staff / parents), and any special category data (health, ALN/ASN, safeguarding).",
+        "ICO 72-hour clock starts when YOU become aware — not when the supplier does. The DPO assesses notifiability under UK GDPR Article 33. If notifiable, the school files at ico.org.uk/for-organisations/report-a-breach. The supplier's own notification to the ICO (if any) does NOT discharge the school's obligation.",
+        "Article 34: if the breach is high-risk to data subjects, the school must inform them directly (parents, staff). The supplier's notification to the school is not the same as the school's notification to its data subjects.",
+        "Notify Welsh-specific contacts: the school's local authority cyber lead, the regional ROCU Cyber PROTECT team (TARIAN for South Wales / Gwent / Dyfed-Powys; NWROCU for North Wales), and any applicable Welsh Government / consortium digital education contact.",
+        "Exercise the school's contractual right (UK GDPR Article 28 / Data Processing Agreement) to obtain a current copy of all data the supplier holds on the school's behalf — so the school can act independently if supplier service is degraded or unavailable.",
+        "Maintain operational continuity. Trigger paper-fallback procedures where the supplier's service is unavailable (e.g. paper attendance register, paper safeguarding log) until the service is restored.",
+        "Post-incident review: assess the supplier's root cause, remedial actions and any change to their security posture. Make a commercial decision on continuing the contract. Update the school's asset register (Plan section 9) with any changes to the supplier's incident contact, DPA review date, or recovery procedures."
+      ]
     }
   };
 
@@ -5816,6 +5838,17 @@ function generatePlaybooks(pbs){
 
   return enabled.map(k => {
     const g = generic[k];
+    // Defensive: if a playbook is enabled but has no matching `generic`
+    // entry (e.g. someone adds a playbook to renderPlaybooks() but forgets
+    // to update this function), render a placeholder rather than throw.
+    if(!g){
+      return `
+        <h3>${escapeHtml(k)}</h3>
+        <p class="empty">Generic response steps not defined for this playbook. School-specific notes below.</p>
+        <h4>School-specific notes</h4>
+        <p>${emptyOr(pbs[k].notes, "school-specific actions, contacts, dependencies — to be completed")}</p>
+      `;
+    }
     return `
       <h3>${g.title}</h3>
       <h4>Generic response steps</h4>
