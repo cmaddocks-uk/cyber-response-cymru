@@ -1924,7 +1924,7 @@ const SCENARIOS = [
         title: "Scope discovery",
         narrative: "Encryption hits everything on-premises: file servers, NAS backups, catering systems and CCTV. All on-prem systems are compromised. Cloud / SaaS systems unaffected.",
         prompt: "Are your backups truly immutable, or also on the network? When did you last test a restore? Are the catering / CCTV systems segmented from the main network?",
-        planFields: ["plan.recovery.backupLocations", "plan.recovery.backupTestFrequency", "plan.recovery.criticalSystems"]
+        planFields: ["plan.recovery.backupLocations", "plan.recovery.backupTestFrequency", "plan.assets.systems"]
       },
       {
         id: "fca-4",
@@ -2048,7 +2048,7 @@ const SCENARIOS = [
         title: "Disable and reset",
         narrative: "Account is disabled. The user's password is reset. Active sessions revoked. MFA tokens re-enrolled. Now: what did the attacker do in the window between login and lockout?",
         prompt: "Who reviews login activity? What is the audit log retention on your tenant &mdash; 90 days, 6 months, longer? Have you ever needed to query it before?",
-        planFields: ["plan.team.itLeadName", "plan.recovery.criticalSystems"]
+        planFields: ["plan.team.itLeadName", "plan.assets.systems"]
       },
       {
         id: "ed-3",
@@ -2271,8 +2271,7 @@ const PLAN_FIELD_LABELS = {
   "plan.recovery.rto": "Recovery Time Objective (RTO)",
   "plan.recovery.rpo": "Recovery Point Objective (RPO)",
   "plan.recovery.priorityRestoreOrder": "Priority restoration order",
-  "plan.recovery.criticalSystems": "Critical systems inventory",
-  "plan.assets.systems": "Critical systems &amp; impact — asset register",
+  "plan.assets.systems": "Critical systems & impact — asset register",
   "plan.assets.biaNotes": "Business Impact Analysis — narrative",
   "plan.assets.systems.lastExport": "Last data export held by school (per system)",
   "plan.review.reviewLead": "Post-incident review lead",
@@ -2404,8 +2403,7 @@ function initState(){
         backupLocations:"",
         backupOwner:"",
         backupTestFrequency:"Termly",
-        priorityRestoreOrder:"1. Safeguarding records & access\n2. MIS / SIMS / Bromcom / Arbor\n3. Finance system\n4. Email & communications\n5. Teaching applications\n6. General file shares",
-        criticalSystems:[]
+        priorityRestoreOrder:"1. Safeguarding records & access\n2. MIS / SIMS / Bromcom / Arbor\n3. Finance system\n4. Email & communications\n5. Teaching applications\n6. General file shares"
       },
       review:{
         reviewLead:"",
@@ -2854,6 +2852,20 @@ function countFilledFields(obj){
 }
 
 function getSectionCompletion(sectionId){
+  // Assets uses custom logic — the section ships with pre-populated
+  // rows (MIS, email, safeguarding, finance, etc.) that already have
+  // suggested defaults for hosting / RTO / priority. A naive
+  // countFilledFields() would treat those defaults as "filled" and
+  // inflate the count before the user has done anything. Instead,
+  // each row counts as 1 unit, "filled" when the user has entered
+  // the supplier name. BIA narrative adds 1 unit.
+  if(sectionId === "assets"){
+    const a = state.plan.assets || {systems:[], biaNotes:""};
+    const systems = a.systems || [];
+    const filledSystems = systems.filter(s => s && s.supplier && s.supplier.trim() !== "").length;
+    const biaFilled = (a.biaNotes && a.biaNotes.trim() !== "") ? 1 : 0;
+    return {filled: filledSystems + biaFilled, total: systems.length + 1};
+  }
   const map = {
     meta: state.plan.meta,
     team: state.plan.team,
@@ -2862,7 +2874,6 @@ function getSectionCompletion(sectionId){
     escalation: state.plan.escalation,
     playbooks: state.plan.playbooks,
     comms: state.plan.comms,
-    assets: state.plan.assets,
     recovery: state.plan.recovery,
     review: state.plan.review,
     maintenance: state.plan.maintenance
@@ -3998,28 +4009,6 @@ function renderRecovery(){
     </div>
   `;
 }
-function repeaterSystems(){
-  const list = state.plan.recovery.criticalSystems || [];
-  if(list.length === 0) return `<p class="muted" style="font-style:italic">No systems added yet.</p>`;
-  return `<div class="repeater">${list.map((s,i) => `
-    <div class="row">
-      <button class="remove" onclick="removeSystem(${i})">&times;</button>
-      <div class="grid-2">
-        <label class="field"><span class="lbl">System</span><input type="text" placeholder="e.g. SIMS, Office 365, finance system" value="${escapeHtml(s.name)}" oninput="state.plan.recovery.criticalSystems[${i}].name=this.value; saveState()"></label>
-        <label class="field"><span class="lbl">Owner / supplier</span><input type="text" value="${escapeHtml(s.owner)}" oninput="state.plan.recovery.criticalSystems[${i}].owner=this.value; saveState()"></label>
-        <label class="field"><span class="lbl">Restore priority</span>
-          <select onchange="state.plan.recovery.criticalSystems[${i}].priority=this.value; saveState()">
-            ${["1 — Critical","2 — High","3 — Medium","4 — Low"].map(p => `<option ${s.priority===p?'selected':''}>${p}</option>`).join("")}
-          </select>
-        </label>
-        <label class="field"><span class="lbl">RTO</span><input type="text" placeholder="e.g. 24h" value="${escapeHtml(s.rto)}" oninput="state.plan.recovery.criticalSystems[${i}].rto=this.value; saveState()"></label>
-      </div>
-    </div>
-  `).join("")}</div>`;
-}
-function addSystem(){ state.plan.recovery.criticalSystems.push({name:"",owner:"",priority:"2 — High",rto:""}); saveState(); renderPlanBuilder(); }
-function removeSystem(i){ state.plan.recovery.criticalSystems.splice(i,1); saveState(); renderPlanBuilder(); }
-
 function renderReview(){
   return `
     <div class="card">
