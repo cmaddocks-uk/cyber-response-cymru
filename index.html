@@ -2292,7 +2292,23 @@ function planFieldLabel(path){
 /* STATE                                                           */
 /* ============================================================== */
 
-let state = loadState() || initState();
+// Merge any saved-from-sessionStorage state against the current schema so
+// old states from before new sections were added (e.g. plan.assets in
+// v1.7.0) get the new defaults filled in. Without this merge, accessing
+// state.plan.assets on an old state throws and breaks all plan-builder
+// rendering even though the section nav still appears to work.
+// Defensively try/catch so a corrupted saved state can't lock the user
+// out — we fall back to a fresh state and log to console.
+let state = (() => {
+  try {
+    const loaded = loadState();
+    if (!loaded) return initState();
+    return deepMergeSchema(initState(), loaded);
+  } catch (err) {
+    console.warn("Failed to merge saved state; using fresh state:", err);
+    return initState();
+  }
+})();
 
 function initState(){
   return {
@@ -2351,7 +2367,8 @@ function initState(){
         accountCompromise:{enabled:true, notes:""},
         phishing:{enabled:true, notes:""},
         denialOfService:{enabled:false, notes:""},
-        insiderThreat:{enabled:false, notes:""}
+        insiderThreat:{enabled:false, notes:""},
+        saasSupplierIncident:{enabled:true, notes:""}
       },
       comms:{
         primaryChannelDown:"",
@@ -2992,7 +3009,22 @@ function escapeHtml(s){
 
 function renderPlanBuilder(){
   const root = document.getElementById("planSections");
-  root.innerHTML = SECTIONS.map(s => `<div class="plan-section ${s.id !== currentSection ? 'hidden' : ''}" data-section="${s.id}">${renderSection(s.id)}</div>`).join("");
+  if(!root) return;
+  // Wrap each section's render in try/catch so a single section throwing
+  // (e.g. a state-shape mismatch after a schema change) can't kill the
+  // entire plan builder UI. The user sees a visible error in that section
+  // rather than an inscrutable empty page.
+  root.innerHTML = SECTIONS.map(s => {
+    let body;
+    try {
+      body = renderSection(s.id);
+      if (body == null) body = `<div class="card"><p class="muted">Section "${s.id}" returned no content.</p></div>`;
+    } catch (err) {
+      console.error(`Error rendering plan section "${s.id}":`, err);
+      body = `<div class="card" style="border-left:4px solid var(--red)"><h3>Section render error</h3><p>The "${s.title}" section couldn't render. This usually means the saved state is out of sync with the current schema after an update.</p><p><strong>Fix:</strong> click "Reset all data" above to start fresh, or "Load saved file" to restore from a saved JSON. The error has been logged to the browser console (F12 → Console).</p></div>`;
+    }
+    return `<div class="plan-section ${s.id !== currentSection ? 'hidden' : ''}" data-section="${s.id}">${body}</div>`;
+  }).join("");
 }
 
 function renderSection(id){
@@ -3593,6 +3625,17 @@ Lessons / control improvements:
   });
   // Merge into the existing _commsTemplates lookup used by usePlanTemplate
   window._commsTemplates = Object.assign(window._commsTemplates || {}, window._playbookTemplates);
+
+  // Defensive lazy-init: ensure every playbook in the `pbs` array has a
+  // matching state entry. Without this, adding a new playbook to `pbs`
+  // (e.g. saasSupplierIncident in v1.7.0) but forgetting to add it to
+  // initState's playbooks object would crash the whole section.
+  state.plan.playbooks = state.plan.playbooks || {};
+  pbs.forEach(p => {
+    if(!state.plan.playbooks[p.key]){
+      state.plan.playbooks[p.key] = { enabled: false, notes: "" };
+    }
+  });
 
   return `
     <div class="card">
