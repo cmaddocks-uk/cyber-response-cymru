@@ -559,7 +559,7 @@
      ========================================================= */
   @page{
     size:A4 portrait;
-    margin:18mm 14mm 18mm 14mm;
+    margin:18mm 16mm 18mm 16mm;
     /* Suppress browser-default headers (URL, page title, date strip).
        The user can re-enable in their print dialog if they want them. */
     @top-left{content:""} @top-center{content:""} @top-right{content:""}
@@ -594,9 +594,48 @@
     header.topbar, nav.tabs, .no-print, .btn-row, .section-nav,
     .beer-btn, .plan-toc, .back-to-top{display:none !important}
 
-    /* Reset body & page background to crisp white */
-    body{background:#fff; color:#000; font-size:11pt; line-height:1.45}
-    .container{max-width:none; padding:0}
+    /* Reset html/body & page background to crisp white. Force the page
+       box to be the layout viewport so nothing inherits a desktop width
+       that would push content past the right margin. */
+    html, body{width:100%; max-width:100%; margin:0}
+    body{
+      background:#fff; color:#000; font-size:11pt; line-height:1.45;
+      /* Defensive: break long URLs/strings rather than overflowing into
+         the page margin where the print engine clips them mid-character. */
+      overflow-wrap:anywhere; word-wrap:break-word;
+    }
+    .container{max-width:none; padding:0; width:100%}
+    p, li, td, th, dd, dt, a{
+      overflow-wrap:anywhere; word-wrap:break-word;
+    }
+
+    /* Tables: force fixed layout so the table can't grow wider than the
+       page area. Without this, table-layout:auto distributes column
+       widths from content — and a single long URL/email in one cell
+       pushes the whole table past the right page edge, which the print
+       engine then clips. */
+    .plan-doc table, #planOutput table, #governorReport table,
+    #actionPlan table, #tabletopSummary table{
+      table-layout:fixed;
+      width:100% !important;
+      max-width:100%;
+    }
+    .plan-doc td, .plan-doc th,
+    #planOutput td, #planOutput th,
+    #governorReport td, #governorReport th,
+    #actionPlan td, #actionPlan th,
+    #tabletopSummary td, #tabletopSummary th{
+      word-break:break-word;
+      overflow-wrap:anywhere;
+      vertical-align:top;
+    }
+
+    /* Asset register has 7 columns — too tight at 11pt portrait. Drop
+       to 10pt and tighten padding so the 7-column grid fits cleanly.
+       Explicit column widths are set via <colgroup> on the table. */
+    .asset-register-table{font-size:10pt}
+    .asset-register-table th, .asset-register-table td{padding:4px 6px}
+    .asset-register-table span{font-size:9pt}
 
     /* Cards become flowing document sections rather than boxed UI cards */
     .card{
@@ -968,13 +1007,13 @@
     <p class="muted">Auto-generated from your readiness check. Lists every red and amber item, ordered by priority, with the suggested next-step action and the framework it maps to.</p>
     <p class="muted" style="font-size:13px"><strong>Designed to be printed, taken into an SLT or IT planning meeting, and used to assign owners and target dates by hand.</strong> The tool deliberately doesn't ask you to enter owners and dates here &mdash; that work happens in your normal action tracker, not in another web form.</p>
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="window.print()">🖨️ Print action plan</button>
-      <button class="btn btn-secondary" onclick="exportActionPlanWord()">📄 Export to Word</button>
+      <button class="btn btn-primary" onclick="exportActionPlanWord()">📄 Export to Word</button>
+      <button class="btn btn-secondary" onclick="window.print()">🖨️ Print to paper</button>
       <button class="btn btn-secondary" onclick="goTab('readiness')">&larr; Back to readiness check</button>
       <button class="btn btn-secondary" onclick="goTab('plan')">Plan Builder &rarr;</button>
     </div>
     <p class="muted" style="font-size:12px; margin:8px 0 0">
-      <strong>Tip for the cleanest PDF:</strong> in your browser's print dialog, expand <em>"More settings"</em> and <strong>uncheck</strong> "Headers and footers" to hide the browser-added URL strip.
+      <strong>💡 For a print-quality PDF:</strong> use <em>Export to Word</em>, then in Word / LibreOffice / Google Docs choose <em>File &rarr; Save as PDF</em>.
     </p>
   </div>
 
@@ -1022,14 +1061,14 @@
     <h2>Your Cyber Incident Response Plan</h2>
     <p class="muted">Use the table of contents on the left to jump to any section. Print it as a hard copy to keep alongside your business continuity documentation (recommended by NCSC). You can also save the working data file to re-edit later.</p>
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="window.print()">🖨️ Print plan</button>
-      <button class="btn btn-secondary" onclick="exportPlanWord()">📄 Export to Word</button>
+      <button class="btn btn-primary" onclick="exportPlanWord()">📄 Export to Word</button>
+      <button class="btn btn-secondary" onclick="window.print()">🖨️ Print to paper</button>
       <button class="btn btn-secondary" onclick="jumpToNextGap()">⚠️ Jump to next gap <span id="planGapCount" style="font-weight:600; color:var(--red); margin-left:4px"></span></button>
       <button class="btn btn-secondary" onclick="exportSession()">💾 Save working data</button>
       <button class="btn btn-secondary" onclick="goTab('plan')">&larr; Back to edit</button>
     </div>
     <p class="muted" style="font-size:12px; margin:8px 0 0">
-      <strong>Tip for the cleanest PDF:</strong> in your browser's print dialog, expand <em>"More settings"</em> and <strong>uncheck</strong> "Headers and footers" &mdash; this hides the browser-added URL and date strip. The plan has its own footer built in.
+      <strong>💡 For a print-quality PDF:</strong> use <em>Export to Word</em>, then in Word / LibreOffice / Google Docs choose <em>File &rarr; Save as PDF</em>. Tables, page breaks and typography come out far cleaner than browser print.
     </p>
   </div>
 
@@ -1062,12 +1101,10 @@
     <p class="muted" style="font-size:13px"><strong>Auto-populated</strong> from the contacts you've entered in the Plan Builder. If contacts are missing, the card will say <em>[not set]</em> &mdash; fill them in via the Plan Builder and come back here to print.</p>
     <div class="btn-row">
       <button class="btn btn-primary" onclick="window.print()">🖨️ Print card</button>
-      <button class="btn btn-primary" onclick="downloadFirst30Pdf()">📄 Download as PDF</button>
       <button class="btn btn-secondary" onclick="goTab('plan')">&larr; Back to plan builder</button>
     </div>
     <p class="muted" style="font-size:12px; margin:8px 0 0">
-      Both buttons open your browser's print dialog &mdash; choose <em>"Save as PDF"</em> in the destination dropdown to get a PDF, or your physical printer to print directly.
-      <strong>For the cleanest output:</strong> expand <em>"More settings"</em> in the print dialog and <strong>uncheck</strong> "Headers and footers" to hide the browser-added URL strip. Format: A4 portrait, single page.
+      Opens your browser's print dialog &mdash; choose your physical printer (A4 portrait, single page) to print and laminate. <strong>For the cleanest output:</strong> expand <em>"More settings"</em> in the print dialog and <strong>uncheck</strong> "Headers and footers" to hide the browser-added URL strip.
     </p>
   </div>
 
@@ -1085,12 +1122,12 @@
     <p class="muted">A one-page, plain-English summary of cyber response readiness designed for governing body meetings. Uses the principles-based "<em>How do you assure yourselves...</em>" framing that translates well to Estyn's inspection style. Estyn doesn't currently inspect cyber security directly, but cyber response intersects with safeguarding and leadership &mdash; so governor-level assurance still matters.</p>
     <p class="muted" style="font-size:13px"><strong>Best practice:</strong> ensure this report is minuted &mdash; auditors and inspectors look for evidence that cyber assurance has taken place at governor level.</p>
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="window.print()">🖨️ Print governor report</button>
-      <button class="btn btn-secondary" onclick="exportGovernorWord()">📄 Export to Word</button>
+      <button class="btn btn-primary" onclick="exportGovernorWord()">📄 Export to Word</button>
+      <button class="btn btn-secondary" onclick="window.print()">🖨️ Print to paper</button>
       <button class="btn btn-secondary" onclick="goTab('readiness')">&larr; Back to readiness check</button>
     </div>
     <p class="muted" style="font-size:12px; margin:8px 0 0">
-      <strong>Tip for the cleanest PDF:</strong> in your browser's print dialog, expand <em>"More settings"</em> and <strong>uncheck</strong> "Headers and footers" &mdash; this hides the browser-added URL and date strip.
+      <strong>💡 For a print-quality PDF:</strong> use <em>Export to Word</em>, then in Word / LibreOffice / Google Docs choose <em>File &rarr; Save as PDF</em>.
     </p>
   </div>
 
@@ -2302,12 +2339,38 @@ let state = (() => {
   try {
     const loaded = loadState();
     if (!loaded) return initState();
-    return deepMergeSchema(initState(), loaded);
+    return migrateLegacyEntities(deepMergeSchema(initState(), loaded));
   } catch (err) {
     console.warn("Failed to merge saved state; using fresh state:", err);
     return initState();
   }
 })();
+
+// One-time cleanup for legacy state from v1.6.x where a couple of asset
+// register seed values (e.g. "Email &amp; productivity") were HTML-encoded
+// in the initState defaults. Once those values land in sessionStorage or a
+// saved JSON file, they survive even after the seed bug is fixed in code —
+// and render as literal "Email &amp; productivity" because escapeHtml then
+// double-encodes them. Decoding here is a one-pass walk over every string
+// value in the loaded state: cheap, idempotent, and only touches the small
+// set of HTML entities that the bug ever produced.
+function migrateLegacyEntities(obj){
+  if (Array.isArray(obj)) return obj.map(migrateLegacyEntities);
+  if (obj && typeof obj === "object") {
+    const out = {};
+    for (const k in obj) out[k] = migrateLegacyEntities(obj[k]);
+    return out;
+  }
+  if (typeof obj === "string") {
+    return obj
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'");
+  }
+  return obj;
+}
 
 function initState(){
   return {
@@ -4370,7 +4433,11 @@ function generatePlan(){
     <p>This is the school's asset register and Business Impact Analysis for cyber response. Even when systems are SaaS-hosted (Arbor, SIMS, Bromcom, ParentPay, CPOMS, M365, Hwb-hosted services etc.) the school remains the <strong>data controller</strong> under UK GDPR &mdash; the 72-hour ICO notification clock falls on the school, not the supplier, when a supplier-hosted system is breached.</p>
     ${(p.assets && (p.assets.systems||[]).length > 0) ? `
     <h3>9.1 Asset register</h3>
-    <table>
+    <table class="asset-register-table">
+      <colgroup>
+        <col style="width:20%"><col style="width:13%"><col style="width:9%"><col style="width:8%">
+        <col style="width:12%"><col style="width:18%"><col style="width:20%">
+      </colgroup>
       <thead><tr><th>System</th><th>Supplier / product</th><th>Hosting</th><th>RTO</th><th>Priority</th><th>Supplier incident contact</th><th>Last school-held data export</th></tr></thead>
       <tbody>${p.assets.systems.map(s => `<tr>
         <td><strong>${emptyOr(s.name)}</strong>${s.dataHeld ? `<br><span style="font-size:11px; color:var(--muted)">${emptyOr(s.dataHeld)}</span>` : ""}${s.notes ? `<br><span style="font-size:11px; color:var(--muted); font-style:italic">${emptyOr(s.notes)}</span>` : ""}</td>
@@ -4750,6 +4817,14 @@ function exportToWord(elementId, filename, documentTitle){
 
   let html = clone.innerHTML;
 
+  // Strip the Unicode variation selector U+FE0F. The shield emoji 🛡️ is
+  // encoded as U+1F6E1 + U+FE0F; modern browsers render that as a single
+  // glyph, but Word's HTML importer treats U+FE0F as a separate code point
+  // and renders a second shield glyph next to the first — producing 🛡🛡
+  // in the exported document. Removing the variation selector keeps the
+  // base shield, which Word renders cleanly once.
+  html = html.replace(/️/g, "");
+
   // Resolve CSS custom properties to literal hex values — Word can't
   // compute var(). Done after the dark-panel rewrite above so the
   // `var(--navy)` patterns are caught correctly.
@@ -4840,32 +4915,6 @@ function exportActionPlanWord(){
 }
 function exportTabletopWord(){
   exportToWord("tabletopContainer", wordFilename("Tabletop Exercise"), "Tabletop Exercise Summary");
-}
-
-// Triggers the browser's print dialog with a sensible suggested PDF filename.
-// We use window.print() rather than a third-party PDF library because:
-// (1) the print CSS we already wrote produces the cleanest output;
-// (2) a PDF library would weaken the strict CSP for marginal benefit.
-// Most browsers default the "Save as PDF" filename to document.title, so
-// we briefly retitle the document around the print call.
-function downloadFirst30Pdf(){
-  const p = state.plan;
-  const school = (p.meta.schoolName || "school").replace(/[^a-z0-9 _-]/gi, "").trim() || "school";
-  const dateStr = new Date().toISOString().slice(0, 10);
-  const niceTitle = `${school} — First 30 Minutes — ${dateStr}`;
-  const originalTitle = document.title;
-  document.title = niceTitle;
-  // Restore the original title once the print dialog is dismissed (whether the
-  // user saved/printed or cancelled). Most browsers fire afterprint reliably.
-  const restore = () => {
-    document.title = originalTitle;
-    window.removeEventListener("afterprint", restore);
-  };
-  window.addEventListener("afterprint", restore);
-  // Failsafe — if afterprint never fires (rare, but possible on some mobile
-  // browsers), restore after 60s anyway.
-  setTimeout(restore, 60000);
-  window.print();
 }
 
 function f30Contact(label, name, phone){
@@ -5365,8 +5414,8 @@ function renderTabletopSummary(scenario){
           <p class="muted" style="margin:4px 0 0">Print or save this summary as evidence of plan testing. NCSC and most LA cyber cover arrangements expect annual testing.</p>
         </div>
         <div class="btn-row" style="margin:0">
-          <button class="btn btn-primary" onclick="window.print()">🖨️ Print summary</button>
-          <button class="btn btn-secondary" onclick="exportTabletopWord()">📄 Export to Word</button>
+          <button class="btn btn-primary" onclick="exportTabletopWord()">📄 Export to Word</button>
+          <button class="btn btn-secondary" onclick="window.print()">🖨️ Print to paper</button>
           <button class="btn btn-secondary" onclick="exitTabletop()">&larr; Back to scenarios</button>
         </div>
       </div>
