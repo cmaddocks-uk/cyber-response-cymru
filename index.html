@@ -942,8 +942,11 @@
     </div>
   </div>
 
-  <!-- Status bar / footer links -->
-  <div class="home-status" style="margin-top:22px; padding-top:16px; border-top:1px solid var(--line); justify-content:center">
+  <!-- Status bar / footer links — explicitly no-print so this navigation
+       chrome (Share, Buy me a beer, external doc links, Changelog) doesn't
+       end up in someone's printed plan if they click Print while still on
+       the Home tab rather than the Plan output tab. -->
+  <div class="home-status no-print" style="margin-top:22px; padding-top:16px; border-top:1px solid var(--line); justify-content:center">
     <span class="status-pill status-ok">✅ v0.1.0 (Welsh fork)</span>
     <a class="status-link" href="#" onclick="shareTool(this); return false">🔗 Share</a>
     <a class="status-link" href="https://buymeacoffee.com/cmaddocks" target="_blank" rel="noopener noreferrer">🍺 Buy me a beer</a>
@@ -2384,14 +2387,20 @@ function initState(){
         ceStatus:"",
         // CE certification date — used to calculate the 3-month window for Cyber Essentials Plus.
         // Once a school certifies CE, they have 3 months to take CE Plus on the same scope of certification.
-        ceCertDate:""
+        ceCertDate:"",
+        // School logo — base64 data URI (PNG or JPEG). Uploaded via the Plan
+        // Builder, auto-resized to max 400px on longest side so the encoded
+        // string stays under the schema-merger 50KB cap. Appears centred above
+        // the title in the plan output and governor report. Empty = falls back
+        // to the shield icon.
+        schoolLogo:""
       },
       team:{
         leadName:"", leadRole:"Senior Leadership Team Digital Lead", leadPhone:"", leadEmail:"", leadAlt:"",
         deputyName:"", deputyRole:"", deputyPhone:"", deputyEmail:"", deputyAlt:"",
         itLeadName:"", itLeadRole:"", itLeadPhone:"", itLeadEmail:"", itLeadAlt:"",
-        dpoName:"", dpoOrg:"", dpoPhone:"", dpoEmail:"",
-        commsLeadName:"", commsLeadRole:"", commsLeadPhone:"", commsLeadEmail:"",
+        dpoName:"", dpoOrg:"", dpoPhone:"", dpoEmail:"", dpoAlt:"",
+        commsLeadName:"", commsLeadRole:"", commsLeadPhone:"", commsLeadEmail:"", commsLeadAlt:"",
         members:[]
       },
       external:{
@@ -3082,6 +3091,82 @@ function escapeHtml(s){
   })[c]);
 }
 
+// Validates a string is a safe image data URI before rendering it as <img src=>.
+// We restrict to PNG / JPEG / WebP raster formats — SVG is excluded because
+// SVG documents can contain <script>. An imported JSON could otherwise inject
+// `javascript:` or `data:image/svg+xml,<script>...` via the schoolLogo field;
+// this guard means any value that doesn't match the expected base64-encoded
+// raster pattern is silently dropped at render time.
+function safeLogoSrc(s){
+  if(typeof s !== "string") return "";
+  return /^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(s) ? s : "";
+}
+
+// Reads a user-picked image file, downscales to max 400px on the longest side,
+// and stores it as a base64 data URI on state.plan.meta.schoolLogo. PNG is
+// tried first (preserves transparency for logo files with cut-out backgrounds);
+// if the encoded result exceeds ~45KB the function falls back to JPEG with a
+// white background so the value stays under the deepMergeSchema 50KB string cap.
+function uploadSchoolLogo(event){
+  const file = event.target.files && event.target.files[0];
+  event.target.value = ""; // allow re-upload of the same filename
+  if(!file) return;
+
+  if(!/^image\/(png|jpeg|jpg|webp)$/i.test(file.type)){
+    alert("Please choose a PNG, JPEG or WebP image. (SVG is not supported.)");
+    return;
+  }
+  if(file.size > 2 * 1024 * 1024){
+    alert("That image is larger than 2 MB. Please pick a smaller file — the tool will downscale it automatically, but the source must be under 2 MB.");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onerror = () => alert("Could not read that file. Please try again.");
+  reader.onload = (ev) => {
+    const img = new Image();
+    img.onerror = () => alert("That file is not a valid image, or the browser cannot decode it.");
+    img.onload = () => {
+      const maxDim = 400;
+      const ratio = Math.min(maxDim / img.width, maxDim / img.height, 1);
+      const w = Math.max(1, Math.round(img.width * ratio));
+      const h = Math.max(1, Math.round(img.height * ratio));
+
+      const canvas = document.createElement("canvas");
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, w, h);
+      let dataUrl = canvas.toDataURL("image/png");
+
+      // If the PNG is too large for the schema-cap, re-render with white
+      // background fill and export as JPEG. JPEG q=0.85 at 400px typically
+      // gives a 15–30KB string — comfortably under the 50KB cap.
+      if(dataUrl.length > 45000){
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+        dataUrl = canvas.toDataURL("image/jpeg", 0.85);
+      }
+
+      if(!safeLogoSrc(dataUrl)){
+        alert("The image could not be encoded safely. Please try a different file.");
+        return;
+      }
+      state.plan.meta.schoolLogo = dataUrl;
+      saveState();
+      renderPlanBuilder();
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeSchoolLogo(){
+  state.plan.meta.schoolLogo = "";
+  saveState();
+  renderPlanBuilder();
+}
+
 function renderPlanBuilder(){
   const root = document.getElementById("planSections");
   if(!root) return;
@@ -3119,6 +3204,7 @@ function renderSection(id){
 }
 
 function renderMeta(){
+  const logo = safeLogoSrc(state.plan.meta.schoolLogo);
   return `
     <div class="card">
       <h2>School details</h2>
@@ -3135,6 +3221,15 @@ function renderMeta(){
         ${field("Cyber Essentials status","plan.meta.ceStatus","select","NCSC-backed certification scheme. See About → Cyber Essentials for details.",["","Not started","Working towards","Cyber Essentials","Cyber Essentials Plus"])}
         ${field("CE certification date (if applicable)","plan.meta.ceCertDate","date","If status is 'Cyber Essentials', the CE Plus deadline is auto-calculated (cert date + 3 months).")}
       </div>
+
+      <h3 style="margin-top:20px">School logo (optional)</h3>
+      <p class="muted" style="font-size:13px; margin:0 0 8px">PNG, JPEG or WebP &mdash; auto-resized to max 400px so it doesn't bloat your saved plan. Appears centred above the title on the printed plan and the governor report. Stays in your browser like everything else &mdash; never uploaded anywhere.</p>
+      <input type="file" id="schoolLogoInput" accept="image/png,image/jpeg,image/webp" onchange="uploadSchoolLogo(event)" style="display:none">
+      <div class="btn-row" style="margin:8px 0 0">
+        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('schoolLogoInput').click()">📁 ${logo ? "Replace logo&hellip;" : "Choose logo file&hellip;"}</button>
+        ${logo ? `<button class="btn btn-danger btn-sm" onclick="removeSchoolLogo()">🗑️ Remove logo</button>` : ""}
+      </div>
+      ${logo ? `<div style="margin-top:10px; padding:12px 14px; background:#f7f9fc; border:1px solid var(--line); border-radius:8px; display:inline-block"><div style="font-size:11px; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:.04em">Preview</div><img src="${logo}" alt="School logo preview" style="max-height:80px; max-width:240px; display:block; object-fit:contain"></div>` : ""}
     </div>
   `;
 }
@@ -3178,6 +3273,7 @@ function renderTeam(){
         ${field("Organisation","plan.team.dpoOrg","text","If outsourced (LA, MAT, external)")}
         ${field("Phone","plan.team.dpoPhone","tel","")}
         ${field("Email","plan.team.dpoEmail","email","")}
+        ${field("Alternative contact","plan.team.dpoAlt","text","Out-of-hours / weekend contact route — second contact method as required by NCSC")}
       </div>
 
       <h3 style="margin-top:18px">Communications lead</h3>
@@ -3186,6 +3282,7 @@ function renderTeam(){
         ${field("Role","plan.team.commsLeadRole","text","")}
         ${field("Phone","plan.team.commsLeadPhone","tel","")}
         ${field("Email","plan.team.commsLeadEmail","email","")}
+        ${field("Alternative contact","plan.team.commsLeadAlt","text","Out-of-hours route — e.g. mobile, deputy")}
       </div>
 
       <h3 style="margin-top:18px">Additional team members</h3>
@@ -3211,13 +3308,15 @@ function repeaterMembers(){
           <input type="tel" value="${escapeHtml(m.phone)}" oninput="state.plan.team.members[${i}].phone=this.value; saveState()"></label>
         <label class="field"><span class="lbl">Email</span>
           <input type="email" value="${escapeHtml(m.email)}" oninput="state.plan.team.members[${i}].email=this.value; saveState()"></label>
+        <label class="field"><span class="lbl">Alternative contact</span>
+          <input type="text" value="${escapeHtml(m.alt || "")}" oninput="state.plan.team.members[${i}].alt=this.value; saveState()"></label>
       </div>
     </div>
   `).join("")}</div>`;
 }
 
 function addMember(){
-  state.plan.team.members.push({name:"",role:"",phone:"",email:""});
+  state.plan.team.members.push({name:"",role:"",phone:"",email:"",alt:""});
   saveState(); renderPlanBuilder();
 }
 function removeMember(i){
@@ -4246,9 +4345,12 @@ function generatePlan(){
     </tr>
   `;
 
+  const planLogo = safeLogoSrc(p.meta.schoolLogo);
   out.innerHTML = `
     <div style="text-align:center; margin-bottom:24px">
-      <div style="font-size:32px">🛡️</div>
+      ${planLogo
+        ? `<img src="${planLogo}" alt="School logo" style="max-height:90px; max-width:260px; display:block; margin:0 auto 10px; object-fit:contain">`
+        : `<div style="font-size:32px">🛡️</div>`}
       <h1 style="margin:8px 0 4px">Cyber Incident Response Plan</h1>
       <p style="font-size:18px; font-weight:600; margin:0">${emptyOr(p.meta.schoolName, "School / college name")}</p>
       ${p.meta.trustName ? `<p style="margin:2px 0; color:var(--muted)">${escapeHtml(p.meta.trustName)}</p>` : ""}
@@ -4274,9 +4376,9 @@ function generatePlan(){
         ${contactRow("Incident Lead", p.team.leadName, p.team.leadRole, p.team.leadPhone, p.team.leadEmail, p.team.leadAlt)}
         ${contactRow("Deputy Lead", p.team.deputyName, p.team.deputyRole, p.team.deputyPhone, p.team.deputyEmail, p.team.deputyAlt)}
         ${contactRow("Technical Lead", p.team.itLeadName, p.team.itLeadRole, p.team.itLeadPhone, p.team.itLeadEmail, p.team.itLeadAlt)}
-        ${contactRow("Data Protection Officer", p.team.dpoName, p.team.dpoOrg, p.team.dpoPhone, p.team.dpoEmail, "")}
-        ${contactRow("Communications Lead", p.team.commsLeadName, p.team.commsLeadRole, p.team.commsLeadPhone, p.team.commsLeadEmail, "")}
-        ${(p.team.members||[]).map(m => contactRow(escapeHtml(m.role||"Team member"), m.name, "", m.phone, m.email, "")).join("")}
+        ${contactRow("Data Protection Officer", p.team.dpoName, p.team.dpoOrg, p.team.dpoPhone, p.team.dpoEmail, p.team.dpoAlt)}
+        ${contactRow("Communications Lead", p.team.commsLeadName, p.team.commsLeadRole, p.team.commsLeadPhone, p.team.commsLeadEmail, p.team.commsLeadAlt)}
+        ${(p.team.members||[]).map(m => contactRow(escapeHtml(m.role||"Team member"), m.name, "", m.phone, m.email, m.alt || "")).join("")}
       </tbody>
     </table>
 
@@ -5655,8 +5757,10 @@ function generateGovernorReport(){
   // page rather than a half-populated layout with placeholder panels —
   // looks much better when printed and gives the user a clear next step.
   if(totalAnswered === 0){
+    const emptyGovLogo = safeLogoSrc(p.meta.schoolLogo);
     out.innerHTML = `
       <div style="margin-bottom:24px; padding-bottom:18px; border-bottom:3px solid var(--navy)">
+        ${emptyGovLogo ? `<div style="text-align:center; margin-bottom:14px"><img src="${emptyGovLogo}" alt="School logo" style="max-height:70px; max-width:220px; display:inline-block; object-fit:contain"></div>` : ""}
         <h1 style="font-size:22px; font-weight:800; color:var(--navy); margin:0 0 4px">Cyber Incident Response &mdash; Governor Summary</h1>
         <p style="font-size:13px; color:var(--muted); margin:0">${emptyOr(p.meta.schoolName, "School / college name")}${p.meta.trustName ? ` &middot; ${escapeHtml(p.meta.trustName)}` : ""}</p>
       </div>
@@ -5679,9 +5783,11 @@ function generateGovernorReport(){
     return;
   }
 
+  const govLogo = safeLogoSrc(p.meta.schoolLogo);
   out.innerHTML = `
     <!-- HEADER -->
     <div style="margin-bottom:24px; padding-bottom:18px; border-bottom:3px solid var(--navy)">
+      ${govLogo ? `<div style="text-align:center; margin-bottom:14px"><img src="${govLogo}" alt="School logo" style="max-height:70px; max-width:220px; display:inline-block; object-fit:contain"></div>` : ""}
       <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px">
         <div>
           <h1 style="font-size:22px; font-weight:800; color:var(--navy); margin:0 0 4px">Cyber Incident Response &mdash; Governor Summary</h1>
