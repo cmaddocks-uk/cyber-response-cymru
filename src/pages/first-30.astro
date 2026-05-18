@@ -1,0 +1,9 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { First30Page } from '~/components/first30/First30Page';
+---
+
+<BaseLayout title="First 30 Minutes card — Cyber Incident Response Planner">
+  <!-- client:only="react" because plan contacts come from sessionStorage. -->
+  <First30Page client:only="react" />
+</BaseLayout>

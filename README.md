@@ -1,11 +1,11 @@
 # Cyber Incident Response Planner — Wales / Cymru
 
 [![Security Policy](https://img.shields.io/badge/security-policy-green)](SECURITY.md)
-[![Version](https://img.shields.io/badge/version-0.1.0-orange)](https://cmaddocks-uk.github.io/cyber-response-cymru/#changelog)
+[![Version](https://img.shields.io/badge/version-2.0.0--alpha.1-orange)](https://cmaddocks-uk.github.io/cyber-response-cymru/#changelog)
 
-**Current version:** 0.1.0 — Welsh-context fork (Phase 1). See [in-app changelog](https://cmaddocks-uk.github.io/cyber-response-cymru/#changelog).
+**Current version:** 2.0.0-alpha.1 — Welsh-context Astro rebuild (Phase 1 framework swap) with upstream bugfixes forward-ported from English v2.6.6 / v2.6.7. See the [in-app changelog](https://cmaddocks-uk.github.io/cyber-response-cymru/#changelog).
 
-A free, single-file, browser-based planning tool for **Welsh schools**. Assesses cyber response readiness and generates a tailored **Cyber Incident Response Plan** mapped to NCSC, the Welsh Government [*Cyber Resilient Wales* strategy](https://www.gov.wales/cyber-resilient-wales-strategy), local authority cyber cover arrangements, [Estyn](https://www.estyn.gov.wales/) inspection arrangements (where cyber response intersects with safeguarding and leadership), and the [NCSC Cyber Assessment Framework (CAF)](https://www.ncsc.gov.uk/collection/cyber-assessment-framework) which Welsh Government is piloting across local authorities. Signposts the relevant ROCU Cyber PROTECT team — [TARIAN](https://www.tarianrccu.org.uk/) for South Wales, Gwent and Dyfed-Powys; [NWROCU](https://www.nwrocu.police.uk/) for North Wales.
+A free, browser-based planning tool for **Welsh schools and colleges**. Assesses cyber response readiness and generates a tailored **Cyber Incident Response Plan** mapped to NCSC, the Welsh Government [*Cyber Resilient Wales* strategy](https://www.gov.wales/cyber-resilient-wales-strategy), local authority cyber cover arrangements, [Estyn](https://www.estyn.gov.wales/) inspection arrangements (where cyber response intersects with safeguarding and leadership and management), and the [NCSC Cyber Assessment Framework (CAF)](https://www.ncsc.gov.uk/collection/cyber-assessment-framework) which Welsh Government is piloting across local authorities. Signposts the relevant ROCU Cyber PROTECT team — [TARIAN](https://www.tarianrccu.org.uk/) for South Wales, Gwent and Dyfed-Powys; [NWROCU](https://www.nwrocu.police.uk/) for North Wales.
 
 Wales has no DfE-Cyber-Security-Hub equivalent — sector-specific cyber response planning support for Welsh schools is a real gap. This tool exists to fill it.
 
@@ -17,22 +17,20 @@ Wales has no DfE-Cyber-Security-Hub equivalent — sector-specific cyber respons
 
 ## Two-phase delivery
 
-- **Phase 1 (this version, v0.1.x).** Framework swap only — UI remains in English, but every framework reference, signposted contact and assurance question is Welsh-context. A useful interim product in itself: Welsh-medium English-language schools (the majority of mainstream schools in Wales) can use it directly.
-- **Phase 2 (planned, v1.0.0).** Full Welsh-language translation by a fluent Welsh translator with sector knowledge. See [TRANSLATION.md](TRANSLATION.md) for the brief.
-
-The framework swap rationale and mapping is documented in [FRAMEWORK_SWAP.md](FRAMEWORK_SWAP.md).
+- **Phase 1 (this release line, v2.x).** Framework swap. UI is in English; every framework reference, signposted contact and assurance question is Welsh-context. A useful interim product in itself — Welsh-medium English-language schools (the majority of mainstream schools in Wales) can use it directly. v2.0.0 is the architecture port from the single-file v0.1.0 to the Astro + React + Tailwind v2.x line that the English sister tool runs on, so future bug fixes and feature work can be applied to both tools symmetrically.
+- **Phase 2 (planned, v3.0.0).** Full Welsh-language translation by a fluent Welsh translator with sector knowledge.
 
 ## What it does
 
-1. **Readiness check** — 12 RAG-scored questions on the current state of your incident response capability, mapped to NCSC and Welsh-context expectations.
-2. **Plan builder** — 11 structured sections covering school details, response team, external contacts (incl. local authority cyber lead and ROCU Cyber PROTECT), severity grading, escalation authority, playbooks, communications, **critical systems & business impact (asset register + BIA, including Hwb-hosted services)**, recovery & backups, post-incident review, and plan maintenance (with annual cyber security calendar).
+1. **Readiness check** — 16 RAG-scored questions on the current state of your incident response capability, mapped to NCSC and Welsh-context expectations.
+2. **Plan builder** — 11 structured sections covering school details, response team, external contacts (incl. local authority cyber lead, Welsh Government / consortium digital education contact, and ROCU Cyber PROTECT — TARIAN / NWROCU), severity grading, escalation authority, playbooks, communications, **critical systems & business impact (asset register + BIA, including Hwb-hosted services)**, recovery & backups, post-incident review, and plan maintenance (with annual cyber security calendar).
 3. **Plan output** — generates a printable, governor-ready Cyber Incident Response Plan. Section 9 includes a structured asset register — particularly important for SaaS-hosted systems (Arbor, SIMS, Bromcom, ParentPay, CPOMS, M365, Google Workspace, Hwb-hosted services) where the school remains the data controller under UK GDPR.
-4. **Seven playbooks** — ransomware, personal data breach, account compromise, phishing, denial of service, insider threat, and **SaaS supplier incident** (with Wales-specific notification routes: LA cyber lead, TARIAN / NWROCU, Welsh Gov contact).
-5. **Tabletop exercises** — five anonymised scenarios that walk your plan through realistic incidents step-by-step, surfacing gaps where your plan is silent.
-6. **Governor / Trustee Report** — one-page summary using Estyn-compatible principles-based assurance language.
-7. **First 30 Minutes card** — printable, laminate-and-pin rapid-response card.
+4. **Nine playbooks** — ransomware, personal data breach, account compromise, phishing, business email compromise (BEC), AI-driven extortion, denial of service, insider threat, and **SaaS supplier incident** (with Wales-specific notification routes: LA cyber lead, TARIAN / NWROCU, Welsh Gov contact).
+5. **Tabletop exercises** — six anonymised scenarios that walk your plan through realistic incidents step-by-step, surfacing gaps where your plan is silent.
+6. **Governor / Trustee Report** — one-page summary using Estyn-compatible principles-based assurance language (Estyn does not currently inspect cyber security directly, but cyber response intersects with safeguarding and leadership and management aspects of inspection).
+7. **First 30 Minutes card** — printable, laminate-and-pin rapid-response card with the TARIAN / NWROCU split signposted.
 8. **Prioritised Action Plan** — auto-generated from the readiness check.
-9. **Word / LibreOffice export** — every output exports as a `.doc` file that opens cleanly in Word / LibreOffice / Google Docs as an editable document.
+9. **Word `.docx` export** — every output exports as a Word document that opens cleanly in Word / LibreOffice / Google Docs as an editable document.
 10. **JSON save & restore** — save your working data to a local JSON file at any time and re-import later.
 
 ## Frameworks referenced
@@ -46,6 +44,7 @@ The framework swap rationale and mapping is documented in [FRAMEWORK_SWAP.md](FR
 - [HWB](https://hwb.gov.wales/) — Welsh Government's digital learning platform.
 - Local authority cyber cover / insurance arrangements (varies by LA — record yours in External Contacts).
 - [Cyber Essentials](https://www.ncsc.gov.uk/cyberessentials/overview) — UK-wide NCSC scheme delivered by IASME.
+- [ICO Information & Cyber Security toolkit](https://ico.org.uk/for-organisations/advice-and-services/audits/data-protection-audit-framework/toolkits/information-and-cyber-security/) — UK-wide data protection oversight.
 
 ## Privacy
 
@@ -57,10 +56,11 @@ The framework swap rationale and mapping is documented in [FRAMEWORK_SWAP.md](FR
 ## Security
 
 - Strict Content Security Policy (`default-src 'none'`) — only the GoatCounter analytics endpoint is permitted.
-- JSON imports validated against a strict schema.
+- Trusted Types defence-in-depth: `require-trusted-types-for 'script'` plus a strict default policy that rejects dynamic script creation in Chrome and Edge.
+- JSON imports validated against a strict schema (`deepMergeSchema`).
 - All user input HTML-escaped before rendering.
 - External links use `rel="noopener noreferrer"`.
-- `frame-ancestors 'none'` and `form-action 'none'` block clickjacking and form-action hijack.
+- `form-action 'none'` blocks form-action hijack.
 - `robots.txt` disallows indexing of common abuse paths (`/powerautomate/`, `/api/`, `/webhook/`).
 - Custom 404 page explicitly disclaims Power Automate, webhook, payment and OAuth endpoints.
 
@@ -74,6 +74,12 @@ This tool is provided as-is, without warranty. It is not legal, regulatory or in
 
 MIT — see [LICENSE](LICENSE).
 
+## Trademark Notice
+
+> "CIRP", the CIRP logo, and related branding are trademarks or common-law marks of Christopher Maddocks.  
+> The source code is licensed under the MIT License.  
+> The project's name, logo, and branding are not included in that license.
+
 ## Author
 
-Christopher Maddocks (former ANME Ambassador). Built as a contribution to the Welsh and wider UK education community. The Welsh fork is released without prior TARIAN / Welsh Government review — feedback from Welsh sector partners is welcomed and will shape v1.0.0.
+Christopher Maddocks (former ANME Ambassador). Built as a contribution to the Welsh and wider UK education community. The Welsh fork is released without prior TARIAN / Welsh Government review — feedback from Welsh sector partners is welcomed and will shape v3.0.0.

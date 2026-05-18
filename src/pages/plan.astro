@@ -1,0 +1,10 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { PlanBuilderPage } from '~/components/plan/PlanBuilderPage';
+---
+
+<BaseLayout title="Plan builder — Cyber Incident Response Planner">
+  <!-- client:only="react" for the same reason as Readiness: state comes from
+       sessionStorage on first mount, which only exists in the browser. -->
+  <PlanBuilderPage client:only="react" />
+</BaseLayout>

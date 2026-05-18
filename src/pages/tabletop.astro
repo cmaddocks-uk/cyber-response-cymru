@@ -1,0 +1,10 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { TabletopPage } from '~/components/tabletop/TabletopPage';
+---
+
+<BaseLayout title="Tabletop exercises — Cyber Incident Response Planner">
+  <!-- client:only="react" because tabletop state + plan state live in
+       sessionStorage, which is browser-only. -->
+  <TabletopPage client:only="react" />
+</BaseLayout>

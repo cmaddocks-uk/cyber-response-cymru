@@ -15,24 +15,24 @@
   - script-src 'self' 'unsafe-inline' https://gc.zgo.at — our inline scripts
                                        plus the GoatCounter counter script
   - style-src 'self' 'unsafe-inline' — our inline styles
-  - img-src 'self' data: https://cyber-response.goatcounter.com — pixel beacon
-  - connect-src https://cyber-response.goatcounter.com — analytics beacon
+  - img-src 'self' data: https://cyber-response-cymru.goatcounter.com — pixel beacon
+  - connect-src https://cyber-response-cymru.goatcounter.com — analytics beacon
   - form-action 'none'              — no form submissions
   - frame-ancestors 'none'          — cannot be embedded as an iframe
   - base-uri 'none'                 — prevents <base> tag injection
 
   Everything else (fetch, remote scripts, frames) is still blocked.
-  GoatCounter dashboard: https://cyber-response.goatcounter.com
+  GoatCounter dashboard: https://cyber-response-cymru.goatcounter.com
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cyber-response.goatcounter.com; connect-src https://cyber-response.goatcounter.com; form-action 'none'; frame-ancestors 'none'; base-uri 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cyber-response-cymru.goatcounter.com; connect-src https://cyber-response-cymru.goatcounter.com; form-action 'none'; frame-ancestors 'none'; base-uri 'none';">
 
 <!-- Other defence-in-depth headers -->
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()">
 
-<title>Cyber Incident Response Planner — for UK Schools &amp; Colleges</title>
-<meta name="description" content="A free planning tool for UK schools and colleges to assess cyber response readiness and generate a tailored Cyber Incident Response Plan, mapped to NCSC, DfE Digital Standards 2030, DfE RPA and Ofsted inspection guidance.">
+<title>Cyber Incident Response Planner — Wales / Cymru</title>
+<meta name="description" content="A free planning tool for schools and colleges in Wales to assess cyber response readiness and generate a tailored Cyber Incident Response Plan, mapped to NCSC, Welsh Government Cyber Resilient Wales, Estyn inspection arrangements, and TARIAN / regional ROCU Cyber PROTECT guidance.">
 
 <!-- Inter font for crisper, more authoritative typography. Loaded from Google Fonts;
      CSP allows fonts.googleapis.com (CSS) and fonts.gstatic.com (font binaries). -->
@@ -42,15 +42,15 @@
 
 <!-- Open Graph / LinkedIn / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://cmaddocks-uk.github.io/cyber-response/">
-<meta property="og:title" content="Cyber Incident Response Planner — for UK Schools &amp; Colleges">
-<meta property="og:description" content="A free planning tool for UK schools and colleges. Readiness check, plan builder, six playbooks, communications templates and a one-page Governor Report — all mapped to NCSC, DfE Digital Standards 2030, DfE RPA and the Ofsted Inspection Toolkit. Browser-only, no account, no tracking.">
-<meta property="og:site_name" content="Cyber Incident Response Planner">
+<meta property="og:url" content="https://cmaddocks-uk.github.io/cyber-response-cymru/">
+<meta property="og:title" content="Cyber Incident Response Planner — Wales / Cymru">
+<meta property="og:description" content="A free planning tool for schools and colleges in Wales. Readiness check, plan builder, six playbooks, communications templates and a one-page Governor Report — mapped to NCSC, Welsh Government Cyber Resilient Wales, Estyn, and TARIAN / regional ROCU Cyber PROTECT guidance. Browser-only, no account, no tracking.">
+<meta property="og:site_name" content="Cyber Incident Response Planner — Wales / Cymru">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cyber Incident Response Planner — for UK Schools &amp; Colleges">
-<meta name="twitter:description" content="A free planning tool for UK schools and colleges. Readiness check, plan builder, playbooks, Governor Report — mapped to NCSC, DfE Digital Standards 2030, DfE RPA and Ofsted.">
+<meta name="twitter:title" content="Cyber Incident Response Planner — Wales / Cymru">
+<meta name="twitter:description" content="A free planning tool for schools and colleges in Wales. Readiness check, plan builder, playbooks, Governor Report — mapped to NCSC, Welsh Government, Estyn, and TARIAN.">
 <style>
   :root{
     --navy:#0b2545;
@@ -744,8 +744,8 @@
 </style>
 
 <!-- GoatCounter analytics — privacy-friendly, no cookies, no fingerprinting -->
-<!-- Dashboard: https://cyber-response.goatcounter.com -->
-<script data-goatcounter="https://cyber-response.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!-- Dashboard: https://cyber-response-cymru.goatcounter.com -->
+<script data-goatcounter="https://cyber-response-cymru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 
@@ -768,10 +768,10 @@
       <button data-tab="about">About</button>
     </nav>
     <div class="region-switch" role="navigation" aria-label="Region switcher">
-      <span class="region-current" aria-current="true" aria-label="You are here: UK / English version" title="UK / English version (current)">
+      <a href="https://cmaddocks-uk.github.io/cyber-response/" aria-label="Switch to the UK / English version" title="Switch to the UK / English version">
         <svg viewBox="0 0 60 30" width="22" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <clipPath id="ukclip-en"><rect width="60" height="30"/></clipPath>
-          <g clip-path="url(#ukclip-en)">
+          <clipPath id="ukclip-cy"><rect width="60" height="30"/></clipPath>
+          <g clip-path="url(#ukclip-cy)">
             <rect width="60" height="30" fill="#012169"/>
             <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
             <path d="M0,0 L60,30" stroke="#C8102E" stroke-width="3" stroke-dasharray="30,30" stroke-dashoffset="0"/>
@@ -780,14 +780,14 @@
             <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
           </g>
         </svg>
-      </span>
-      <a href="https://cmaddocks-uk.github.io/cyber-response-cymru/" aria-label="Switch to the Welsh / Cymru version" title="Switch to the Welsh / Cymru version">
+      </a>
+      <span class="region-current" aria-current="true" aria-label="You are here: Welsh / Cymru version" title="Welsh / Cymru version (current)">
         <svg viewBox="0 0 60 36" width="22" height="13" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect width="60" height="18" fill="#fff"/>
           <rect y="18" width="60" height="18" fill="#00803c"/>
           <path d="M19 16 c0 -3 3 -5 7 -5 c3 0 5 1 7 2 l4 -2 l-1 3 l4 0 l-3 2 l3 1 l-3 1 l2 3 l-4 -1 l1 3 l-4 -2 c-3 1 -7 0 -10 -2 c-2 -1 -3 -2 -3 -3 z" fill="#cf142b"/>
         </svg>
-      </a>
+      </span>
     </div>
   </div>
 </header>
@@ -803,28 +803,28 @@
   <!-- HERO: compact, single primary CTA, slim trust pills -->
   <div style="text-align:center; padding:24px 0 20px">
     <div style="font-size:40px; margin-bottom:6px; line-height:1">🛡️</div>
-    <h1 style="font-size:30px; font-weight:800; color:var(--navy); letter-spacing:-.02em; margin:0 0 10px; line-height:1.15">Cyber Incident Response Planner</h1>
-    <p style="font-size:15px; color:var(--muted); max-width:620px; margin:0 auto 18px; line-height:1.5">
-      Free planning tool for UK schools and colleges. Build a school-specific Cyber Incident Response Plan, mapped to NCSC, DfE and Ofsted guidance.
+    <h1 style="font-size:30px; font-weight:800; color:var(--navy); letter-spacing:-.02em; margin:0 0 10px; line-height:1.15">Cyber Incident Response Planner <span style="font-size:19px; color:var(--accent); font-weight:600">— Wales / Cymru</span></h1>
+    <p style="font-size:15px; color:var(--muted); max-width:640px; margin:0 auto 18px; line-height:1.5">
+      Free planning tool for schools and colleges in Wales. Build a school-specific Cyber Incident Response Plan, mapped to NCSC, Welsh Government Cyber Resilient Wales, Estyn arrangements and TARIAN / regional ROCU Cyber PROTECT guidance.
     </p>
     <button class="btn-cta" onclick="goTab('readiness')" style="width:auto; min-width:260px; padding:12px 32px; font-size:15px; display:inline-block; box-shadow:0 2px 0 #1657b8, 0 6px 18px rgba(31,111,235,.18)">▶ Start readiness check</button>
     <p style="font-size:12px; color:var(--muted); margin:10px 0 0">Takes around 15&ndash;25 minutes &middot; readiness check &middot; 10-section plan builder</p>
     <div style="margin-top:14px; display:flex; flex-wrap:wrap; justify-content:center; gap:8px">
       <span class="feature-pill">✓ Free &middot; browser-only &middot; no account</span>
-      <span class="feature-pill">✓ Mapped to NCSC, DfE Standards 2030, RPA &amp; Ofsted</span>
+      <span class="feature-pill">✓ Mapped to NCSC, Welsh Gov, Estyn &amp; TARIAN</span>
     </div>
-    <div style="font-size:11px; color:var(--muted); margin-top:12px; letter-spacing:.04em; text-transform:uppercase; font-weight:600">v1.7.0 &middot; <a href="#" onclick="goTab('changelog'); return false">changelog</a></div>
+    <div style="font-size:11px; color:var(--muted); margin-top:12px; letter-spacing:.04em; text-transform:uppercase; font-weight:600">v0.1.0 (Welsh fork) &middot; <a href="#" onclick="goTab('changelog'); return false">changelog</a></div>
   </div>
 
   <!-- Police CyberAlarm — compact, expandable -->
   <details style="margin:0 0 22px; background:#eaf2fd; border:1px solid #cdd9ed; border-left:4px solid var(--accent); border-radius:6px; padding:10px 14px">
     <summary style="cursor:pointer; font-size:13px; line-height:1.5; color:var(--navy); list-style:none; display:flex; align-items:flex-start; gap:8px">
       <span style="font-size:14px; margin-top:1px; flex-shrink:0">ℹ️</span>
-      <span style="flex:1"><strong>Police CyberAlarm:</strong> registrations remain open and vulnerability scanning is available &mdash; registering still satisfies the RPA cyber cover condition. <span style="color:var(--accent); font-weight:700; font-size:12px; white-space:nowrap">More info &darr;</span></span>
+      <span style="flex:1"><strong>Police CyberAlarm:</strong> registrations remain open and vulnerability scanning is available &mdash; a sensible free baseline alongside whatever cyber cover your local authority or insurer provides. <span style="color:var(--accent); font-weight:700; font-size:12px; white-space:nowrap">More info &darr;</span></span>
     </summary>
     <div style="margin-top:10px; padding:10px 0 0 22px; border-top:1px solid #cdd9ed; font-size:13px; line-height:1.55; color:var(--text)">
-      <p style="margin:0 0 6px">Only the on-network data collector is currently paused for new installations during a planned transition period &mdash; the rest of the service continues as usual. If you're unsure about your specific position, your local <a href="https://www.ncsc.gov.uk/information/regional-organised-crime-units-rocus" target="_blank" rel="noopener noreferrer">Regional Organised Crime Unit (ROCU)</a> Cyber PROTECT team can advise free of charge, or contact the RPA at <a href="mailto:RPA.DFE@education.gov.uk">RPA.DFE@education.gov.uk</a>. The full registration page is at <a href="https://www.cyberalarm.police.uk/register/" target="_blank" rel="noopener noreferrer">cyberalarm.police.uk</a>.</p>
-      <p style="margin:0; font-size:12px; color:var(--muted)">The four RPA cyber cover conditions: PCA registration, offline backups, annual NCSC cyber security training for all staff and governors with system access, and a documented Cyber Response Plan (which this tool helps you build).</p>
+      <p style="margin:0 0 6px">Only the on-network data collector is currently paused for new installations during a planned transition period &mdash; the rest of the service continues as usual. Welsh schools' regional Cyber PROTECT support is provided through the relevant ROCU: <strong>TARIAN</strong> for South Wales, Gwent and Dyfed-Powys; <strong>NWROCU</strong> for North Wales. Both teams provide free pre-incident advice. The full PCA registration page is at <a href="https://www.cyberalarm.police.uk/register/" target="_blank" rel="noopener noreferrer">cyberalarm.police.uk</a>.</p>
+      <p style="margin:0; font-size:12px; color:var(--muted)">A practical baseline for any Welsh school: PCA registration, offline backups, annual NCSC-aligned cyber security training for all staff and governors with system access, and a documented Cyber Response Plan (which this tool helps you build).</p>
     </div>
   </details>
 
@@ -835,7 +835,7 @@
       <span style="flex:1"><strong>Cloud MIS / SaaS:</strong> do you hold your own copy of the data? If your MIS or pupil-data SaaS is supplier-hosted, you remain the <strong>data controller</strong> under UK GDPR. <span style="color:var(--accent); font-weight:700; font-size:12px; white-space:nowrap">More info &darr;</span></span>
     </summary>
     <div style="margin-top:10px; padding:10px 0 0 22px; border-top:1px solid #f4dba0; font-size:13px; line-height:1.55; color:var(--text)">
-      <p style="margin:0 0 6px">When your MIS (<strong>Arbor</strong>, <strong>SIMS Cloud</strong>, <strong>Bromcom</strong>, <strong>iSAMS</strong>, <strong>Engage</strong>, <strong>ScholarPack</strong>) or other school-data SaaS (<strong>CPOMS</strong>, <strong>MyConcern</strong>, <strong>ParentPay</strong>, <strong>M365</strong>) is hosted by the supplier, you are still the data controller and they are the data processor. <strong>Best practice: request and store a current export of your school's data termly</strong>, separate from the supplier's environment. If they suffer a breach, fold, or you need to migrate, you can act independently &mdash; without waiting for the supplier's recovery timeline or commercial co-operation.</p>
+      <p style="margin:0 0 6px">When your MIS (<strong>Arbor</strong>, <strong>SIMS Cloud</strong>, <strong>Bromcom</strong>, <strong>iSAMS</strong>, <strong>Engage</strong>, <strong>ScholarPack</strong>) or other school-data SaaS (<strong>CPOMS</strong>, <strong>MyConcern</strong>, <strong>ParentPay</strong>, <strong>M365</strong>, <strong>Hwb-hosted services</strong>) is hosted by the supplier, you are still the data controller and they are the data processor. <strong>Best practice: request and store a current export of your school's data termly</strong>, separate from the supplier's environment. If they suffer a breach, fold, or you need to migrate, you can act independently &mdash; without waiting for the supplier's recovery timeline or commercial co-operation.</p>
       <p style="margin:0 0 6px">Most schools never test this until it's too late. The <a href="#" onclick="goTab('plan'); showSection('assets'); return false">Critical systems &amp; impact section</a> in the Plan Builder includes a "Last data export from supplier" field for each system; the <a href="#" onclick="goTab('plan'); showSection('playbooks'); return false">SaaS supplier incident playbook</a> walks the response when a supplier-hosted system is breached; the <a href="#" onclick="goTab('tabletop'); return false">Tabletop scenario F</a> tests this against a cloud / ransomcloud incident.</p>
       <p style="margin:0; font-size:12px; color:var(--muted)">Why this matters in practice: if Arbor (or your MIS supplier) suffers a serious breach, the <strong>72-hour ICO notification clock falls on you</strong>, not them. Without your own data copy, you can't quickly answer "what data was held?", brief parents under UK GDPR Article 34, or maintain operational continuity. Add the termly data-export task to your annual cyber calendar (Plan section 12.1).</p>
     </div>
@@ -849,7 +849,7 @@
       <div class="frameworks-panel" style="margin:0">
         <div class="frameworks-header">
           <div>
-            <div style="font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.06em; text-transform:uppercase">Mapped to UK Frameworks</div>
+            <div style="font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.06em; text-transform:uppercase">Mapped to Welsh-context frameworks</div>
             <div style="font-size:14px; font-weight:700; color:var(--navy); margin-top:2px">Every readiness question and plan section is tagged</div>
           </div>
           <div style="font-size:11px; color:var(--muted); text-align:right; line-height:1.4">
@@ -863,31 +863,26 @@
             <div class="fw-detail">Incident Management collection</div>
             <div class="fw-arrow">→</div>
           </a>
-          <a class="fw-card fw-dfe" href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/cyber-security-standards-for-schools-and-colleges" target="_blank" rel="noopener noreferrer">
-            <div class="fw-name">DfE Digital Standards 2030</div>
-            <div class="fw-detail">Cyber security core standard</div>
+          <a class="fw-card fw-dfe" href="https://www.gov.wales/cyber-resilient-wales-strategy" target="_blank" rel="noopener noreferrer">
+            <div class="fw-name">Welsh Government</div>
+            <div class="fw-detail">Cyber Resilient Wales strategy</div>
             <div class="fw-arrow">→</div>
           </a>
-          <a class="fw-card fw-rpa" href="https://www.gov.uk/guidance/the-risk-protection-arrangement-rpa-for-schools" target="_blank" rel="noopener noreferrer">
-            <div class="fw-name">DfE RPA</div>
-            <div class="fw-detail">Cyber response plan template</div>
+          <a class="fw-card fw-rpa" href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer">
+            <div class="fw-name">TARIAN ROCU</div>
+            <div class="fw-detail">Cyber PROTECT team (South Wales)</div>
             <div class="fw-arrow">→</div>
           </a>
-          <a class="fw-card fw-ofsted" href="https://www.gov.uk/government/publications/education-inspection-framework/education-inspection-framework-for-use-from-november-2025" target="_blank" rel="noopener noreferrer">
-            <div class="fw-name">Ofsted Toolkit</div>
-            <div class="fw-detail">Nov 2025 inspection framework</div>
+          <a class="fw-card fw-ofsted" href="https://www.estyn.gov.wales/inspection-guidance-resources" target="_blank" rel="noopener noreferrer">
+            <div class="fw-name">Estyn</div>
+            <div class="fw-detail">Welsh inspection arrangements</div>
             <div class="fw-arrow">→</div>
           </a>
         </div>
-        <a href="https://cyber-security-hub.education.gov.uk/" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:10px; margin-top:14px; padding:10px 14px; background:linear-gradient(90deg, #eaf2fd 0%, #f7f9fc 100%); border:1px solid #cdd9ed; border-left:4px solid var(--accent); border-radius:6px; color:var(--navy); text-decoration:none; font-size:13px; transition:all .15s">
-          <span style="font-size:18px; flex-shrink:0">🏛️</span>
-          <span style="flex:1; line-height:1.4"><strong>DfE Cyber Security Hub</strong> &mdash; sector-specific incident response playbooks, planning templates and case studies from the Department for Education. This tool is designed to complement and operationalise the Hub's templates.</span>
-          <span style="color:var(--accent); font-weight:700; font-size:16px; flex-shrink:0">&rarr;</span>
-        </a>
         <div class="frameworks-footer">
           <span style="font-size:14px">💡</span>
           <div>
-            <strong>A planning tool, not a compliance pass.</strong> Designed to <strong>complement</strong> the four frameworks above, not replace them. Use alongside your business continuity and disaster recovery plans. For the <strong>prevention</strong> side, see also <a href="https://www.ncsc.gov.uk/cyberessentials/overview" target="_blank" rel="noopener noreferrer">Cyber Essentials</a>.
+            <strong>A planning tool, not a compliance pass.</strong> Designed to <strong>complement</strong> the frameworks above, not replace them. Wales has no DfE-style sector cyber hub &mdash; this tool exists to fill that gap. Use alongside your business continuity and disaster recovery plans. For the <strong>prevention</strong> side, see also <a href="https://www.ncsc.gov.uk/cyberessentials/overview" target="_blank" rel="noopener noreferrer">Cyber Essentials</a>.
           </div>
         </div>
       </div>
@@ -928,24 +923,14 @@
     </div>
   </div>
 
-  <!-- Companion tool + Welsh sister tool + Feedback (three-col on desktop, stack on mobile) -->
-  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; margin-top:18px" class="home-bottom-grid">
-    <a href="https://cmaddocks-uk.github.io/dfe-standards/" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:14px; padding:18px 20px; background:#fff; border:1px solid var(--line); border-radius:12px; color:var(--text); text-decoration:none; box-shadow:var(--shadow); transition:transform .15s, box-shadow .15s">
-      <span style="font-size:32px; flex-shrink:0; line-height:1">🎯</span>
+  <!-- Companion tool + Feedback (two-col on desktop, stack on mobile) -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px" class="home-bottom-grid">
+    <a href="https://cmaddocks-uk.github.io/cyber-response/" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:14px; padding:18px 20px; background:#fff; border:1px solid var(--line); border-radius:12px; color:var(--text); text-decoration:none; box-shadow:var(--shadow); transition:transform .15s, box-shadow .15s">
+      <span style="font-size:32px; flex-shrink:0; line-height:1">🇬🇧</span>
       <span style="flex:1">
-        <span style="display:block; font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.05em; text-transform:uppercase">Companion tool</span>
-        <span style="display:block; font-weight:700; color:var(--navy); font-size:15px; margin-top:2px">DfE Digital Standards 2030 &mdash; Self-Assessment</span>
-        <span style="display:block; font-size:12px; color:var(--muted); line-height:1.4; margin-top:3px">The broader self-assessment covering all six DfE Digital and Technology Standards.</span>
-      </span>
-      <span style="color:var(--accent); font-weight:700; font-size:18px; flex-shrink:0">&rarr;</span>
-    </a>
-
-    <a href="https://cmaddocks-uk.github.io/cyber-response-cymru/" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:14px; padding:18px 20px; background:#fff; border:1px solid var(--line); border-radius:12px; color:var(--text); text-decoration:none; box-shadow:var(--shadow); transition:transform .15s, box-shadow .15s">
-      <span style="font-size:32px; flex-shrink:0; line-height:1">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span>
-      <span style="flex:1">
-        <span style="display:block; font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.05em; text-transform:uppercase">Sister tool (Wales)</span>
-        <span style="display:block; font-weight:700; color:var(--navy); font-size:15px; margin-top:2px">Cyber Incident Response Planner &mdash; Wales / Cymru</span>
-        <span style="display:block; font-size:12px; color:var(--muted); line-height:1.4; margin-top:3px">Welsh-context fork: Welsh Gov, Estyn, TARIAN / NWROCU, LA cyber cover, Hwb services.</span>
+        <span style="display:block; font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.05em; text-transform:uppercase">Sister tool (England)</span>
+        <span style="display:block; font-weight:700; color:var(--navy); font-size:15px; margin-top:2px">Cyber Incident Response Planner &mdash; England</span>
+        <span style="display:block; font-size:12px; color:var(--muted); line-height:1.4; margin-top:3px">The English-context version (DfE Digital Standards 2030, RPA, Ofsted, DfE Cyber Security Hub).</span>
       </span>
       <span style="color:var(--accent); font-weight:700; font-size:18px; flex-shrink:0">&rarr;</span>
     </a>
@@ -962,11 +947,13 @@
        end up in someone's printed plan if they click Print while still on
        the Home tab rather than the Plan output tab. -->
   <div class="home-status no-print" style="margin-top:22px; padding-top:16px; border-top:1px solid var(--line); justify-content:center">
-    <span class="status-pill status-ok">✅ v1.7.0 current</span>
+    <span class="status-pill status-ok">✅ v0.1.0 (Welsh fork)</span>
     <a class="status-link" href="#" onclick="shareTool(this); return false">🔗 Share</a>
     <a class="status-link" href="https://buymeacoffee.com/cmaddocks" target="_blank" rel="noopener noreferrer">🍺 Buy me a beer</a>
-    <a class="status-link" href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener noreferrer">📘 DfE Standards ↗</a>
-    <a class="status-link" href="https://cyber-security-hub.education.gov.uk/" target="_blank" rel="noopener noreferrer">🏛️ DfE Cyber Hub ↗</a>
+    <a class="status-link" href="https://www.gov.wales/cyber-resilient-wales-strategy" target="_blank" rel="noopener noreferrer">📘 Welsh Gov ↗</a>
+    <a class="status-link" href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer">🛡️ TARIAN ↗</a>
+    <a class="status-link" href="https://www.estyn.gov.wales/" target="_blank" rel="noopener noreferrer">🏛️ Estyn ↗</a>
+    <a class="status-link" href="https://hwb.gov.wales/" target="_blank" rel="noopener noreferrer">🌐 HWB ↗</a>
     <a class="status-link" href="https://www.ncsc.gov.uk/collection/incident-management" target="_blank" rel="noopener noreferrer">🛡️ NCSC ↗</a>
     <a class="status-link" href="https://www.ncsc.gov.uk/cyberessentials/overview" target="_blank" rel="noopener noreferrer">🔐 Cyber Essentials ↗</a>
     <a class="status-link" href="#" onclick="goTab('changelog'); return false">📝 Changelog</a>
@@ -982,7 +969,7 @@
 
   <div class="card no-print" style="position:sticky; top:50px; z-index:25; box-shadow:0 4px 12px rgba(15,23,42,.05)">
     <h2 style="margin:0 0 4px">Readiness check</h2>
-    <p class="muted" style="margin:0 0 10px">Twelve questions on the current state of your incident response capability. Each maps to NCSC guidance, the DfE Digital Standards 2030, and the DfE RPA cyber cover requirements.</p>
+    <p class="muted" style="margin:0 0 10px">Twelve questions on the current state of your incident response capability. Each maps to NCSC guidance, the Welsh Government Cyber Resilient Wales policy backdrop, and your local authority cyber cover expectations.</p>
     <div class="progress"><div id="readinessProgress" style="width:0%"></div></div>
     <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:10px; flex-wrap:wrap">
       <div id="readinessDots" style="display:flex; gap:6px; flex-wrap:wrap"></div>
@@ -1075,7 +1062,7 @@
 
   <div class="card no-print">
     <h2>Your Cyber Incident Response Plan</h2>
-    <p class="muted">Use the table of contents on the left to jump to any section. Print it as a hard copy to keep alongside your business continuity documentation (recommended by NCSC and DfE). You can also save the working data file to re-edit later.</p>
+    <p class="muted">Use the table of contents on the left to jump to any section. Print it as a hard copy to keep alongside your business continuity documentation (recommended by NCSC). You can also save the working data file to re-edit later.</p>
     <div class="btn-row">
       <button class="btn btn-primary" onclick="exportPlanWord()">📄 Export to Word</button>
       <button class="btn btn-secondary" onclick="window.print()">🖨️ Print to paper</button>
@@ -1135,8 +1122,8 @@
 
   <div class="card no-print">
     <h2>Governor / Trustee Report</h2>
-    <p class="muted">A one-page, plain-English summary of cyber response readiness designed for governing body and trustee meetings. Helps demonstrate assurance against the Ofsted "<em>How do you assure yourselves...</em>" line of questioning during inspection.</p>
-    <p class="muted" style="font-size:13px"><strong>Best practice:</strong> ensure this report is minuted &mdash; Ofsted inspectors will look for evidence that cyber assurance has taken place at governor level.</p>
+    <p class="muted">A one-page, plain-English summary of cyber response readiness designed for governing body meetings. Uses the principles-based "<em>How do you assure yourselves...</em>" framing that translates well to Estyn's inspection style. Estyn doesn't currently inspect cyber security directly, but cyber response intersects with safeguarding and leadership &mdash; so governor-level assurance still matters.</p>
+    <p class="muted" style="font-size:13px"><strong>Best practice:</strong> ensure this report is minuted &mdash; auditors and inspectors look for evidence that cyber assurance has taken place at governor level.</p>
     <div class="btn-row">
       <button class="btn btn-primary" onclick="exportGovernorWord()">📄 Export to Word</button>
       <button class="btn btn-secondary" onclick="window.print()">🖨️ Print to paper</button>
@@ -1162,79 +1149,37 @@
   </div>
 
   <div class="card">
-    <h3>Version 1.7.0 <span class="muted" style="font-weight:normal; font-size:13px">&mdash; 10 May 2026</span></h3>
-    <p style="margin:0 0 8px"><strong>Asset register &amp; Business Impact Analysis, SaaS-supplier-incident playbook, annual cyber calendar, NCSC Cyber Assessment Framework (CAF) alignment, and a security hardening pass.</strong> The biggest single feature release since launch &mdash; closes the largest gap against sector frameworks (no asset register before; that's table-stakes for NCSC, CAF and RPA), adds a playbook for the realistic Tuesday-morning case where the school's MIS or finance supplier has a breach, and gives schools a single-page rhythm to follow between incidents.</p>
-
-    <h4 style="margin:12px 0 4px; font-size:14px; color:var(--navy)">Asset register &amp; Business Impact Analysis (new Plan Builder section 8)</h4>
-    <ul style="padding-left:20px; margin:0 0 8px">
-      <li><strong style="color:var(--text)">New "Critical systems &amp; impact" section</strong> between Communications and Recovery in the Plan Builder. Captures the school's asset register and a quick BIA in one place.</li>
-      <li><strong style="color:var(--text)">Pre-populated rows</strong> for the most common school systems: MIS, email, safeguarding, finance/payroll, parent comms/payments, network &amp; wifi, telephony. User adds supplier name, what data it holds, hosting type (SaaS / on-prem / hybrid), recovery time objective (&lt;1h to &gt;1w), recovery priority (1&ndash;4), and supplier incident contact.</li>
-      <li><strong style="color:var(--text)">SaaS data-controller framing</strong> &mdash; the section opens with a callout reminding users that even when a SaaS supplier (Arbor, SIMS, Bromcom, ParentPay, CPOMS, M365, Google Workspace) hosts the data, the school remains the data controller under UK GDPR. The asset register exists partly to make this explicit, system-by-system.</li>
-      <li><strong style="color:var(--text)">BIA narrative</strong> textarea &mdash; a short story for governors and insurers explaining how extended loss of these systems would affect teaching, finance, safeguarding and reputation.</li>
-      <li><strong style="color:var(--text)">Plan output renders as section 9</strong> with a structured asset-register table plus the BIA narrative; downstream sections renumbered (Recovery 9&rarr;10, Post-incident review 10&rarr;11, Plan maintenance 11&rarr;12, Mapping to standards 12&rarr;13).</li>
-      <li><strong style="color:var(--text)">Old "Critical systems inventory" subsection in Recovery</strong> replaced with a callout pointing users to the new richer Assets section &mdash; old saved JSON files still load cleanly via schema-strict <code>deepMergeSchema</code>.</li>
-      <li><strong style="color:var(--text)">"Last data export held by school" field added to every asset row.</strong> Captures the date of the school's most recent off-supplier copy of the data &mdash; critical for SaaS-hosted systems where the school is the data controller but doesn't own the storage. Renders as a column in the Plan output's asset register table. Most schools never test this until it's too late.</li>
-      <li><strong style="color:var(--text)">Termly data-export task added to the annual cyber calendar</strong> (section 12.1) &mdash; "request and store off-supplier data export from each SaaS-hosted critical system and update the asset register". Owner is IT lead + DPO since this is a UK GDPR data-controller responsibility.</li>
-      <li><strong style="color:var(--text)">Homepage callout</strong> on Cloud MIS / SaaS data-controller framing. Sits directly below the Police CyberAlarm callout, with the same compact-expandable pattern. Names the common school MIS products (Arbor, SIMS Cloud, Bromcom, iSAMS, Engage, ScholarPack) and pupil-data SaaS products (CPOMS, MyConcern, ParentPay, M365). Inline links jump to the asset register, SaaS supplier playbook and Tabletop F.</li>
+    <h3>Version 0.1.0 <span class="muted" style="font-weight:normal; font-size:13px">&mdash; 8 May 2026 &middot; Welsh fork (Phase 1)</span></h3>
+    <p style="margin:0 0 8px"><strong>Initial Welsh-context fork from <code>cyber-response</code> v1.5.0.</strong> Wales has no DfE-Cyber-Security-Hub equivalent &mdash; sector cyber response planning support for Welsh schools is a real gap. This fork exists to fill it.</p>
+    <ul style="padding-left:20px">
+      <li><strong style="color:var(--text)">Phase 1 &mdash; framework swap.</strong> The English UI is retained; every framework reference is now Welsh-context: Welsh Government's Cyber Resilient Wales strategy (replacing DfE Digital Standards 2030); local authority cyber cover (replacing the DfE Risk Protection Arrangement, which Wales does not have); Estyn inspection arrangements with principles-based assurance language (replacing the Ofsted Toolkit); TARIAN ROCU (South Wales / Gwent / Dyfed-Powys) and NWROCU (North Wales) Cyber PROTECT signposting (replacing the DfE Cyber Security Hub); HWB as the Welsh Government digital learning platform.</li>
+      <li><strong style="color:var(--text)">External Contacts schema updated.</strong> A new <code>rocuCyberProtect</code> field signposts the relevant ROCU Cyber PROTECT team. The RPA contact field is repurposed as <em>"Local authority cyber cover / insurance arrangement"</em>, and the former DfE-sector-contact field is repurposed as <em>"Welsh Government / consortium digital education contact"</em>.</li>
+      <li><strong style="color:var(--text)">UK-wide content carried over unchanged:</strong> NCSC Incident Management, Cyber Essentials (NCSC scheme delivered by IASME), the Cyber Essentials Plus 3-month rule, ICO breach reporting, Report Fraud, the National Crime Agency's Cyber Choices programme, ANME, and Police CyberAlarm registration. The full v1.5.0 readiness check, plan builder, six playbooks, five tabletop scenarios, communications templates, Governor Report, First 30 Minutes card and prioritised action plan all carry over.</li>
+      <li><strong style="color:var(--text)">Phase 2 (planned) &mdash; full Welsh-language translation.</strong> A separate work package, to be delivered by a fluent Welsh translator with sector knowledge. See <code>TRANSLATION.md</code> in the repo for the brief, glossary and priority order.</li>
+      <li><strong style="color:var(--text)">No CSP changes.</strong> Same hardened security posture as the English tool: schema-validated JSON imports, HTML-escaped rendering, <code>rel="noopener noreferrer"</code> on every external link, GoatCounter-only network egress.</li>
     </ul>
 
-    <h4 style="margin:12px 0 4px; font-size:14px; color:var(--navy)">New tabletop scenario &mdash; cloud / ransomcloud (Example F)</h4>
+    <h4 style="margin:12px 0 4px; font-size:14px; color:var(--navy)">Also in this release (mirrored from English tool v1.6.0 + v1.7.0)</h4>
     <ul style="padding-left:20px; margin:0 0 8px">
-      <li><strong style="color:var(--text)">Sixth tabletop scenario added</strong> covering an MFA-fatigue attack that escalates into <em>ransomcloud</em> &mdash; OAuth consent phishing leading to mass file encryption via the Microsoft Graph API plus data exfiltration extortion. There's no server to take offline; recovery happens entirely cloud-side via SharePoint version history, OneDrive recycle bin and Conditional Access policy tightening.</li>
-      <li><strong style="color:var(--text)">Tests the new sections specifically</strong> &mdash; the asset register (where is M365 listed? what RTO?), the SaaS supplier playbook (Microsoft as data processor; school as data controller), the SaaS-data-controller framing under UK GDPR, parent comms when email is the compromised channel, and cloud retention windows that schools rarely test.</li>
+      <li><strong style="color:var(--text)">Asset register &amp; Business Impact Analysis</strong> &mdash; new "Critical systems &amp; impact" section in the Plan Builder (renders as section 9 in the printed plan). Pre-populated rows for MIS, email, safeguarding, finance, parent comms, network, telephony, and Hwb-hosted services. Per-system fields: supplier, what data it holds, hosting (SaaS / on-prem / hybrid), recovery time objective, recovery priority, supplier incident contact. SaaS data-controller framing is explicit: even when Welsh schools use Arbor / SIMS / Bromcom / ParentPay / CPOMS / Hwb-hosted services, the school remains the data controller under UK GDPR &mdash; ICO 72-hour clock falls on the school, not the supplier.</li>
+      <li><strong style="color:var(--text)">SaaS supplier incident playbook</strong> &mdash; new playbook for the realistic case where your MIS / finance / safeguarding supplier has a breach. Covers supplier verification, scoping the school's data affected, ICO Article 33 / 34 obligations, exercising contractual right to a data copy, manual fallback procedures, and post-incident commercial review. Welsh version includes Wales-specific notification routes (LA cyber lead, TARIAN / NWROCU Cyber PROTECT, Welsh Gov contact).</li>
+      <li><strong style="color:var(--text)">New tabletop scenario &mdash; Cloud / ransomcloud (Example F)</strong>. Sixth tabletop covering an MFA-fatigue attack that escalates into ransomcloud &mdash; OAuth consent phishing leading to mass file encryption via the Microsoft Graph API plus data exfiltration extortion. There's no server to take offline; recovery happens entirely cloud-side via SharePoint version history, OneDrive recycle bin and Conditional Access policy tightening. Welsh version covers M365, Google Workspace and Hwb-hosted services, with TARIAN / NWROCU notification and Welsh Gov reporting routes built into the notification cascade.</li>
+      <li><strong style="color:var(--text)">Cloud MIS / SaaS data-controller homepage callout</strong> directly below the Police CyberAlarm one. Headline "Do you hold your own copy of the data?" Names the common school MIS products (Arbor, SIMS Cloud, Bromcom, iSAMS, Engage, ScholarPack) and pupil-data SaaS products (CPOMS, MyConcern, ParentPay, M365, Hwb-hosted services).</li>
+      <li><strong style="color:var(--text)">"Last data export held by school" field on every asset register row</strong>, plus a column in the Plan output table. Captures the date of the school's most recent off-supplier copy. The annual cyber calendar (section 12.1) now includes a termly task to request and store the off-supplier export from each SaaS-hosted critical system &mdash; including the Hwb-hosted services row (with <code>hwb@gov.wales</code> as the supplier incident contact). Owner is IT lead + DPO since this is a UK GDPR data-controller responsibility.</li>
+      <li><strong style="color:var(--text)">Annual cyber security calendar</strong> &mdash; new subsection 12.1 in the printed plan. Six-row reference table (daily / weekly / monthly / termly / annually / triggered) showing what should happen when, with typical owners.</li>
+      <li><strong style="color:var(--text)">CAF alignment</strong> &mdash; About page Frameworks block and Plan output mapping table now reference the NCSC Cyber Assessment Framework. Welsh Government is piloting CAF across local authorities; the tool's plan structure aligns with CAF Objectives A (asset register), C (detection) and D (minimising impact).</li>
+      <li><strong style="color:var(--text)">Print pagination overhaul.</strong> Replaced the <code>position:fixed</code> footer band with <code>@page</code> margin boxes (<code>@bottom-left</code> / <code>@bottom-right</code>) so content can no longer be clipped at page boundaries. Stronger page-break rules (<code>thead</code> glued to first row, <code>break-inside:avoid</code> on all heading levels, <code>orphans:3; widows:3</code>). Action Plan thead readable in print.</li>
+      <li><strong style="color:var(--text)">Word / LibreOffice export.</strong> New <code>📄 Export to Word</code> button on Plan output, Governor Report, Action Plan and Tabletop Summary. Produces a <code>.doc</code> file that opens cleanly in Word, LibreOffice Writer, OpenOffice Writer and Google Docs as a fully editable document.</li>
+      <li><strong style="color:var(--text)">Security hardening.</strong> New <code>SECURITY.md</code> with full threat model. New <code>robots.txt</code> disallowing common domain-abuse paths (<code>/powerautomate/</code>, <code>/api/</code>, <code>/webhook/</code>, <code>/auth/</code>, <code>/payment/</code>) so fake URLs of the form <code>cmaddocks-uk.github.io/cyber-response-cymru/powerautomate/...</code> don't get amplified by search engines.</li>
     </ul>
 
-    <h4 style="margin:12px 0 4px; font-size:14px; color:var(--navy)">SaaS supplier incident playbook (new, 7th playbook)</h4>
-    <ul style="padding-left:20px; margin:0 0 8px">
-      <li><strong style="color:var(--text)">"SaaS supplier incident (Arbor / SIMS / Bromcom / ParentPay / CPOMS / M365 etc.)"</strong> &mdash; the realistic case where the school's data is held by a SaaS supplier and the supplier suffers the breach. Most schools assume "the supplier handles it"; under UK GDPR the school is the data controller and the 72-hour ICO clock falls on them, not the supplier. This playbook is the gap a DPO most often flags in a breach review.</li>
-      <li><strong style="color:var(--text)">Whole-flow template</strong> covering: supplier verification (avoiding phishing-pretending-to-be-supplier), initial scoping of school's data affected, ICO notifiability assessment under Article 33, parent/staff notification under Article 34 (which the supplier's notification doesn't satisfy), exercising contractual right to a copy of the data, manual fallback for service degradation, and post-incident commercial review.</li>
-      <li><strong style="color:var(--text)">Linked from the new Asset register</strong> &mdash; each system listed is implicitly an instance of this playbook's scope.</li>
-    </ul>
-
-    <h4 style="margin:12px 0 4px; font-size:14px; color:var(--navy)">Annual cyber security calendar</h4>
-    <ul style="padding-left:20px; margin:0 0 8px">
-      <li><strong style="color:var(--text)">New subsection 12.1 in the printed plan</strong> &mdash; a six-row reference table showing daily / weekly / monthly / termly / annual / triggered activities with typical owners. The rhythm of activities that keeps the plan current and the school's cyber posture maintained between incidents.</li>
-      <li><strong style="color:var(--text)">Static reference content</strong> &mdash; no input fields. Schools can mark up the printed copy with their own owners and dates.</li>
-    </ul>
-
-    <h4 style="margin:12px 0 4px; font-size:14px; color:var(--navy)">NCSC Cyber Assessment Framework (CAF) alignment</h4>
-    <ul style="padding-left:20px; margin:0 0 8px">
-      <li><strong style="color:var(--text)">New CAF block on the About page Frameworks section</strong> &mdash; explains that schools aren't directly assessed under CAF (NIS Regulations don't apply to schools) but UK local authorities are increasingly piloting CAF as a voluntary cyber resilience baseline. Honest framing: the tool aligns with CAF Objectives A (Managing security risk &mdash; section 9 asset register), C (Detecting events &mdash; sections 4&ndash;6) and D (Minimising impact &mdash; sections 7&ndash;11). No claim of CAF compliance &mdash; that's an organisational assessment, not a tool stamp.</li>
-      <li><strong style="color:var(--text)">CAF row added to the Plan output's standards-mapping table</strong>, alongside NCSC, DfE Standards 2030, RPA, Ofsted, UK GDPR, Cyber Essentials.</li>
-    </ul>
-
-    <h4 style="margin:12px 0 4px; font-size:14px; color:var(--navy)">Security hardening &mdash; domain-abuse mitigation</h4>
-    <ul style="padding-left:20px; margin:0 0 8px">
-      <li><strong style="color:var(--text)">New <code>SECURITY.md</code></strong> with full threat model, including the GitHub-Pages domain-abuse vector (someone spreading fake URLs of the form <code>cmaddocks-uk.github.io/cyber-response/powerautomate/...</code>). Documents what the tool defends against, what it doesn't, and what to do if a suspicious URL using this domain reaches you.</li>
-      <li><strong style="color:var(--text)">New <code>robots.txt</code></strong> disallows search-engine indexing of common abuse paths (<code>/powerautomate/</code>, <code>/api/</code>, <code>/webhook/</code>, <code>/auth/</code>, <code>/payment/</code>, etc.) so fake URLs don't get amplified by search results.</li>
-      <li><strong style="color:var(--text)">404 page already disclaims</strong> Power Automate / webhook / payment / OAuth endpoints by name &mdash; unchanged in this release but documented in <code>SECURITY.md</code>.</li>
-      <li><strong style="color:var(--text)">No CSP changes.</strong> The tool's CSP was already <code>default-src 'none'; frame-ancestors 'none'; form-action 'none'; base-uri 'none';</code> &mdash; effectively a deny-by-default posture that any new attack surface would need to break first.</li>
-    </ul>
-    <p style="margin:8px 0 0; font-size:12px; color:var(--muted)"><strong>Why a minor version bump (v1.7.0):</strong> three substantial new features (Assets section, SaaS playbook, calendar) and a new framework alignment (CAF) plus security hardening. The biggest single release since launch &mdash; would be a major bump if this were a paid product, but the API and saved-plan format are backwards-compatible, so semver-minor is correct.</p>
+    <p style="margin:8px 0 0; font-size:12px; color:var(--muted)"><strong>Why a 0.x version:</strong> this tool has not yet been reviewed by Welsh sector partners (TARIAN, Welsh Government education, Estyn). Treat v0.1.0 as a working draft until that review is complete. Once reviewed and signed off, the next release will move to v1.0.0.</p>
   </div>
 
-  <div class="card">
-    <h3>Version 1.6.0 <span class="muted" style="font-weight:normal; font-size:13px">&mdash; 8 May 2026</span></h3>
-    <p style="margin:0 0 8px"><strong>Word / LibreOffice export and a print-pagination overhaul.</strong> Two related improvements that landed together: a long-standing print bug where content was clipped at page boundaries, and a new export route for users who want to edit the generated documents in Word (or LibreOffice / OpenOffice / Google Docs) before printing.</p>
-
-    <h4 style="margin:12px 0 4px; font-size:14px; color:var(--navy)">Print pagination &mdash; root-cause fix</h4>
-    <ul style="padding-left:20px; margin:0 0 8px">
-      <li><strong style="color:var(--text)">Replaced the <code>position:fixed</code> footer band with <code>@page</code> margin boxes.</strong> The old footer sat at <code>bottom:0</code> of the page area &mdash; but in CSS paged media, fixed elements don't reserve layout space, so content always overlapped the last few millimetres. The footer now lives in <code>@bottom-left</code> / <code>@bottom-right</code> margin boxes which are part of the <code>@page</code> margin itself, and content cannot bleed into them. The <code>beforeprint</code> handler injects a fresh <code>&lt;style&gt;</code> tag with the school name + doc name + URL + version baked into the margin-box <code>content:</code> properties.</li>
-      <li><strong style="color:var(--text)">Stronger page-break rules.</strong> <code>thead</code> now glued to its first body row (was being orphaned at page bottoms &mdash; e.g. the Severity table on the Plan output). <code>break-inside:avoid</code> extended to all heading levels (was only h1&ndash;h4). <code>orphans:3; widows:3</code> applied to paragraphs, list items and table cells to prevent stranded one- or two-line widows.</li>
-      <li><strong style="color:var(--text)">Action Plan thead readable in print.</strong> The on-screen white-on-navy header was rendering white-on-white in PDFs because browsers strip backgrounds by default. Forced a light-grey background with dark text via <code>print-color-adjust:exact</code> &mdash; targets every descendant of <code>thead</code> so inline <code>color:#fff</code> on the row gets fully overridden.</li>
-      <li><strong style="color:var(--text)">Governor Questions panel keeps its box across page breaks.</strong> The panel's blue-tinted background and border now print on continuation pages too, so items 4&ndash;12 stay visually inside the same panel as items 1&ndash;3.</li>
-    </ul>
-
-    <h4 style="margin:12px 0 4px; font-size:14px; color:var(--navy)">Word / LibreOffice export</h4>
-    <ul style="padding-left:20px; margin:0 0 8px">
-      <li><strong style="color:var(--text)">New <code>📄 Export to Word</code> button</strong> on Plan output, Governor Report, Action Plan and Tabletop Summary tabs.</li>
-      <li><strong style="color:var(--text)">HTML-as-<code>.doc</code> approach.</strong> The export wraps the document HTML in MS-Office namespace declarations and serves it as <code>application/msword</code>. Opens cleanly in Microsoft Word, LibreOffice Writer, OpenOffice Writer and Google Docs as a fully editable document &mdash; users can fill in Owner / Target date / Status columns electronically, add their own notes, save as <code>.docx</code> or <code>.odt</code>.</li>
-      <li><strong style="color:var(--text)">Zero dependencies, no CSP changes.</strong> Considered <code>docx.js</code> for true <code>.docx</code> output but rejected for the same reasons as <code>jsPDF</code>: ~150 KB of bundle, CSP relaxation, and we'd have to re-implement the print CSS as Word styling. The HTML-as-<code>.doc</code> route is good enough for the realistic use case (editing a school-specific plan) and ships in roughly 80 lines of vanilla JS.</li>
-      <li><strong style="color:var(--text)">Sensible filenames.</strong> Auto-generated as <code>{School Name} - {Doc Name} - {YYYY-MM-DD}.doc</code>, with the school name sanitised to filesystem-safe characters.</li>
-      <li><strong style="color:var(--text)">CSS variables resolved before serialisation.</strong> <code>var(--navy)</code> etc. are converted to literal hex values during export &mdash; Word's HTML renderer can't compute custom properties.</li>
-    </ul>
-    <p style="margin:8px 0 0; font-size:12px; color:var(--muted)"><strong>Why a minor version bump (v1.6.0):</strong> Word export is a substantial new feature, not a fix. The print pagination work is technically a defect fix (would normally be v1.5.1) but it ships in the same release because both touch the same area of the code &mdash; the print/output layer.</p>
-  </div>
+  <!-- Original English-tool changelog (v1.0.0 &rarr; v1.5.0) retained for repo
+       history at https://cmaddocks-uk.github.io/cyber-response/#changelog and
+       suppressed here. The Welsh fork starts a fresh changelog from v0.1.0. -->
+  <div style="display:none" aria-hidden="true">
 
   <div class="card">
     <h3>Version 1.5.0 <span class="muted" style="font-weight:normal; font-size:13px">&mdash; 8 May 2026</span></h3>
@@ -1473,6 +1418,7 @@
     </ul>
   </div>
 
+  </div><!-- /hidden English-tool legacy changelog -->
 
 </section>
 
@@ -1484,9 +1430,9 @@
   <!-- Hero -->
   <div class="card" style="text-align:center; padding:32px 24px">
     <div style="font-size:36px; margin-bottom:6px">🛡️</div>
-    <h2 style="margin:0 0 6px">About the Cyber Incident Response Planner</h2>
+    <h2 style="margin:0 0 6px">About the Cyber Incident Response Planner &mdash; Wales / Cymru</h2>
     <p style="font-size:14px; color:var(--muted); max-width:640px; margin:0 auto">
-      A free planning tool for UK schools and colleges &mdash; helping schools build, test and maintain a working Cyber Incident Response Plan, mapped to NCSC, DfE Digital Standards 2030, DfE Risk Protection Arrangement (RPA) and the Ofsted Inspection Toolkit.
+      A free planning tool for Welsh schools &mdash; helping schools build, test and maintain a working Cyber Incident Response Plan, mapped to NCSC, the Welsh Government Cyber Resilient Wales strategy, local authority cyber cover, Estyn inspection arrangements, and signposting TARIAN / NWROCU Cyber PROTECT.
     </p>
   </div>
 
@@ -1495,11 +1441,11 @@
     <div class="card">
       <h3>✅ What this tool does</h3>
       <ul style="font-size:14px; padding-left:20px; margin:0">
-        <li>12-question readiness check with RAG scoring against four frameworks</li>
+        <li>12-question readiness check with RAG scoring against Welsh-context frameworks</li>
         <li>10-section Plan Builder for a working incident response plan</li>
         <li>Six pre-populated playbooks (ransomware, data breach, account compromise, phishing, denial of service, insider threat)</li>
         <li>Communication templates with sample drafts for parents, staff, ICO and governors</li>
-        <li>One-page Governor Report supporting Ofsted assurance questioning</li>
+        <li>One-page Governor Report using Estyn-compatible principles-based assurance language</li>
         <li>Sticky table of contents on the generated plan for easy navigation</li>
         <li>Save and reload your progress as a local JSON file</li>
       </ul>
@@ -1512,7 +1458,7 @@
         <li>Not legal, regulatory or insurance advice</li>
         <li>Not a guarantee of compliance with any framework</li>
         <li>Not a replacement for an external incident response retainer</li>
-        <li>Not affiliated with the DfE, NCSC, RPA, Ofsted or any government body</li>
+        <li>Not affiliated with the Welsh Government, NCSC, Estyn, TARIAN, NWROCU, HWB, ANME or any government body or insurer</li>
       </ul>
       <p style="font-size:13px; margin:10px 0 0; color:var(--text)"><strong>Always validate</strong> the final plan with your IT support, Data Protection Officer, SLT and governing body before relying on it.</p>
     </div>
@@ -1521,7 +1467,7 @@
   <!-- Who is this for -->
   <div class="card">
     <h3>👥 Who is this for?</h3>
-    <p style="font-size:14px">Any UK state, independent or further education setting that needs to write or review a cyber incident response plan, including:</p>
+    <p style="font-size:14px">Any Welsh school or further education setting (state, voluntary-aided or independent) that needs to write or review a cyber incident response plan, including:</p>
     <div class="grid-2" style="margin-top:8px">
       <div>
         <ul style="font-size:14px; padding-left:20px; margin:0">
@@ -1532,7 +1478,7 @@
       </div>
       <div>
         <ul style="font-size:14px; padding-left:20px; margin:0">
-          <li>Business managers and bursars working on RPA renewals</li>
+          <li>Business managers and bursars reviewing local-authority cyber cover</li>
           <li>Governors and trustees seeking assurance on cyber resilience</li>
           <li>Data Protection Officers reviewing breach response readiness</li>
         </ul>
@@ -1551,31 +1497,36 @@
         <a href="https://www.ncsc.gov.uk/collection/incident-management" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">Read the source guidance &rarr;</a>
       </div>
       <div style="padding:12px 14px; background:#ecfeff; border-left:4px solid #0891b2; border-radius:0 6px 6px 0">
-        <div style="font-weight:700; color:#0e7490; font-size:13px; margin-bottom:2px">DFE CYBER SECURITY HUB</div>
-        <p style="font-size:13px; margin:0">The Department for Education's hub of incident response playbooks (ransomware, business email compromise, extortion via AI), planning templates, the published 8-phase incident response process, and a sector case-study evidence base. This tool provides the operational planning layer that turns the Hub's templates and playbooks into a school-specific, governor-ready plan.</p>
-        <a href="https://cyber-security-hub.education.gov.uk/" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">Read the source guidance &rarr;</a>
+        <div style="font-weight:700; color:#0e7490; font-size:13px; margin-bottom:2px">TARIAN ROCU &amp; NWROCU &mdash; CYBER PROTECT</div>
+        <p style="font-size:13px; margin:0">Welsh schools' regional cyber prevention support is provided through their local Regional Organised Crime Unit (ROCU) Cyber PROTECT team. <strong>TARIAN</strong> covers South Wales, Gwent and Dyfed-Powys; <strong>NWROCU</strong> covers North Wales. Both teams provide free pre-incident advice, training and exercises, and are the right first call for prevention guidance &mdash; this tool signposts them throughout.</p>
+        <a href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">TARIAN &rarr;</a> &nbsp;
+        <a href="https://www.nwrocu.police.uk/" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">NWROCU &rarr;</a>
       </div>
       <div style="padding:12px 14px; background:#fff4e6; border-left:4px solid #a04500; border-radius:0 6px 6px 0">
-        <div style="font-weight:700; color:#a04500; font-size:13px; margin-bottom:2px">DFE DIGITAL STANDARDS 2030 &mdash; CYBER SECURITY CORE STANDARD</div>
-        <p style="font-size:13px; margin:0">Readiness questions reflect the DfE's stated expectations on risk assessment, staff training, MFA, response planning, asset registers and patching. One of the six core Digital and Technology Standards UK schools should be working towards by 2030.</p>
-        <a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/cyber-security-standards-for-schools-and-colleges" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">Read the source guidance &rarr;</a>
+        <div style="font-weight:700; color:#a04500; font-size:13px; margin-bottom:2px">WELSH GOVERNMENT &mdash; CYBER RESILIENT WALES</div>
+        <p style="font-size:13px; margin:0">Welsh Government's <em>Cyber Resilient Wales</em> strategy is the policy backdrop for cyber security across the Welsh public sector. Wales does not have a sector-specific equivalent of the DfE's Digital and Technology Standards 2030 for schools &mdash; readiness questions in this tool reflect NCSC-aligned good practice (MFA, training, asset registers, patching, response planning) consistent with the strategy's principles.</p>
+        <a href="https://www.gov.wales/cyber-resilient-wales-strategy" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">Read the strategy &rarr;</a>
       </div>
       <div style="padding:12px 14px; background:#e7f5ec; border-left:4px solid #0a6a30; border-radius:0 6px 6px 0">
-        <div style="font-weight:700; color:#0a6a30; font-size:13px; margin-bottom:2px">DFE RISK PROTECTION ARRANGEMENT (RPA) &mdash; CYBER RESPONSE PLAN</div>
-        <p style="font-size:13px; margin:0 0 6px">Plan structure aligns with the impact assessment, communication templates and recovery event recording required by RPA cyber cover. Schools using RPA can use the generated plan as the working document for their cyber response.</p>
-        <p style="font-size:12px; margin:0 0 6px; padding:8px 10px; background:#eaf2fd; border:1px dashed #cdd9ed; border-radius:4px; color:var(--text)"><strong>2026 note:</strong> Police CyberAlarm registrations remain open and vulnerability scanning is available. Only new on-network data collector installations are paused during a transition period. PCA registration still satisfies the RPA cyber cover condition, and your local ROCU Cyber PROTECT team can advise on the practical position.</p>
-        <a href="https://www.gov.uk/guidance/the-risk-protection-arrangement-rpa-for-schools" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">Read the source guidance &rarr;</a>
+        <div style="font-weight:700; color:#0a6a30; font-size:13px; margin-bottom:2px">LOCAL AUTHORITY CYBER COVER / INSURANCE</div>
+        <p style="font-size:13px; margin:0 0 6px">Wales does not have a national risk protection scheme equivalent to the DfE's RPA. Most maintained Welsh schools are covered through their local authority's cyber and IT insurance arrangement; voluntary-aided and independent schools typically arrange their own. The Plan Builder prompts you to record your specific arrangement under External Contacts &mdash; check with your local authority finance/insurance team if you're unsure.</p>
+        <p style="font-size:12px; margin:0; padding:8px 10px; background:#eaf2fd; border:1px dashed #cdd9ed; border-radius:4px; color:var(--text)"><strong>Police CyberAlarm:</strong> registrations remain open and vulnerability scanning is available. Only new on-network data collector installations are paused during a planned transition period &mdash; the rest of the service continues. A sensible free baseline alongside whatever cyber cover your local authority provides.</p>
       </div>
       <div style="padding:12px 14px; background:#f3e8ff; border-left:4px solid #6b21a8; border-radius:0 6px 6px 0">
-        <div style="font-weight:700; color:#6b21a8; font-size:13px; margin-bottom:2px">OFSTED INSPECTION TOOLKIT (NOVEMBER 2025)</div>
-        <p style="font-size:13px; margin:0">Ofsted does not directly inspect cyber security, but several aspects of cyber response intersect with the safeguarding evaluation (Met / Not Met) and leadership and management. The Governor Report uses the Ofsted-style "How do you assure yourselves..." framing for assurance questioning.</p>
-        <a href="https://www.gov.uk/government/publications/education-inspection-framework/education-inspection-framework-for-use-from-november-2025" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">Read the source guidance &rarr;</a>
+        <div style="font-weight:700; color:#6b21a8; font-size:13px; margin-bottom:2px">ESTYN &mdash; INSPECTION ARRANGEMENTS</div>
+        <p style="font-size:13px; margin:0">Estyn does not currently inspect cyber security directly, but cyber response intersects with the safeguarding and leadership and management aspects of inspection. The Governor Report uses a principles-based "How do you assure yourselves..." framing that translates well to Estyn's approach &mdash; useful evidence that cyber assurance has taken place at governor level.</p>
+        <a href="https://www.estyn.gov.wales/inspection-guidance-resources" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">Estyn inspection guidance &rarr;</a>
+      </div>
+      <div style="padding:12px 14px; background:#fef9c3; border-left:4px solid #b45309; border-radius:0 6px 6px 0">
+        <div style="font-weight:700; color:#b45309; font-size:13px; margin-bottom:2px">HWB &mdash; WELSH GOVERNMENT'S DIGITAL LEARNING PLATFORM</div>
+        <p style="font-size:13px; margin:0">HWB is Welsh Government's all-Wales digital learning platform for schools. Its <a href="https://hwb.gov.wales/" target="_blank" rel="noopener noreferrer">Keeping Safe Online</a> resources are pupil-safety focused (online safety, digital citizenship) rather than infrastructure cyber security &mdash; complementary to this tool, not a substitute. Schools using HWB-hosted services should still maintain a Cyber Incident Response Plan covering their wider IT estate.</p>
+        <a href="https://hwb.gov.wales/" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">HWB &rarr;</a>
       </div>
       <div style="padding:12px 14px; background:#e0f7fa; border-left:4px solid #00838f; border-radius:0 6px 6px 0">
         <div style="font-weight:700; color:#00838f; font-size:13px; margin-bottom:2px">NCSC CYBER ASSESSMENT FRAMEWORK (CAF)</div>
         <p style="font-size:13px; margin:0 0 6px"><strong>CAF</strong> is the NCSC's framework for assessing cyber resilience. It was originally built for organisations regulated under the Network and Information Systems (NIS) Regulations &mdash; energy, water, transport, health and digital infrastructure. <strong>Schools are not in scope of NIS</strong> and are not directly assessed under CAF.</p>
-        <p style="font-size:13px; margin:0 0 6px"><strong>Why it matters anyway:</strong> NCSC and government departments are now piloting CAF across UK <strong>local authorities</strong> as a voluntary cyber resilience baseline. Within the next 1&ndash;2 years, your LA is likely to be assessed against CAF &mdash; and may extend the same expectations to schools they support, fund or insure. Cyber insurers and MAT IT directors increasingly use CAF-style language too.</p>
-        <p style="font-size:13px; margin:0"><strong>How this tool aligns:</strong> the plan structure, severity grading, escalation, playbooks and post-incident review map directly to CAF <em>Objective C</em> (Detecting cyber security events) and <em>Objective D</em> (Minimising the impact of cyber security incidents). The tool doesn't claim CAF compliance &mdash; CAF is an organisational assessment, not a tool stamp &mdash; but a school using it has a defensible answer to "how does your incident response align with CAF?"</p>
+        <p style="font-size:13px; margin:0 0 6px"><strong>Why it matters in Wales:</strong> the <a href="https://www.gov.wales/cyber-action-plan-wales-html" target="_blank" rel="noopener noreferrer">Cyber Action Plan for Wales</a> commits Welsh Government to piloting CAF across <strong>local authorities</strong> as a voluntary cyber resilience baseline. Within the next 1&ndash;2 years, your LA is likely to be assessed against CAF &mdash; and may extend the same expectations to schools they support, fund or insure. Cyber insurers and MAT IT directors increasingly use CAF-style language too.</p>
+        <p style="font-size:13px; margin:0"><strong>How this tool aligns:</strong> the plan structure, severity grading, escalation, playbooks and post-incident review map directly to CAF <em>Objective C</em> (Detecting cyber security events) and <em>Objective D</em> (Minimising the impact of cyber security incidents). The tool doesn't claim CAF compliance &mdash; CAF is an organisational assessment, not a tool stamp &mdash; but a Welsh school using it has a defensible answer to "how does your incident response align with CAF?"</p>
         <a href="https://www.ncsc.gov.uk/collection/cyber-assessment-framework" target="_blank" rel="noopener noreferrer" style="font-size:12px; font-weight:600">Read the source guidance &rarr;</a>
       </div>
     </div>
@@ -1584,7 +1535,7 @@
   <!-- Beyond this tool: Cyber Essentials (prevention) -->
   <div class="card">
     <h3>🔐 Beyond this tool: Cyber Essentials</h3>
-    <p style="font-size:14px; margin:0 0 12px">This tool covers the <strong>response</strong> side &mdash; what to do when a cyber incident happens. The complementary <strong>prevention</strong> baseline for UK organisations is <a href="https://www.ncsc.gov.uk/cyberessentials/overview" target="_blank" rel="noopener noreferrer">Cyber Essentials</a>, a certification scheme created by the NCSC and delivered by IASME. The <a href="https://cyber-security-hub.education.gov.uk/cyber-essentials-certification" target="_blank" rel="noopener noreferrer">DfE Cyber Security Hub describes it</a> as designed "to prevent the most common internet-based cyber incidents."</p>
+    <p style="font-size:14px; margin:0 0 12px">This tool covers the <strong>response</strong> side &mdash; what to do when a cyber incident happens. The complementary <strong>prevention</strong> baseline for UK organisations is <a href="https://www.ncsc.gov.uk/cyberessentials/overview" target="_blank" rel="noopener noreferrer">Cyber Essentials</a>, a certification scheme created by the NCSC and delivered by IASME. NCSC describes it as designed "to prevent the most common internet-based cyber incidents." Cyber Essentials is UK-wide and applies to Welsh schools without modification.</p>
 
     <div style="padding:14px 16px; background:#ecfeff; border-left:4px solid #0891b2; border-radius:0 6px 6px 0; margin-bottom:14px">
       <div style="font-weight:700; color:#0e7490; font-size:12px; margin-bottom:8px; letter-spacing:.04em; text-transform:uppercase">The five technical controls</div>
@@ -1607,10 +1558,10 @@
         <p style="font-size:12px; margin:8px 0 0; padding:8px 10px; background:#fdf3e2; border-left:3px solid var(--amber); border-radius:0 4px 4px 0; color:var(--text)"><strong>3-month rule:</strong> once you certify Cyber Essentials, you have <strong>3 months</strong> to take CE Plus using the same scope of certification. Miss that window and you have to recertify CE first. The Plan Builder records your CE date and surfaces the CE Plus deadline in the printed plan.</p>
       </div>
       <div>
-        <h4 style="font-size:13px; margin:0 0 6px; color:var(--navy)">Why for schools</h4>
+        <h4 style="font-size:13px; margin:0 0 6px; color:var(--navy)">Why for Welsh schools</h4>
         <ul style="font-size:13px; padding-left:20px; margin:0">
-          <li><strong>RPA cyber cover</strong> increasingly assumes a CE-aligned baseline</li>
-          <li><strong>DfE Digital Standards 2030</strong> Cyber Security core standard maps closely to the CE controls</li>
+          <li><strong>Local authority cyber cover</strong> increasingly assumes a CE-aligned baseline</li>
+          <li><strong>Welsh Government Cyber Resilient Wales</strong> strategy expects NCSC-aligned good practice across the public sector &mdash; CE is the most concrete baseline</li>
           <li><strong>Procurement &amp; funding streams</strong> &mdash; some now require CE or CE Plus</li>
           <li><strong>Surfaces hidden gaps</strong> &mdash; the assessment process catches issues schools didn't know they had</li>
         </ul>
@@ -1618,7 +1569,7 @@
     </div>
 
     <h4 style="font-size:13px; margin:0 0 6px; color:var(--navy)">Where to start</h4>
-    <p style="font-size:13px; margin:0 0 6px">Read the <a href="https://www.ncsc.gov.uk/cyberessentials/overview" target="_blank" rel="noopener noreferrer">NCSC Cyber Essentials overview</a> for what's covered. The <a href="https://iasme.co.uk/cyber-essentials/" target="_blank" rel="noopener noreferrer">IASME assessment portal</a> is where you self-assess and certify. The <a href="https://cyber-security-hub.education.gov.uk/cyber-essentials-certification" target="_blank" rel="noopener noreferrer">DfE Cyber Security Hub's CE page</a> is the sector-specific signpost.</p>
+    <p style="font-size:13px; margin:0 0 6px">Read the <a href="https://www.ncsc.gov.uk/cyberessentials/overview" target="_blank" rel="noopener noreferrer">NCSC Cyber Essentials overview</a> for what's covered. The <a href="https://iasme.co.uk/cyber-essentials/" target="_blank" rel="noopener noreferrer">IASME assessment portal</a> is where you self-assess and certify. For Welsh-context advice, your local <strong>TARIAN</strong> (South Wales, Gwent, Dyfed-Powys) or <strong>NWROCU</strong> (North Wales) Cyber PROTECT team can advise on practical first steps.</p>
 
     <p style="font-size:12px; margin:14px 0 0; color:var(--muted); font-style:italic; padding:10px 12px; background:#f7f9fc; border-radius:6px">A school certified to CE Plus is well-positioned to <strong>avoid</strong> incidents, but still needs an incident response plan for when one happens. CE and this tool are complementary &mdash; not alternatives.</p>
   </div>
@@ -1644,16 +1595,16 @@
         <li>External links use <code>rel="noopener noreferrer"</code></li>
         <li>Automated security test suite available in the repo</li>
       </ul>
-      <p style="font-size:12px; margin:10px 0 0"><a href="https://github.com/cmaddocks-uk/cyber-response/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">Read the full security policy &rarr;</a></p>
+      <p style="font-size:12px; margin:10px 0 0"><a href="https://github.com/cmaddocks-uk/cyber-response-cymru/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">Read the full security policy &rarr;</a></p>
     </div>
   </div>
 
   <!-- Author & community -->
   <div class="card">
     <h3>🤝 Built for the school IT community</h3>
-    <p style="font-size:14px">Built and maintained by <strong>Christopher Maddocks</strong>, a former <a href="https://anme.co.uk/" target="_blank" rel="noopener noreferrer">ANME (Association of Network Managers in Education)</a> Ambassador, as a free contribution to the UK education community.</p>
-    <p style="font-size:14px">It's a companion to the <a href="https://cmaddocks-uk.github.io/dfe-standards/" target="_blank" rel="noopener noreferrer">DfE Digital Standards 2030 &mdash; Self-Assessment Tool</a>, focusing specifically on the cyber response and recovery layer where the Self-Assessment Tool's Cyber Security standard leaves off.</p>
-    <p style="font-size:14px">If you have feedback, find a problem, or want to contribute improvements, the easiest route is the 2-minute feedback form. The source code lives on GitHub at <code>github.com/cmaddocks-uk/cyber-response</code> if you'd prefer to raise an issue or pull request directly.</p>
+    <p style="font-size:14px">Built and maintained by <strong>Christopher Maddocks</strong>, a former <a href="https://anme.co.uk/" target="_blank" rel="noopener noreferrer">ANME (Association of Network Managers in Education)</a> Ambassador, as a free contribution to the Welsh and wider UK education community.</p>
+    <p style="font-size:14px">This is the <strong>Welsh-context fork</strong> of the <a href="https://cmaddocks-uk.github.io/cyber-response/" target="_blank" rel="noopener noreferrer">English Cyber Incident Response Planner</a>. It exists because Wales has no DfE-Cyber-Security-Hub equivalent &mdash; sector cyber response planning support for Welsh schools is a real gap, and this tool aims to fill it. Phase 1 (this version) keeps the UI in English but swaps every framework reference to the Welsh equivalent (Welsh Government, Estyn, TARIAN/NWROCU, HWB, local authority cyber cover). Phase 2 will deliver a full Welsh-language translation.</p>
+    <p style="font-size:14px">If you have feedback, find a problem, or want to contribute improvements, the easiest route is the 2-minute feedback form. The source code lives on GitHub at <code>github.com/cmaddocks-uk/cyber-response-cymru</code> if you'd prefer to raise an issue or pull request directly.</p>
     <div class="btn-row" style="margin-top:8px">
       <a href="https://forms.gle/5T11PrusSaRHBwab7" target="_blank" rel="noopener noreferrer" class="btn btn-primary">💭 Share feedback (2-min form)</a>
       <a href="https://buymeacoffee.com/cmaddocks" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">🍺 Buy me a beer</a>
@@ -1668,10 +1619,11 @@
         <h4 style="margin-bottom:6px">Frameworks &amp; guidance</h4>
         <ul style="padding-left:20px; font-size:13px; margin:0">
           <li><a href="https://www.ncsc.gov.uk/collection/incident-management" target="_blank" rel="noopener noreferrer">NCSC &mdash; Incident Management</a></li>
-          <li><a href="https://cyber-security-hub.education.gov.uk/" target="_blank" rel="noopener noreferrer">DfE Cyber Security Hub</a></li>
-          <li><a href="https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges" target="_blank" rel="noopener noreferrer">GOV.UK &mdash; DfE Digital and Technology Standards</a></li>
-          <li><a href="https://www.gov.uk/guidance/the-risk-protection-arrangement-rpa-for-schools" target="_blank" rel="noopener noreferrer">GOV.UK &mdash; Risk Protection Arrangement</a></li>
-          <li><a href="https://www.gov.uk/government/publications/education-inspection-framework/education-inspection-framework-for-use-from-november-2025" target="_blank" rel="noopener noreferrer">Ofsted &mdash; Education Inspection Framework</a></li>
+          <li><a href="https://www.gov.wales/cyber-resilient-wales-strategy" target="_blank" rel="noopener noreferrer">Welsh Government &mdash; Cyber Resilient Wales</a></li>
+          <li><a href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer">TARIAN ROCU (South Wales / Gwent / Dyfed-Powys)</a></li>
+          <li><a href="https://www.nwrocu.police.uk/" target="_blank" rel="noopener noreferrer">NWROCU (North Wales)</a></li>
+          <li><a href="https://www.estyn.gov.wales/inspection-guidance-resources" target="_blank" rel="noopener noreferrer">Estyn &mdash; Inspection guidance &amp; resources</a></li>
+          <li><a href="https://hwb.gov.wales/" target="_blank" rel="noopener noreferrer">HWB &mdash; Welsh digital learning platform</a></li>
           <li><a href="https://www.ncsc.gov.uk/section/education-skills/schools" target="_blank" rel="noopener noreferrer">NCSC &mdash; Cyber security for schools</a></li>
         </ul>
       </div>
@@ -1690,7 +1642,7 @@
   <!-- Disclaimer -->
   <div class="card" style="background:#f0f4fa; border-color:#cdd9ed">
     <h3>📜 Disclaimer</h3>
-    <p style="font-size:13px; color:var(--text); margin:0">This tool is provided as-is, without warranty of any kind. It is not legal, regulatory or insurance advice. The author is not affiliated with the Department for Education, NCSC, Risk Protection Arrangement, Ofsted, ANME, or any government body or insurer. Use of this tool does not guarantee compliance with any framework or standard. Always validate your plan with your IT support, Data Protection Officer, senior leadership team and insurer before relying on it. Licensed under the MIT licence.</p>
+    <p style="font-size:13px; color:var(--text); margin:0">This tool is provided as-is, without warranty of any kind. It is not legal, regulatory or insurance advice. The author is not affiliated with the Welsh Government, NCSC, Estyn, TARIAN, NWROCU, HWB, ANME, any local authority, or any government body or insurer. Use of this tool does not guarantee compliance with any framework or standard. Always validate your plan with your IT support, Data Protection Officer, senior leadership team, local authority and insurer before relying on it. Licensed under the MIT licence.</p>
   </div>
 
 </section>
@@ -1711,8 +1663,8 @@
     <span class="pf-doc" id="pfDoc"></span>
   </div>
   <div class="pf-right">
-    <span class="pf-url">cmaddocks-uk.github.io/cyber-response</span>
-    <span class="pf-version">v1.7.0</span>
+    <span class="pf-url">cmaddocks-uk.github.io/cyber-response-cymru</span>
+    <span class="pf-version">v0.1.0 (cy)</span>
   </div>
 </div>
 
@@ -1734,7 +1686,7 @@ const READINESS = [
     actions:[
       "Start the plan builder in this tool to draft a baseline plan today. NCSC requires this as the starting point of incident management.",
       "Move from informal to documented. Use the plan builder, then have it reviewed by SLT, IT and your DPO.",
-      "Print a hard copy and store it off-site. NCSC and the DfE RPA both require an offline copy because if your network is compromised, you may not be able to access an online-only plan."
+      "Print a hard copy and store it off-site. NCSC and most local authority cyber cover arrangements require an offline copy &mdash; if your network is compromised, you may not be able to access an online-only plan."
     ]
   },
   {id:"R2", text:"Has your incident response plan been tested in the last 12 months (e.g. tabletop exercise, walkthrough, or NCSC Exercise in a Box)?",
@@ -1747,8 +1699,8 @@ const READINESS = [
     ],
     actions:[
       "Run a basic tabletop within the next term. NCSC's free 'Exercise in a Box' is designed for organisations like schools.",
-      "Schedule an annual exercise as a recurring item in your IT calendar. The DfE expects this as part of business continuity.",
-      "Document what worked and what didn't. RPA expects evidence that lessons learned have been incorporated into the next version."
+      "Schedule an annual exercise as a recurring item in your IT calendar. NCSC and most LA cyber cover arrangements expect this as part of business continuity.",
+      "Document what worked and what didn't. Most insurers expect evidence that lessons learned have been incorporated into the next version."
     ]
   },
   {id:"R3", text:"Do you have an up-to-date contact list for incident response, including at least two contact methods for each key person, stored where it is accessible if email and the network are down?",
@@ -1790,7 +1742,7 @@ const READINESS = [
     actions:[
       "Use the decision authority section of the plan builder. Without this, ransomware decisions get stuck waiting for the headteacher who is on holiday.",
       "Add deputies for every authority. NCSC specifically warns that ideally you should include at least 2 people for every key role.",
-      "Spell out who can authorise paying a ransom. Note: the DfE Academy Trust Handbook 2025 prohibits ransom payments for academies."
+      "Spell out who can authorise paying a ransom. Welsh Government and NCSC both strongly advise against paying ransoms; check your local authority's position before any decision."
     ]
   },
   {id:"R6", text:"Do you have playbooks (specific step-by-step guidance) for the most likely incident types in a school environment — particularly ransomware and data breach?",
@@ -1817,11 +1769,11 @@ const READINESS = [
     ],
     actions:[
       "Speak to your IT provider this term about adding an immutable/air-gapped backup. This is the single biggest determinant of whether a school recovers from ransomware.",
-      "Review against the DfE 3-2-1 rule. Cyber Essentials and IASME Cyber Assurance certification both require this.",
+      "Review against the NCSC 3-2-1 rule (3 copies, 2 different media, 1 off-site / immutable). Cyber Essentials and IASME Cyber Assurance certification both require this.",
       "Schedule termly restoration tests and log the result. An untested backup is not a backup."
     ]
   },
-  {id:"R8", text:"Do you know how to report a cyber incident to (a) NCSC, (b) Report Fraud, (c) the ICO if personal data is involved, and (d) the DfE / RPA?",
+  {id:"R8", text:"Do you know how to report a cyber incident to (a) NCSC, (b) Report Fraud, (c) the ICO if personal data is involved, and (d) your local authority and / or insurer?",
     frameworks:["DfE","RPA","Ofsted"],
     opts:[
       "Do not know the reporting routes",
@@ -1830,9 +1782,9 @@ const READINESS = [
       "All reporting routes documented with timeframes, named reporters, and contact details — including the NCSC reporting service and ICO 72-hour deadline"
     ],
     actions:[
-      "Add the four reporting routes (NCSC, Report Fraud, ICO, DfE/RPA) to the External Contacts section of your plan.",
+      "Add the four reporting routes (NCSC, Report Fraud, ICO, your LA / insurer) to the External Contacts section of your plan. Add your regional ROCU Cyber PROTECT team (TARIAN or NWROCU) for pre-incident advice.",
       "Document the ICO 72-hour deadline prominently. Missing it is a regulatory breach in its own right.",
-      "If you have RPA cover, contact RPA before engaging external IR providers — they may have appointed responders and rules around expense recovery."
+      "If your local authority provides cyber cover or insurance, contact them before engaging external IR providers &mdash; they may have appointed responders and rules around expense recovery."
     ]
   },
   {id:"R9", text:"Do you have prepared communication templates (parents, staff, ICO, governors, suppliers) ready to adapt during an incident?",
@@ -1844,7 +1796,7 @@ const READINESS = [
       "Templates exist for parents, staff, ICO, governors and key suppliers, pre-approved by SLT and DPO, and stored where they are accessible offline"
     ],
     actions:[
-      "Use the communication templates section of the plan builder — RPA's reference template includes example templates for parent letters, staff briefings and ICO notification.",
+      "Use the communication templates section of the plan builder &mdash; it includes pre-drafted parent letters, staff briefings and ICO notification text you can adapt.",
       "Get the templates pre-approved by your DPO and SLT now, not during the incident. Drafting a parent letter while ransomware is encrypting your files is a bad time.",
       "Print copies for the offline incident folder."
     ]
@@ -1858,9 +1810,9 @@ const READINESS = [
       "All staff (including supply, agency and at least one governor) have had training in the last 12 months that explicitly covers how to report a suspected incident"
     ],
     actions:[
-      "Roll out NCSC's free 'Top Tips for Staff' or equivalent training. The DfE expects this annually.",
-      "Refresh the training and ensure it includes the reporting route. Most incidents in schools are first spotted by staff — they need to know what to do in the next 5 minutes, not who to email next week.",
-      "Include at least one governor in the training. The DfE explicitly requires this."
+      "Roll out NCSC's free 'Top Tips for Staff' or equivalent training. NCSC and most LA cyber cover arrangements expect this annually.",
+      "Refresh the training and ensure it includes the reporting route. Most incidents in schools are first spotted by staff &mdash; they need to know what to do in the next 5 minutes, not who to email next week.",
+      "Include at least one governor in the training. NCSC explicitly recommends this and most LA arrangements require it."
     ]
   },
   {id:"R11", text:"Is multi-factor authentication (MFA) enforced for all staff accounts with access to personal data, sensitive systems, or admin functions?",
@@ -1872,7 +1824,7 @@ const READINESS = [
       "MFA enforced for all staff accounts with access to personal data, sensitive systems or admin functions, with documented exceptions and compensating controls"
     ],
     actions:[
-      "Enable MFA across staff accounts as a top priority. The DfE standard explicitly requires this and the absence of MFA is the single most common factor in school account compromises.",
+      "Enable MFA across staff accounts as a top priority. NCSC and Cyber Essentials both require this, and the absence of MFA is the single most common factor in school account compromises.",
       "Convert from voluntary to enforced MFA. Voluntary MFA does not protect the accounts that don't use it — and those are the ones that get compromised.",
       "Extend MFA to all staff with access to sensitive data, not just SLT. Office staff and SENCo accounts often hold the most sensitive personal data."
     ]
@@ -1886,7 +1838,7 @@ const READINESS = [
       "Every incident triggers a documented review using a standard form, and findings drive scheduled updates to the plan"
     ],
     actions:[
-      "Add the post-incident review form (provided in this tool's plan builder) to your incident process. RPA requires this.",
+      "Add the post-incident review form (provided in this tool's plan builder) to your incident process. NCSC and most LA cyber cover arrangements require this.",
       "Review minor incidents too — they are early warnings of bigger ones.",
       "Schedule a formal plan review at least annually, plus after any incident. Lessons learned that don't change the plan are wasted lessons."
     ]
@@ -1908,19 +1860,20 @@ const SECTIONS = [
   {id:"maintenance", title:"Plan maintenance"}
 ];
 
-// Tabletop scenarios — guided walkthroughs based on the DfE Cyber Security Hub's
-// published case studies. Each scenario steps through a real 2024 ransomware
-// incident, surfacing the relevant fields from the user's own plan at each step.
-// The summary identifies plan gaps (fields the scenario surfaced that the user
-// has left blank). RPA cyber cover requires annual plan testing — the printable
+// Tabletop scenarios — guided walkthroughs based on anonymised composite
+// incidents drawn from publicly published UK school case studies. Each scenario
+// steps through a realistic ransomware / breach incident, surfacing the
+// relevant fields from the user's own plan at each step. The summary
+// identifies plan gaps (fields the scenario surfaced that the user has left
+// blank). NCSC and most LA cyber cover arrangements expect annual plan testing — the printable
 // summary serves as evidence of that test.
 const SCENARIOS = [
   {
     id: "active-learning-trust",
     title: "Example A: Trust-wide ransomware",
     subtitle: "Mid-sized multi-academy trust hit by ransomware across the estate &mdash; recovery costs in the high six figures, well over a thousand staff hours, around a week or more of active response",
-    sourceLabel: "Sector context: DfE Cyber Security Hub",
-    sourceUrl: "https://cyber-security-hub.education.gov.uk/",
+    sourceLabel: "Sector context: anonymised UK school case studies",
+    sourceUrl: "https://www.ncsc.gov.uk/section/education-skills/schools",
     summary: "An <strong>illustrative example scenario</strong> covering trust-wide ransomware against a multi-academy trust. Run your plan against the timeline and identify gaps before they cost you.",
     steps: [
       {
@@ -1943,8 +1896,8 @@ const SCENARIOS = [
         id: "alt-3",
         time: "Day 1, 09:00",
         title: "External notification",
-        narrative: "This is a Severity 1. RPA (your insurer), NCSC, and the ICO all need to know. The ICO 72-hour clock is now running from the moment of awareness.",
-        prompt: "Who calls RPA on the dedicated cyber line? Who calls NCSC? Who has authority to notify the ICO?",
+        narrative: "This is a Severity 1. Your local authority / insurer, NCSC, and the ICO all need to know. The ICO 72-hour clock is now running from the moment of awareness.",
+        prompt: "Who calls your local authority cyber lead / insurer? Who calls NCSC? Who has authority to notify the ICO?",
         planFields: ["plan.external.rpa", "plan.external.ncscReport", "plan.external.ico", "plan.escalation.decisionICO", "plan.escalation.decisionICODeputy"]
       },
       {
@@ -1985,8 +1938,8 @@ const SCENARIOS = [
     id: "fylde-coast",
     title: "Example B: Single-trust ransomware with data exfiltration",
     subtitle: "Single school trust estate hit by double-extortion ransomware &mdash; multi-terabyte data exfiltration including pupil and staff personal data, damages in the seven-figure range, KS4 cohort impacted during exam preparation",
-    sourceLabel: "Sector context: DfE Cyber Security Hub",
-    sourceUrl: "https://cyber-security-hub.education.gov.uk/",
+    sourceLabel: "Sector context: anonymised UK school case studies",
+    sourceUrl: "https://www.ncsc.gov.uk/section/education-skills/schools",
     summary: "An <strong>illustrative example scenario</strong> covering a single-trust ransomware with double extortion &mdash; bandwidth spike visible beforehand but unactioned. Run your plan against the warning signs and the encryption itself.",
     steps: [
       {
@@ -2051,8 +2004,8 @@ const SCENARIOS = [
     id: "example-c-bec",
     title: "Example C: Business email compromise",
     subtitle: "Invoice-redirection fraud targeting the bursar &mdash; typical sector loss in the four- to six-figure range, often discovered weeks later when the real supplier chases payment",
-    sourceLabel: "Sector context: DfE Cyber Security Hub",
-    sourceUrl: "https://cyber-security-hub.education.gov.uk/",
+    sourceLabel: "Sector context: anonymised UK school case studies",
+    sourceUrl: "https://www.ncsc.gov.uk/section/education-skills/schools",
     summary: "An <strong>illustrative example scenario</strong> testing your plan's BEC defences &mdash; verification rules, dual-approval thresholds, fraud reporting routes, and the gap between 'plausible email' and 'fraudulent payment'.",
     steps: [
       {
@@ -2099,8 +2052,8 @@ const SCENARIOS = [
         id: "ec-6",
         time: "Day of discovery, ongoing",
         title: "External notification",
-        narrative: "Report Fraud is the UK fraud-reporting route (replacing the old Action Fraud number). RPA needs to know if a claim is being made. The ICO needs notifying if any personal data was exposed in the email exchange.",
-        prompt: "Who in your plan calls Report Fraud (0300 123 2040)? Who calls RPA? Does the DPO need to assess this for ICO notifiability?",
+        narrative: "Report Fraud is the UK fraud-reporting route (replacing the old Action Fraud number). Your local authority / insurer needs to know if a claim is being made. The ICO needs notifying if any personal data was exposed in the email exchange.",
+        prompt: "Who in your plan calls Report Fraud (0300 123 2040)? Who calls your local authority / insurer? Does the DPO need to assess this for ICO notifiability?",
         planFields: ["plan.external.actionFraud", "plan.external.rpa", "plan.team.dpoName", "plan.escalation.decisionICO"]
       },
       {
@@ -2117,8 +2070,8 @@ const SCENARIOS = [
     id: "example-d-account-compromise",
     title: "Example D: Account compromise via phishing",
     subtitle: "Phishing-driven Microsoft 365 / Google Workspace takeover of a senior staff account &mdash; mailbox forwarding rules set, sensitive folders accessed, lateral attempts before discovery",
-    sourceLabel: "Sector context: DfE Cyber Security Hub",
-    sourceUrl: "https://cyber-security-hub.education.gov.uk/",
+    sourceLabel: "Sector context: anonymised UK school case studies",
+    sourceUrl: "https://www.ncsc.gov.uk/section/education-skills/schools",
     summary: "An <strong>illustrative example scenario</strong> testing your plan's response to a compromised staff account &mdash; the precursor to most ransomware. Tests admin-side authority, audit log retention, MFA enforcement, and the breach-or-not judgement.",
     steps: [
       {
@@ -2183,8 +2136,8 @@ const SCENARIOS = [
     id: "example-e-insider",
     title: "Example E: Insider threat — leaver with retained access",
     subtitle: "Former staff member retained system access for several weeks after leaving and inappropriately accessed safeguarding records &mdash; tests joiner/mover/leaver process, HR coordination, audit log retention and LADO threshold",
-    sourceLabel: "Sector context: DfE Cyber Security Hub",
-    sourceUrl: "https://cyber-security-hub.education.gov.uk/",
+    sourceLabel: "Sector context: anonymised UK school case studies",
+    sourceUrl: "https://www.ncsc.gov.uk/section/education-skills/schools",
     summary: "An <strong>illustrative example scenario</strong> covering insider misuse &mdash; a fundamentally different incident type from technical attacks. Tests personnel-security plumbing rather than network defence: JML process, HR confidentiality, evidence preservation, and the safeguarding angle.",
     steps: [
       {
@@ -2247,11 +2200,11 @@ const SCENARIOS = [
   },
   {
     id: "example-f-cloud-ransomcloud",
-    title: "Example F: Cloud (M365 / Google) tenant compromise &amp; ransomcloud",
+    title: "Example F: Cloud (M365 / Google / Hwb services) tenant compromise &amp; ransomcloud",
     subtitle: "An MFA-fatigue attack takes over the bursar's account; the attacker grants themselves OAuth access to the tenant and ransomware-encrypts shared OneDrive / SharePoint files via the Graph API, with data exfiltration and a 24-hour extortion deadline. Recovery is entirely cloud-side &mdash; no servers to unplug, no tape to swap. Tests the new asset register, the SaaS supplier playbook, parent comms when email is untrusted, and cloud-native recovery.",
     sourceLabel: "Sector context: anonymised UK education-sector cyber incidents",
     sourceUrl: "https://www.ncsc.gov.uk/section/education-skills/schools",
-    summary: "An <strong>illustrative example scenario</strong> covering a cloud-native incident &mdash; the increasingly common pattern where there is no on-prem server to take offline because the data is in someone else's cloud. Tests M365 / Google Workspace admin authority, OAuth consent governance, asset-register completeness, the SaaS supplier playbook (Microsoft / Google as data processor; school as data controller), parent comms when the email channel itself is compromised, and the realistic point that cloud recovery happens through retention windows and version history rather than tape.",
+    summary: "An <strong>illustrative example scenario</strong> covering a cloud-native incident &mdash; the increasingly common pattern where there is no on-prem server to take offline because the data is in someone else's cloud (Microsoft, Google, or Welsh Government's Hwb-hosted services). Tests M365 / Google Workspace admin authority, OAuth consent governance, asset-register completeness, the SaaS supplier playbook (Microsoft / Google / Hwb as data processor; school as data controller), parent comms when the email channel itself is compromised, and the realistic point that cloud recovery happens through retention windows and version history rather than tape. Welsh-specific: TARIAN / NWROCU notification, local authority cyber lead engagement, and Welsh Government Cyber Resilient Wales reporting where applicable.",
     steps: [
       {
         id: "ef-1",
@@ -2266,7 +2219,7 @@ const SCENARIOS = [
         time: "Day 1, 09:45",
         title: "Triage &mdash; not a one-off",
         narrative: "Sign-in logs show a successful login on the bursar's account from outside the UK at 03:47, MFA approved (the bursar admits she dismissed an MFA prompt overnight thinking it was a glitch). A mailbox forwarding rule has been added, and an inbox rule sweeping mails containing \"invoice\" or \"payroll\" to a hidden folder. Three other staff accounts show the same pattern. This is not a spray attack &mdash; it's a coordinated, targeted compromise.",
-        prompt: "What severity does this match in your plan &mdash; S1, S2? Who has authority to disable multiple accounts at this hour? Where is M365 / Google Workspace listed in your asset register, and what does the register say it holds?",
+        prompt: "What severity does this match in your plan &mdash; S1, S2? Who has authority to disable multiple accounts at this hour? Where is M365 / Google Workspace / Hwb in your asset register, and what does the register say it holds?",
         planFields: ["plan.severity.s1Desc", "plan.severity.s2Desc", "plan.escalation.decisionTakeOffline", "plan.escalation.decisionTakeOfflineDeputy", "plan.assets.systems"]
       },
       {
@@ -2274,7 +2227,7 @@ const SCENARIOS = [
         time: "Day 1, 10:30",
         title: "Containment &mdash; OAuth consent phishing discovered",
         narrative: "Affected accounts disabled, sessions revoked, MFA re-enrolment forced across all staff. Reviewing OAuth consent grants: an unfamiliar app, \"PrintAssistantPro\", was granted full <code>Mail.ReadWrite</code> + <code>Files.ReadWrite.All</code> scope yesterday by the bursar &mdash; consent phishing. The app is not in Microsoft's verified-publisher list. The app's permissions persist <em>even after the account is disabled</em> &mdash; that's the trap with OAuth consent grants.",
-        prompt: "Who in your plan has Global Admin / Conditional Access rights to revoke OAuth consents? Is your tenant configured to require admin consent for non-verified publishers (it should be)? Where is the supplier incident contact for Microsoft / Google in your asset register?",
+        prompt: "Who in your plan has Global Admin / Conditional Access rights to revoke OAuth consents? Is your tenant configured to require admin consent for non-verified publishers (it should be)? Where is the supplier incident contact for Microsoft / Google / Hwb (hwb@gov.wales) in your asset register?",
         planFields: ["plan.team.itLeadName", "plan.assets.systems", "plan.escalation.decisionTakeOffline"]
       },
       {
@@ -2282,7 +2235,7 @@ const SCENARIOS = [
         time: "Day 1, 14:00",
         title: "Files encrypted &mdash; ransomcloud in motion",
         narrative: "Multiple staff report shared SharePoint and OneDrive folders showing files renamed with a <code>.locked</code> extension. The OneDrive sync icons show mass-modification activity in the last hour. Tenant audit logs (Purview / Defender) confirm the unfamiliar OAuth app from step 3 has called the Microsoft Graph API many thousands of times to read-then-overwrite files via the API &mdash; ransomware that never touched a single endpoint. A README.txt appears in OneDrive root: <em>\"We have your data and your files. &pound;25,000 in 24 hours or it goes public.\"</em>",
-        prompt: "Where is OneDrive / SharePoint in your asset register, and what is the recorded RTO and recovery priority? Does the SaaS Supplier Incident playbook in your plan apply here (yes, with Microsoft as the affected supplier)? Who has authority to engage external incident responders at this point?",
+        prompt: "Where is OneDrive / SharePoint in your asset register, and what is the recorded RTO and recovery priority? Does the SaaS Supplier Incident playbook in your plan apply here (yes, with Microsoft / Google as the affected supplier)? Who has authority to engage external incident responders at this point?",
         planFields: ["plan.assets.systems", "plan.escalation.decisionEngageExternal", "plan.escalation.decisionEngageExternalDeputy"]
       },
       {
@@ -2290,16 +2243,16 @@ const SCENARIOS = [
         time: "Day 1, 16:00",
         title: "Data exfiltration confirmed &mdash; the 72-hour clock is running",
         narrative: "Audit logs confirm ~12 GB of files were downloaded by the OAuth app over the past 6 hours, including pupil records, safeguarding correspondence, finance ledgers and supplier bank details. The 72-hour ICO clock started at 09:45 when the school became aware of unauthorised access. The DPO is engaged. The attacker's note claims the data will be released on the dark web in 24 hours if payment isn't made.",
-        prompt: "Who in your plan decides whether to pay (NCSC strongly advises against)? Who notifies the ICO &mdash; named individual and deputy? Who notifies parents under UK GDPR Article 34 &mdash; and via which channel, given email may be untrusted right now?",
+        prompt: "Who in your plan decides whether to pay (NCSC and Welsh Government strongly advise against)? Who notifies the ICO &mdash; named individual and deputy? Who notifies parents under UK GDPR Article 34 &mdash; and via which channel, given email may be untrusted right now?",
         planFields: ["plan.escalation.decisionRansomware", "plan.escalation.decisionICO", "plan.escalation.decisionICODeputy", "plan.team.dpoName", "plan.team.dpoPhone"]
       },
       {
         id: "ef-6",
         time: "Day 2 &mdash; Day 3",
         title: "Notification cascade &mdash; SaaS supplier playbook in action",
-        narrative: "Within the 72-hour window: ICO notified (high risk to data subjects); NCSC reporting service informed; Report Fraud (extortion); local authority cyber lead notified; cyber insurer engaged; affected parents directly informed under UK GDPR Article 34. Microsoft FastTrack Security engaged via the Premier Support channel for tenant-side forensics and recovery support. The school's MIS supplier is contacted because pupil records were exfiltrated &mdash; they may need to know for downstream comms or onward fraud detection. Parent comms uses the alternate (non-email) channel because email itself may be compromised.",
-        prompt: "Are all these contacts in your External Contacts section &mdash; ICO, NCSC, Report Fraud, your LA cyber lead, your insurer, Microsoft / Google support? Who in your plan owns each notification? Do you have a parent letter template ready, and an alternate channel (SMS, ParentPay, phone tree) when email is the compromised vector?",
-        planFields: ["plan.external.ico", "plan.external.ncscReport", "plan.external.actionFraud", "plan.external.rpa", "plan.comms.icoTemplate", "plan.comms.parentTemplate", "plan.comms.alternateChannel"]
+        narrative: "Within the 72-hour window: ICO notified (high risk to data subjects); NCSC reporting service informed; Report Fraud (extortion); local authority cyber lead notified; regional ROCU Cyber PROTECT team contacted (TARIAN for South Wales / Gwent / Dyfed-Powys; NWROCU for North Wales) &mdash; they may be aware of wider campaigns affecting other Welsh schools; Welsh Government / consortium digital education contact informed where applicable; cyber insurer engaged; affected parents directly informed under UK GDPR Article 34. Microsoft FastTrack Security engaged via the Premier Support channel for tenant-side forensics and recovery support. The school's MIS supplier is contacted because pupil records were exfiltrated &mdash; they may need to know for downstream comms or onward fraud detection. Parent comms uses the alternate (non-email) channel because email itself may be compromised.",
+        prompt: "Are all these contacts in your External Contacts section &mdash; ICO, NCSC, Report Fraud, your LA cyber lead, your regional ROCU (TARIAN / NWROCU), your insurer, Microsoft / Google support? Who in your plan owns each notification? Do you have a parent letter template ready, and an alternate channel (SMS, ParentPay, phone tree) when email is the compromised vector?",
+        planFields: ["plan.external.ico", "plan.external.ncscReport", "plan.external.actionFraud", "plan.external.rpa", "plan.external.rocuCyberProtect", "plan.external.dfeContact", "plan.comms.icoTemplate", "plan.comms.parentTemplate", "plan.comms.alternateChannel"]
       },
       {
         id: "ef-7",
@@ -2338,7 +2291,9 @@ const PLAN_FIELD_LABELS = {
   "plan.escalation.decisionPress": "Authority to communicate with press",
   "plan.escalation.decisionEngageExternal": "Authority to engage external incident responders",
   "plan.escalation.decisionEngageExternalDeputy": "Authority to engage external responders (deputy)",
-  "plan.external.rpa": "RPA cyber incident contact",
+  "plan.external.rpa": "Local authority cyber cover / insurance arrangement",
+  "plan.external.dfeContact": "Welsh Government / consortium digital education contact",
+  "plan.external.rocuCyberProtect": "ROCU Cyber PROTECT contact (TARIAN / NWROCU)",
   "plan.external.ncscReport": "NCSC reporting contact",
   "plan.external.ico": "ICO breach reporting contact",
   "plan.external.actionFraud": "Report Fraud (UK fraud reporting line)",
@@ -2456,6 +2411,7 @@ function initState(){
         rpa:"",
         cyberInsurer:"",
         dfeContact:"",
+        rocuCyberProtect:"",
         localAuthority:"",
         miSupplier:"",
         broadbandSupplier:"",
@@ -2471,7 +2427,7 @@ function initState(){
       escalation:{
         decisionTakeOffline:"", decisionTakeOfflineDeputy:"",
         decisionEngageExternal:"", decisionEngageExternalDeputy:"",
-        decisionRansomware:"Ransom must NOT be paid. Decision to be referred to RPA / insurer immediately. (DfE Academy Trust Handbook 2025 prohibits ransom payments by academies.)",
+        decisionRansomware:"Ransom must NOT be paid. Decision to be referred to local authority cyber lead / insurer immediately. NCSC and Welsh Government strongly advise against payment.",
         decisionPress:"", decisionPressDeputy:"",
         decisionICO:"", decisionICODeputy:"",
         conferenceLine:""
@@ -2498,19 +2454,17 @@ function initState(){
         // Pre-populated rows for the most common school systems. The user
         // fills in supplier details and ratings; rows can be deleted or
         // added via the repeater. Each entry doubles as an asset register
-        // (NCSC, CAF, NIS-aligned good practice) and a basic Business
-        // Impact Analysis (RTO + priority drives recovery sequencing).
-        // `lastExport` captures the date of the school's most recent
-        // off-supplier copy of the data — critical for SaaS-hosted
-        // systems where the school is data controller but doesn't own
-        // the storage.
+        // (NCSC, CAF, Welsh Gov Cyber Resilient Wales aligned good practice)
+        // and a basic Business Impact Analysis (RTO + priority drives
+        // recovery sequencing).
         systems:[
-          {name:"MIS (pupil records)", supplier:"", dataHeld:"Pupil records, attendance, contacts, SEN, FSM, safeguarding flags", hosting:"SaaS", rto:"<1 day", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
+          {name:"MIS (pupil records)", supplier:"", dataHeld:"Pupil records, attendance, contacts, ALN/ASN, FSM, safeguarding flags", hosting:"SaaS", rto:"<1 day", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
           {name:"Email & productivity", supplier:"", dataHeld:"All staff and pupil email, shared documents, calendars", hosting:"SaaS", rto:"<4 hours", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
           {name:"Safeguarding system", supplier:"", dataHeld:"Safeguarding concerns, chronologies, restricted access records", hosting:"SaaS", rto:"<1 day", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
           {name:"Finance / payroll", supplier:"", dataHeld:"Bank details, supplier payments, payroll, budget", hosting:"", rto:"<3 days", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
           {name:"Parent comms / payments", supplier:"", dataHeld:"Parent contact details, payment data, dinner money, trip payments", hosting:"SaaS", rto:"<3 days", priority:"2 — High", incidentContact:"", lastExport:"", notes:""},
           {name:"Network & wifi", supplier:"", dataHeld:"Connectivity for all school systems", hosting:"On-prem", rto:"<4 hours", priority:"1 — Critical", incidentContact:"", lastExport:"", notes:""},
+          {name:"Hwb-hosted services", supplier:"Welsh Government / HWB", dataHeld:"Welsh Gov digital learning platform — Office 365, Adobe, J2e, etc.", hosting:"SaaS", rto:"<1 day", priority:"2 — High", incidentContact:"hwb@gov.wales", lastExport:"", notes:""},
           {name:"Telephony", supplier:"", dataHeld:"Inbound/outbound calls; safeguarding-critical for emergencies", hosting:"", rto:"<1 day", priority:"2 — High", incidentContact:"", lastExport:"", notes:""}
         ],
         biaNotes:""
@@ -2728,9 +2682,9 @@ function goTab(name){
 // and falls back to copy-to-clipboard on desktop. Not the assessment data,
 // just the tool URL — for forwarding to colleagues, SLT, governors etc.
 function shareTool(btn){
-  const url = "https://cmaddocks-uk.github.io/cyber-response/";
+  const url = "https://cmaddocks-uk.github.io/cyber-response-cymru/";
   const title = "Cyber Incident Response Planner — for UK Schools & Colleges";
-  const text = "A free planning tool for UK schools and colleges. Readiness check, plan builder, six playbooks and a one-page Governor Report — mapped to NCSC, DfE Digital Standards 2030, RPA and Ofsted.";
+  const text = "A free planning tool for Welsh schools — Cyber Incident Response Planner (Wales / Cymru). Readiness check, plan builder, six playbooks and a one-page Governor Report, mapped to NCSC, Welsh Government Cyber Resilient Wales, local authority cyber cover, Estyn and TARIAN / NWROCU.";
 
   // Mobile / supported browsers — native share sheet
   if(navigator.share){
@@ -2774,16 +2728,16 @@ function frameworkBadges(arr){
   };
   const labels = {
     NCSC:"NCSC Incident Management",
-    DfE:"DfE Digital Standards 2030",
-    RPA:"DfE Risk Protection Arrangement",
-    Ofsted:"Ofsted Inspection Toolkit",
+    DfE:"Welsh Gov — Cyber Resilient Wales",
+    RPA:"LA cyber cover (Wales)",
+    Ofsted:"Estyn inspection arrangements",
     CE:"Cyber Essentials"
   };
   const links = {
     NCSC:"https://www.ncsc.gov.uk/collection/incident-management",
-    DfE:"https://www.gov.uk/guidance/meeting-digital-and-technology-standards-in-schools-and-colleges/cyber-security-standards-for-schools-and-colleges",
-    RPA:"https://www.gov.uk/guidance/the-risk-protection-arrangement-rpa-for-schools",
-    Ofsted:"https://www.gov.uk/government/publications/education-inspection-framework/education-inspection-framework-for-use-from-november-2025",
+    DfE:"https://www.gov.wales/cyber-resilient-wales-strategy",
+    RPA:"https://www.gov.wales/cyber-resilient-wales-strategy",
+    Ofsted:"https://www.estyn.gov.wales/inspection-guidance-resources",
     CE:"https://www.ncsc.gov.uk/cyberessentials/overview"
   };
   return arr.map(f => `<a class="pill ${map[f]} pill-link" href="${links[f]}" target="_blank" rel="noopener noreferrer" title="Open ${labels[f]} guidance in a new tab">${labels[f]}</a>`).join(" ");
@@ -3392,15 +3346,16 @@ function renderExternal(){
       ${field("NCSC incident reporting","plan.external.ncscReport","text","")}
       ${field("Report Fraud","plan.external.actionFraud","text","")}
       ${field("ICO (data breach)","plan.external.ico","text","")}
-      ${field("DfE Sector Cyber Lead","plan.external.dfeContact","text","via your DfE contact or RPA")}
+      ${field("Welsh Government / consortium digital education contact","plan.external.dfeContact","text","If applicable — your regional consortium or Welsh Gov digital lead")}
+      ${field("ROCU Cyber PROTECT (TARIAN / NWROCU)","plan.external.rocuCyberProtect","text","TARIAN for South Wales, Gwent, Dyfed-Powys; NWROCU for North Wales — pre-incident advice, free")}
 
       <h3 style="margin-top:18px">Insurance &amp; cover</h3>
-      ${field("Risk Protection Arrangement (RPA)","plan.external.rpa","text","If you are an RPA member: 0800 368 6378 / rpa.claims@aon.co.uk")}
+      ${field("Local authority cyber cover / insurance arrangement","plan.external.rpa","text","Your LA's cyber cover contact, or your commercial cyber insurer if applicable")}
       ${field("Cyber insurance (if commercial)","plan.external.cyberInsurer","text","Insurer name, policy number, 24/7 incident line")}
 
       <h3 style="margin-top:18px">Other key contacts</h3>
       <div class="grid-2">
-        ${field("Local authority","plan.external.localAuthority","text","If applicable — LA cyber lead or SPOC")}
+        ${field("Local authority","plan.external.localAuthority","text","LA cyber lead or single point of contact (SPOC)")}
         ${field("MIS supplier (SIMS, Bromcom, Arbor)","plan.external.miSupplier","text","Support phone + ticket reference if known")}
         ${field("Broadband / connectivity supplier","plan.external.broadbandSupplier","text","")}
         ${field("Legal adviser","plan.external.legalAdviser","text","")}
@@ -3471,7 +3426,7 @@ function renderEscalation(){
 
       <h3>Authority to engage external incident responders</h3>
       <div class="grid-2">
-        ${field("Primary decision-maker","plan.escalation.decisionEngageExternal","text","If RPA member: contact RPA first")}
+        ${field("Primary decision-maker","plan.escalation.decisionEngageExternal","text","Contact your local authority cyber lead / insurer first &mdash; they may have appointed responders")}
         ${field("Deputy","plan.escalation.decisionEngageExternalDeputy","text","")}
       </div>
 
@@ -3502,7 +3457,7 @@ function renderPlaybooks(){
       key:"ransomware",
       title:"Ransomware",
       desc:"The most common high-impact incident type for UK schools. A working ransomware playbook is the single most valuable component of this plan.",
-      whyMatters:`The NCSC has issued repeated alerts since 2020 about <a href="https://www.ncsc.gov.uk/news/alert-targeted-ransomware-attacks-on-uk-education-sector" target="_blank" rel="noopener noreferrer">targeted ransomware attacks on the UK education sector</a>, including incidents that resulted in the loss of student coursework, school financial records and other critical data. The 2025 Cyber Security Breaches Survey found that <a href="https://www.gov.uk/government/statistics/cyber-security-breaches-survey-2025/cyber-security-breaches-survey-2025-education-institutions-findings" target="_blank" rel="noopener noreferrer">71% of secondary schools reported a cybersecurity incident in the last 12 months</a>. Free pre-incident advice is available from your local <a href="https://www.ncsc.gov.uk/information/regional-organised-crime-units-rocus" target="_blank" rel="noopener noreferrer">Regional Organised Crime Unit (ROCU)</a> Cyber PROTECT team. The <a href="https://cyber-security-hub.education.gov.uk/ransomware-playbook" target="_blank" rel="noopener noreferrer">DfE Cyber Security Hub's ransomware playbook</a> and its <a href="https://cyber-security-hub.education.gov.uk/case-studies" target="_blank" rel="noopener noreferrer">published case studies</a> document the operational impact and recovery costs in UK schools and trusts.`,
+      whyMatters:`The NCSC has issued repeated alerts since 2020 about <a href="https://www.ncsc.gov.uk/news/alert-targeted-ransomware-attacks-on-uk-education-sector" target="_blank" rel="noopener noreferrer">targeted ransomware attacks on the UK education sector</a>, including incidents that resulted in the loss of student coursework, school financial records and other critical data. The 2025 Cyber Security Breaches Survey found that <a href="https://www.gov.uk/government/statistics/cyber-security-breaches-survey-2025/cyber-security-breaches-survey-2025-education-institutions-findings" target="_blank" rel="noopener noreferrer">71% of secondary schools reported a cybersecurity incident in the last 12 months</a>. Welsh schools should contact their regional ROCU Cyber PROTECT team for free pre-incident advice: <a href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer">TARIAN</a> (South Wales, Gwent, Dyfed-Powys) or <a href="https://www.nwrocu.police.uk/" target="_blank" rel="noopener noreferrer">NWROCU</a> (North Wales). Once an incident is in progress, your local authority cyber lead and / or commercial cyber insurer should be the first call before engaging external incident responders.`,
       examples:[
         "Who has authority to physically pull the network cable / switch off the core switch out of hours, and how to reach them",
         "Where the immutable / off-site backups live and the exact contact at the supplier (incl. account ref and out-of-hours number)",
@@ -3548,13 +3503,13 @@ Parent communication:
       key:"dataBreach",
       title:"Personal data breach",
       desc:"Any incident involving suspected exposure of personal data. UK GDPR 72-hour ICO deadline starts from when you become aware.",
-      whyMatters:`Schools hold high-volume, high-sensitivity personal data &mdash; safeguarding records, SEN, FSM, medical, payroll &mdash; which makes a personal data breach one of the most consequential incident types. The 72-hour ICO notification window starts from when the school <em>becomes aware</em>, not when the breach is confirmed. Failure to report a notifiable breach can attract regulatory action. Use the <a href="https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach-assessment/" target="_blank" rel="noopener noreferrer">ICO's self-assessment</a> to judge notifiability, and report at <a href="https://ico.org.uk/for-organisations/report-a-breach/" target="_blank" rel="noopener noreferrer">ico.org.uk/for-organisations/report-a-breach</a>. The <a href="https://cyber-security-hub.education.gov.uk/extortion-via-ai-playbook" target="_blank" rel="noopener noreferrer">DfE Cyber Security Hub's Extortion via AI playbook</a> covers the increasingly common scenario where exfiltrated personal data is used as leverage.`,
+      whyMatters:`Schools hold high-volume, high-sensitivity personal data &mdash; safeguarding records, SEN, FSM, medical, payroll &mdash; which makes a personal data breach one of the most consequential incident types. The 72-hour ICO notification window starts from when the school <em>becomes aware</em>, not when the breach is confirmed. Failure to report a notifiable breach can attract regulatory action. Use the <a href="https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach-assessment/" target="_blank" rel="noopener noreferrer">ICO's self-assessment</a> to judge notifiability, and report at <a href="https://ico.org.uk/for-organisations/report-a-breach/" target="_blank" rel="noopener noreferrer">ico.org.uk/for-organisations/report-a-breach</a>. Increasingly, exfiltrated personal data is used as extortion leverage even when systems remain operational &mdash; treat the breach response and the ransomware response as parallel workstreams, not sequential.`,
       examples:[
         "DPO contact details and their out-of-hours availability (especially holidays)",
         "Where the school's record of processing activities (ROPA) is kept — needed to assess scope quickly",
         "Categories of pupil data the school holds (SEN, FSM, safeguarding, medical, photographs) and where each lives",
         "Process for notifying affected pupils' parents/carers — who drafts, who approves, who sends",
-        "Whether the LA, MAT or DfE need to be informed (and at what threshold)",
+        "Whether the local authority, federation / consortium, or Welsh Government need to be informed (and at what threshold)",
         "Local interpretation of 'high risk' for parental notification — agreed with DPO"
       ],
       template:`SCHOOL-SPECIFIC DATA BREACH NOTES
@@ -3588,8 +3543,8 @@ Notification of affected individuals (where high risk):
 
 Onward notification thresholds:
   Local Authority required at: [criteria]
-  MAT central team at:         [criteria]
-  DfE notification at:         [criteria]
+  Federation / consortium at:  [criteria]
+  Welsh Gov contact at:        [criteria]
 
 "High risk" interpretation (agreed with DPO):
   [e.g. any breach involving safeguarding records, SEN data, or more than 50 pupils' contact details]`
@@ -3598,7 +3553,7 @@ Onward notification thresholds:
       key:"accountCompromise",
       title:"Account compromise (staff)",
       desc:"Phishing-driven email/Microsoft/Google account takeover. Often the precursor to ransomware or data exfiltration.",
-      whyMatters:`Staff account compromise is the single most common entry point into a school network. The NCSC's guidance on <a href="https://www.ncsc.gov.uk/guidance/phishing" target="_blank" rel="noopener noreferrer">phishing attacks: defending your organisation</a> notes that account takeover frequently leads to onward attacks &mdash; including ransomware deployment and data exfiltration &mdash; days or weeks after the initial compromise. Detection requires actively monitoring for signs of compromise (mailbox forwarding rules, unfamiliar OAuth consents, unusual login geography) rather than waiting for the user to notice. Account takeover is the most common precursor to business email compromise: the <a href="https://cyber-security-hub.education.gov.uk/business-email-compromise-playbook" target="_blank" rel="noopener noreferrer">DfE Cyber Security Hub's BEC playbook</a> covers the onward attack pattern and recommended response.`,
+      whyMatters:`Staff account compromise is the single most common entry point into a school network. The NCSC's guidance on <a href="https://www.ncsc.gov.uk/guidance/phishing" target="_blank" rel="noopener noreferrer">phishing attacks: defending your organisation</a> notes that account takeover frequently leads to onward attacks &mdash; including ransomware deployment and data exfiltration &mdash; days or weeks after the initial compromise. Detection requires actively monitoring for signs of compromise (mailbox forwarding rules, unfamiliar OAuth consents, unusual login geography) rather than waiting for the user to notice. Welsh schools' regional ROCU Cyber PROTECT teams (TARIAN, NWROCU) can advise on detection and response practice for free.`,
       examples:[
         "Who can disable a Microsoft 365 / Google Workspace account at short notice (incl. out-of-hours)",
         "Process for forced password reset across the estate — and how staff are notified",
@@ -3643,7 +3598,7 @@ Affected user communications:
       key:"phishing",
       title:"Phishing campaign",
       desc:"Targeted phishing against staff, particularly business email compromise (BEC) targeting finance staff.",
-      whyMatters:`Phishing &mdash; particularly business email compromise (BEC) targeting bursars and business managers &mdash; remains the highest-volume threat to UK schools. Report Fraud and the regional Cyber PROTECT Network repeatedly highlight invoice-redirection fraud and CEO-impersonation as common patterns in the sector. The NCSC provides <a href="https://www.ncsc.gov.uk/guidance/phishing" target="_blank" rel="noopener noreferrer">specific guidance on defending against phishing</a>. The bank-detail-change verification rule (always verify by phone, on an independently-sourced number) is the single most effective control for BEC. Where phishing succeeds against finance staff, the <a href="https://cyber-security-hub.education.gov.uk/business-email-compromise-playbook" target="_blank" rel="noopener noreferrer">DfE Cyber Security Hub's BEC playbook</a> sets out the specific response when invoice-redirection or impersonation fraud follows.`,
+      whyMatters:`Phishing &mdash; particularly business email compromise (BEC) targeting bursars and business managers &mdash; remains the highest-volume threat to UK schools. Report Fraud and the regional Cyber PROTECT Network repeatedly highlight invoice-redirection fraud and CEO-impersonation as common patterns in the sector. The NCSC provides <a href="https://www.ncsc.gov.uk/guidance/phishing" target="_blank" rel="noopener noreferrer">specific guidance on defending against phishing</a>. The bank-detail-change verification rule (always verify by phone, on an independently-sourced number) is the single most effective control for BEC. Where phishing succeeds against finance staff, contact your local authority cyber lead and your regional ROCU Cyber PROTECT team (TARIAN or NWROCU) for sector-specific advice on response and onward investigation.`,
       examples:[
         "Who can search and remove emails across all staff mailboxes (M365 Content Search, Google Vault)",
         "Process for blocking sender domains at the email gateway",
@@ -3763,9 +3718,9 @@ Designated safeguarding lead's role if pupil data is affected: [steps]`
     },
     {
       key:"saasSupplierIncident",
-      title:"SaaS supplier incident (Arbor / SIMS / Bromcom / ParentPay / CPOMS / M365 etc.)",
+      title:"SaaS supplier incident (Arbor / SIMS / Bromcom / ParentPay / CPOMS / M365 / Hwb services etc.)",
       desc:"Your supplier had the breach, but the school is still the data controller — UK GDPR's 72-hour ICO clock falls on you.",
-      whyMatters:`When a SaaS supplier (Arbor, SIMS, Bromcom, ParentPay, CPOMS, M365, Google Workspace, your finance system) suffers a cyber incident, schools often assume "the supplier is handling it." Under UK GDPR they're not — the school is the <strong>data controller</strong>, the supplier is the <strong>data processor</strong>, and the obligations to <strong>notify the ICO within 72 hours of becoming aware</strong>, to <strong>inform affected data subjects</strong> (parents, pupils, staff), and to <strong>obtain a copy of the affected data</strong> all sit with the school. Your supplier has its own response, but yours runs in parallel and is legally separate. Most schools don't have this playbook, and it's the most common gap a DPO will flag in a breach review. The <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/personal-data-breaches/" target="_blank" rel="noopener noreferrer">ICO's guidance on personal data breaches</a> confirms the controller obligations apply regardless of whether the breach occurred at the controller or processor.`,
+      whyMatters:`When a SaaS supplier (Arbor, SIMS, Bromcom, ParentPay, CPOMS, M365, Google Workspace, your finance system, Hwb-hosted services) suffers a cyber incident, schools often assume "the supplier is handling it." Under UK GDPR they're not — the school is the <strong>data controller</strong>, the supplier is the <strong>data processor</strong>, and the obligations to <strong>notify the ICO within 72 hours of becoming aware</strong>, to <strong>inform affected data subjects</strong> (parents, pupils, staff), and to <strong>obtain a copy of the affected data</strong> all sit with the school. Your supplier has its own response, but yours runs in parallel and is legally separate. Most schools don't have this playbook, and it's the most common gap a DPO will flag in a breach review. The <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/personal-data-breaches/" target="_blank" rel="noopener noreferrer">ICO's guidance on personal data breaches</a> confirms the controller obligations apply regardless of whether the breach occurred at the controller or processor. Welsh schools should also notify their <strong>local authority cyber lead</strong> and the relevant <strong>ROCU Cyber PROTECT team</strong> (TARIAN for South Wales, Gwent, Dyfed-Powys; NWROCU for North Wales).`,
       examples:[
         "Confirm the incident is real (phishing pretending to be a supplier breach is common) — verify via the supplier's official channel, not via the email that told you",
         "Get the supplier's official Incident Notification / Records of Processing Activities update in writing — this becomes part of the school's evidence pack",
@@ -3773,6 +3728,7 @@ Designated safeguarding lead's role if pupil data is affected: [steps]`
         "ICO 72-hour clock: starts when you become aware, not when the supplier does. DPO assesses notifiability under UK GDPR Article 33; if notifiable, school files at <a href=\"https://ico.org.uk/for-organisations/report-a-breach/\" target=\"_blank\" rel=\"noopener noreferrer\">ico.org.uk/for-organisations/report-a-breach</a>",
         "Parent / staff notification: if the breach is high-risk to data subjects, school must inform them directly (Article 34) — supplier's notification to the school does not satisfy the school's obligation to its data subjects",
         "Get a copy of your data: under the data-controller / data-processor relationship, you have the contractual right to a current copy of all data the supplier holds on your behalf — exercise this so that even if the supplier service is degraded, the school has its records",
+        "Notify your local authority cyber lead and your regional ROCU Cyber PROTECT team (TARIAN or NWROCU) — they may be aware of wider supplier incidents affecting other Welsh schools",
         "Decide on continuing the contract: review the supplier's incident report, root cause, remedial actions, and any change to their security posture. A breach isn't always a reason to switch, but it's always a reason to scrutinise"
       ],
       template:`SCHOOL-SPECIFIC SAAS SUPPLIER INCIDENT NOTES
@@ -3793,7 +3749,7 @@ Supplier verification:
 Initial scoping:
   School data categories affected:    [list]
   Confidentiality / integrity / availability impact: [which dimensions are affected]
-  Special category data involved (health, SEN, safeguarding)?  [yes/no — if yes, escalate to DPO immediately]
+  Special category data involved (health, ALN/ASN, safeguarding)?  [yes/no — if yes, escalate to DPO immediately]
   Children's data involved?           [yes — for almost all school SaaS systems]
 
 ICO notifiability assessment (DPO-led):
@@ -3809,6 +3765,11 @@ Affected-individuals notification (Article 34, if high risk):
   Approved by:                        [DPO + SLT]
   Sent on:                            [date]
   Helpline / FAQ for parents:         [phone, web page]
+
+Wales-specific notifications:
+  Local authority cyber lead:         [name, phone, email]
+  Regional ROCU Cyber PROTECT (TARIAN / NWROCU): [contact]
+  Welsh Government / consortium digital education contact (if applicable): [name, phone]
 
 Data continuity:
   Latest copy of school's data held by school: [date, location — confirm this exists, or request it]
@@ -3896,7 +3857,7 @@ function renderComms(){
   // Sample drafts for each template — short, school-appropriate starting points
   const parentExample = `Dear parents and carers,
 
-I am writing to inform you that on [date] the school identified [a cyber security incident / unusual activity affecting our IT systems]. We acted immediately to contain the issue and engaged [our IT support / external specialists / the DfE / RPA].
+I am writing to inform you that on [date] the school identified [a cyber security incident / unusual activity affecting our IT systems]. We acted immediately to contain the issue and engaged [our IT support / external specialists / our local authority cyber lead / our cyber insurer].
 
 At this stage we [do / do not] believe that personal data has been affected. We will write again as soon as we have confirmed the position. The Information Commissioner's Office has been notified where required.
 
@@ -3946,7 +3907,7 @@ Summary: [one-paragraph factual summary of what happened]
 Impact on the school: [operational, data, financial, reputational]
 Action taken so far: [bullet list of actions and decisions]
 Outstanding decisions: [any decisions still required from SLT or governors]
-External notifications: [ICO / NCSC / Report Fraud / RPA / DfE — stated as done or pending]
+External notifications: [ICO / NCSC / Report Fraud / LA cyber lead / Welsh Gov contact — stated as done or pending]
 
 Next update: [time/date]`;
 
@@ -4076,7 +4037,7 @@ If you need to contact the school urgently, please [phone number / alternative m
           "Use a consistent severity grading so governors can compare incidents over time",
           "Be explicit about what's contained vs what's still active",
           "List outstanding decisions so governors know what they may need to authorise",
-          "Note all external notifications (ICO, NCSC, RPA, DfE) — governors are accountable for compliance",
+          "Note all external notifications (ICO, NCSC, LA cyber lead, Welsh Gov contact) — governors are accountable for compliance",
           "Schedule the next update so governors aren't asking 'any news?' on email mid-incident"
         ]
       )}
@@ -4139,9 +4100,9 @@ function renderAssets(){
   return `
     <div class="card">
       <h2>Critical systems &amp; impact</h2>
-      <p class="muted">Your asset register and quick Business Impact Analysis. List the systems your school depends on, what they hold, and how quickly you'd need them back. This is required (or near-required) by NCSC, the NCSC Cyber Assessment Framework (CAF), RPA cyber cover and any cyber insurance assessment.</p>
+      <p class="muted">Your asset register and quick Business Impact Analysis. List the systems your school depends on, what they hold, and how quickly you'd need them back. This is required (or near-required) by NCSC, the NCSC Cyber Assessment Framework (CAF) which Welsh Government is piloting across local authorities, and any cyber insurance assessment.</p>
       <div class="callout info" style="margin:6px 0 14px">
-        <p style="margin:0 0 6px; font-size:13px"><strong>Why this matters for SaaS systems (Arbor / SIMS / Bromcom / ParentPay / CPOMS / M365 / Google Workspace):</strong> even when your supplier hosts the data, <strong>you remain the data controller under UK GDPR</strong>. If they have a breach, the 72-hour ICO notification clock falls on <em>you</em>, not them. Recording each system's incident contact and what data it holds means you can answer the ICO and parents quickly when it matters.</p>
+        <p style="margin:0 0 6px; font-size:13px"><strong>Why this matters for SaaS systems (Arbor / SIMS / Bromcom / ParentPay / CPOMS / M365 / Google Workspace / Hwb-hosted services):</strong> even when your supplier hosts the data, <strong>you remain the data controller under UK GDPR</strong>. If they have a breach, the 72-hour ICO notification clock falls on <em>you</em>, not them. Recording each system's incident contact and what data it holds means you can answer the ICO and parents quickly when it matters.</p>
         <p style="margin:0; font-size:13px"><strong>"Last data export held by school" &mdash; track this per system.</strong> Cloud-hosted MIS and SaaS data is held by the supplier; if they're breached or unavailable, you can't act independently without your own copy. Best practice: request a current export <strong>termly</strong> (it's now in the annual cyber calendar at section 12.1) and record the date in each row below. Most schools never test this until it's too late.</p>
       </div>
 
@@ -4190,7 +4151,7 @@ function renderRecovery(){
   return `
     <div class="card">
       <h2>Recovery &amp; backups</h2>
-      <p class="muted">The DfE recommends following the 3-2-1 rule: at least 3 copies of important data, on at least 2 different types of media, with at least 1 stored off-site or immutable. Cyber Essentials and IASME Cyber Assurance both require this.</p>
+      <p class="muted">NCSC recommends following the 3-2-1 rule: at least 3 copies of important data, on at least 2 different types of media, with at least 1 stored off-site or immutable. Cyber Essentials and IASME Cyber Assurance both require this.</p>
 
       <div class="grid-2">
         ${field("Recovery Time Objective (RTO)","plan.recovery.rto","text","How long you can tolerate being without core systems before it becomes a major problem. e.g. '24 hours for MIS, 48 hours for email'")}
@@ -4199,7 +4160,7 @@ function renderRecovery(){
 
       ${field("Backup locations and types","plan.recovery.backupLocations","textarea","Where backups are held, who hosts them, and which are immutable / air-gapped. Be specific.")}
       ${field("Backup owner","plan.recovery.backupOwner","text","Named person responsible for backups and restoration testing")}
-      ${field("Backup test frequency","plan.recovery.backupTestFrequency","select","DfE recommends termly minimum",["Weekly","Monthly","Termly","Annually","Not currently tested"])}
+      ${field("Backup test frequency","plan.recovery.backupTestFrequency","select","NCSC recommends termly minimum for schools",["Weekly","Monthly","Termly","Annually","Not currently tested"])}
 
       <h3 style="margin-top:14px">Priority restoration order</h3>
       ${field("Order of system restoration","plan.recovery.priorityRestoreOrder","textarea","List in order of priority — typically safeguarding records first, then MIS, finance, and so on. This avoids debates during the incident.")}
@@ -4214,7 +4175,7 @@ function renderReview(){
   return `
     <div class="card">
       <h2>Post-incident review</h2>
-      <p class="muted">RPA and NCSC both require lessons learned to be captured and fed back into the plan. The point is not the document — it is the change.</p>
+      <p class="muted">NCSC and most LA cyber cover arrangements require lessons learned to be captured and fed back into the plan. The point is not the document &mdash; it is the change.</p>
       <div class="grid-2">
         ${field("Review lead","plan.review.reviewLead","text","Typically the SLT digital lead")}
         ${field("Review deadline","plan.review.reviewDeadline","text","")}
@@ -4242,7 +4203,7 @@ function renderMaintenance(){
   return `
     <div class="card">
       <h2>Plan maintenance</h2>
-      <p class="muted">A plan that is not maintained is a plan you cannot rely on. The DfE expects this to be reviewed annually as a minimum, and after any incident or significant change.</p>
+      <p class="muted">A plan that is not maintained is a plan you cannot rely on. NCSC and most LA cyber cover arrangements expect this to be reviewed annually as a minimum, and after any incident or significant change.</p>
       <div class="grid-2">
         ${field("Plan owner","plan.maintenance.owner","text","Named person responsible")}
         ${field("Review frequency","plan.maintenance.reviewFrequency","text","")}
@@ -4250,7 +4211,7 @@ function renderMaintenance(){
         ${field("Next review due","plan.maintenance.nextReview","date","")}
       </div>
       ${field("Distribution list","plan.maintenance.distribution","textarea","Who has a copy and where are they stored?")}
-      ${field("Offline copy location","plan.maintenance.offlineCopyLocation","text","NCSC and DfE both expect a hard copy stored off-network. Where is yours?")}
+      ${field("Offline copy location","plan.maintenance.offlineCopyLocation","text","NCSC expects a hard copy stored off-network. Where is yours?")}
 
       <div class="callout warn">
         <h4>Print and store offline</h4>
@@ -4324,7 +4285,7 @@ function ceGovernorQuestion(meta){
 
   // Not yet certified — broad planning question
   if(!status || status === "Not started" || status === "Working towards"){
-    return "How do you assure yourselves that the school has a clear plan and named owner for Cyber Essentials certification, with a target date appropriate to its scale, procurement and RPA cyber cover requirements?";
+    return "How do you assure yourselves that the school has a clear plan and named owner for Cyber Essentials certification, with a target date appropriate to its scale, procurement and local authority cyber cover expectations?";
   }
 
   // Status set but no date — encourage tracking
@@ -4400,13 +4361,13 @@ function generatePlan(){
 
     <div class="callout warn no-print">
       <h4>Hard copy reminder</h4>
-      <p style="margin:0; font-size:13px">Print this plan and store a copy off-network. Both NCSC and the DfE specifically warn that an online-only plan can be inaccessible during the very incident it is designed to handle.</p>
+      <p style="margin:0; font-size:13px">Print this plan and store a copy off-network. NCSC specifically warns that an online-only plan can be inaccessible during the very incident it is designed to handle.</p>
     </div>
 
     <h2 id="plan-sec-1">1. Purpose &amp; scope</h2>
     <p>This Cyber Incident Response Plan sets out how ${emptyOr(p.meta.schoolName, "the school")} responds to a suspected or confirmed cyber security incident. It is intended to be used by the Cyber Incident Response Team named below and by any staff who detect or are involved in responding to an incident.</p>
-    <p>It maps to the NCSC Incident Management collection, the DfE Cyber Security core standard (one of the six core Digital and Technology Standards by 2030), and the DfE Risk Protection Arrangement (RPA) cyber response plan template.</p>
-    <p><strong>This plan should be used in conjunction with:</strong> the school's Business Continuity and Disaster Recovery Plan, the Data Protection Policy, the Acceptable Use Policy, and any insurer- or RPA-specified incident notification process.</p>
+    <p>It maps to the NCSC Incident Management collection, the Welsh Government's Cyber Resilient Wales strategy, and the local authority cyber cover / insurance arrangement applicable to the school. It uses Estyn-compatible principles-based assurance language for governor reporting.</p>
+    <p><strong>This plan should be used in conjunction with:</strong> the school's Business Continuity and Disaster Recovery Plan, the Data Protection Policy, the Acceptable Use Policy, and any local authority- or insurer-specified incident notification process.</p>
 
     <h2 id="plan-sec-2">2. Cyber Incident Response Team (CIRT)</h2>
     <table>
@@ -4439,14 +4400,15 @@ function generatePlan(){
         <tr><th style="width:30%">NCSC</th><td>${emptyOr(p.external.ncscReport)}</td></tr>
         <tr><th>Report Fraud</th><td>${emptyOr(p.external.actionFraud)}</td></tr>
         <tr><th>Information Commissioner's Office (ICO)</th><td>${emptyOr(p.external.ico)}</td></tr>
-        <tr><th>DfE / Sector Cyber Lead</th><td>${emptyOr(p.external.dfeContact)}</td></tr>
+        <tr><th>Welsh Gov / consortium digital education contact</th><td>${emptyOr(p.external.dfeContact)}</td></tr>
+        <tr><th>ROCU Cyber PROTECT (TARIAN / NWROCU)</th><td>${emptyOr(p.external.rocuCyberProtect)}</td></tr>
       </tbody>
     </table>
 
     <h3>3.3 Insurance &amp; cover</h3>
     <table>
       <tbody>
-        <tr><th style="width:30%">Risk Protection Arrangement (RPA)</th><td>${emptyOr(p.external.rpa)}</td></tr>
+        <tr><th style="width:30%">Local authority cyber cover / insurance</th><td>${emptyOr(p.external.rpa)}</td></tr>
         <tr><th>Cyber insurance (commercial)</th><td>${emptyOr(p.external.cyberInsurer)}</td></tr>
       </tbody>
     </table>
@@ -4570,7 +4532,7 @@ function generatePlan(){
     <p style="font-size:13px"><strong>External communications must:</strong> avoid speculation about cause or attacker, omit specific technical details, avoid definitive statements before facts are confirmed, and be cleared by the comms lead, DPO and SLT before issue.</p>
 
     <h2 id="plan-sec-9">9. Critical systems &amp; business impact</h2>
-    <p>This is the school's asset register and Business Impact Analysis for cyber response. Even when systems are SaaS-hosted (Arbor, SIMS, Bromcom, ParentPay, CPOMS, M365 etc.) the school remains the <strong>data controller</strong> under UK GDPR &mdash; the 72-hour ICO notification clock falls on the school, not the supplier, when a supplier-hosted system is breached.</p>
+    <p>This is the school's asset register and Business Impact Analysis for cyber response. Even when systems are SaaS-hosted (Arbor, SIMS, Bromcom, ParentPay, CPOMS, M365, Hwb-hosted services etc.) the school remains the <strong>data controller</strong> under UK GDPR &mdash; the 72-hour ICO notification clock falls on the school, not the supplier, when a supplier-hosted system is breached.</p>
     ${(p.assets && (p.assets.systems||[]).length > 0) ? `
     <h3>9.1 Asset register</h3>
     <table class="asset-register-table">
@@ -4628,7 +4590,7 @@ function generatePlan(){
         <tr><td><strong>What did not work, and why</strong></td><td style="height:80px"></td></tr>
         <tr><td><strong>Changes required to plan / controls / training</strong></td><td style="height:80px"></td></tr>
         <tr><td><strong>Owner and target date for each change</strong></td><td style="height:80px"></td></tr>
-        <tr><td><strong>Reported externally? (NCSC / Report Fraud / ICO / RPA / DfE)</strong></td><td style="height:60px"></td></tr>
+        <tr><td><strong>Reported externally? (NCSC / Report Fraud / ICO / LA cyber lead / Welsh Gov contact)</strong></td><td style="height:60px"></td></tr>
       </tbody>
     </table>
 
@@ -4664,18 +4626,18 @@ function generatePlan(){
       <thead><tr><th>Framework</th><th>Coverage</th></tr></thead>
       <tbody>
         <tr><td><strong>NCSC Incident Management</strong></td><td>Sections 2 (CIRT roles), 3 (key contacts), 4 (severity), 5 (escalation), 6 (process), 7 (playbooks), 9 (asset register and BIA), 11 (post-incident review)</td></tr>
-        <tr><td><strong>DfE Digital Standards 2030 &mdash; Cyber Security core standard</strong></td><td>Cyber risk planning, response plan, asset/system inventory (section 9), post-incident review, hard-copy storage</td></tr>
-        <tr><td><strong>DfE Cyber Security Hub</strong></td><td>Plan structure interoperates with the Hub's published playbooks (ransomware, business email compromise, extortion via AI), the 8-phase incident response process and the case-study evidence base. Sections 6 (incident process) and 7 (playbooks) reference the Hub directly.</td></tr>
-        <tr><td><strong>DfE Risk Protection Arrangement (RPA) cyber response plan</strong></td><td>Sections 3 (external contacts incl. RPA), 6 (incident process), 8 (communication templates), 9 (asset register and BIA), 10 (recovery), 11 (review form)</td></tr>
-        <tr><td><strong>Ofsted Inspection Toolkit (November 2025)</strong></td><td>Indirect crossover: backups protect safeguarding records (Met/Not Met area); staff training on cyber reporting supports the school's safeguarding culture; leadership oversight of cyber risk falls within Leadership and Management. Ofsted does not directly inspect cyber security.</td></tr>
+        <tr><td><strong>Welsh Government &mdash; Cyber Resilient Wales strategy</strong></td><td>Cyber risk planning, response plan, asset/system inventory (section 9), post-incident review and hard-copy storage are all consistent with the strategy's principles for the Welsh public sector. Wales has no school-specific equivalent of the DfE Digital Standards 2030; readiness questions reflect NCSC-aligned good practice.</td></tr>
+        <tr><td><strong>TARIAN ROCU / NWROCU &mdash; Cyber PROTECT</strong></td><td>External contacts (Section 3) and pre-incident advice/training routes are signposted to the relevant ROCU. TARIAN covers South Wales, Gwent and Dyfed-Powys; NWROCU covers North Wales.</td></tr>
+        <tr><td><strong>Local authority cyber cover / insurance</strong></td><td>Sections 3 (external contacts incl. LA cyber lead / insurer), 6 (incident process), 8 (communication templates), 9 (asset register and BIA), 10 (recovery), 11 (review form). The specific arrangement varies by local authority &mdash; record yours in External Contacts.</td></tr>
+        <tr><td><strong>Estyn inspection arrangements</strong></td><td>Indirect crossover: backups protect safeguarding records; staff training on cyber reporting supports the school's safeguarding culture; leadership oversight of cyber risk falls within Leadership and Management. Estyn does not currently inspect cyber security directly.</td></tr>
         <tr><td><strong>UK GDPR / Data Protection Act 2018</strong></td><td>Section 5 (ICO notification authority), 8.3 (ICO template), 9 (asset register makes the school's data-controller position explicit for SaaS suppliers), 72-hour notification deadline</td></tr>
         <tr><td><strong>Cyber Essentials (NCSC / IASME)</strong></td><td>Adjacent — CE is a prevention scheme covering five technical controls (firewalls, secure configuration, user access control, malware protection, patching). This response plan complements CE; readiness Q11 (MFA) directly maps to the CE "user access control" control. Current CE status: ${emptyOr(p.meta.ceStatus, "not recorded")}.</td></tr>
-        <tr><td><strong>NCSC Cyber Assessment Framework (CAF)</strong></td><td>Schools are not directly assessed under CAF (NIS Regulations don't apply to schools), but UK local authorities are increasingly piloting CAF as a voluntary cyber resilience baseline. The plan structure aligns with CAF <em>Objective A</em> — Managing security risk (section 9 asset register and BIA), <em>Objective C</em> — Detecting cyber security events (sections 4 severity, 5 escalation, 6 incident process) — and <em>Objective D</em> — Minimising the impact of incidents (sections 7 playbooks, 8 communications, 10 recovery, 11 post-incident review). A defensible answer to a CAF-aligned LA or insurer asking how the school's incident response is structured.</td></tr>
+        <tr><td><strong>NCSC Cyber Assessment Framework (CAF)</strong></td><td>Welsh schools are not directly assessed under CAF (NIS Regulations don't apply to schools), but Welsh Government is piloting CAF across local authorities as a voluntary cyber resilience baseline. The plan structure aligns with CAF <em>Objective A</em> — Managing security risk (section 9 asset register and BIA), <em>Objective C</em> — Detecting cyber security events (sections 4 severity, 5 escalation, 6 incident process) — and <em>Objective D</em> — Minimising the impact of incidents (sections 7 playbooks, 8 communications, 10 recovery, 11 post-incident review). A defensible answer to a CAF-aligned LA or insurer asking how the school's incident response is structured.</td></tr>
       </tbody>
     </table>
 
     <p style="margin-top:30px; font-size:12px; color:var(--muted); text-align:center; border-top:1px solid var(--line); padding-top:14px">
-      Generated by the Cyber Incident Response Planner — cmaddocks-uk.github.io/cyber-response<br>
+      Generated by the Cyber Incident Response Planner — cmaddocks-uk.github.io/cyber-response-cymru<br>
       This plan should be approved by SLT and the governing body before use, validated with your IT support and DPO, and reviewed at least annually.
     </p>
   `;
@@ -4825,7 +4787,7 @@ const GOV_PLAIN = {
   },
   R8: {
     label: "Reporting routes",
-    plain: "Whether the school knows how and when to report incidents to NCSC, Report Fraud, the ICO (within 72 hours if personal data is involved), and the DfE / RPA.",
+    plain: "Whether the school knows how and when to report incidents to NCSC, Report Fraud, the ICO (within 72 hours if personal data is involved), and your local authority / insurer.",
     govQ: "How do you assure yourselves that the school knows the four UK reporting routes, including the 72-hour ICO notification deadline for personal data breaches?"
   },
   R9: {
@@ -5054,10 +5016,6 @@ function exportActionPlanWord(){
   exportToWord("actionPlan", wordFilename("Cyber Action Plan"), "Cyber Prioritised Action Plan");
 }
 function exportTabletopWord(){
-  // The tabletop summary is rendered into #tabletopContainer when the user
-  // hits "View summary"; but the summary card is the last child only when
-  // the summary view is active. We export the whole container — works for
-  // both an in-progress run (transcript) and the final summary.
   exportToWord("tabletopContainer", wordFilename("Tabletop Exercise"), "Tabletop Exercise Summary");
 }
 
@@ -5166,7 +5124,7 @@ function generateFirst30(){
         <span class="f30-clock">⏱ 15–30 MIN</span>
         <h3>Incident lead</h3>
         <ul>
-          <li>If <strong>S1/S2</strong>: call RPA Cyber Incident <span class="f30-phone">0800 368 6378</span></li>
+          <li>If <strong>S1/S2</strong>: call your local authority cyber lead / insurer (record the number in External Contacts)</li>
           <li>If <strong>personal data</strong> involved: start the ICO 72-hour clock</li>
           <li>If <strong>criminal</strong>: Report Fraud <span class="f30-phone">0300 123 2040</span></li>
           <li>Brief Headteacher: keep school open or send children home?</li>
@@ -5174,7 +5132,7 @@ function generateFirst30(){
         </ul>
         <div class="f30-contacts">
           <div class="row"><span class="lbl">IT support / MSP:</span><span class="val${itSupportText ? "" : " empty"}">${itSupportText || "[not set]"}</span></div>
-          <div class="row"><span class="lbl">Insurer / RPA:</span><span class="val${insurerText ? "" : " empty"}">${insurerText || "[not set]"}</span></div>
+          <div class="row"><span class="lbl">LA cyber lead / insurer:</span><span class="val${insurerText ? "" : " empty"}">${insurerText || "[not set]"}</span></div>
           <div class="row"><span class="lbl">Broadband supplier:</span><span class="val${broadbandText ? "" : " empty"}">${broadbandText || "[not set]"}</span></div>
           <div class="row"><span class="lbl">External DPO:</span><span class="val${externalDpoText ? "" : " empty"}">${externalDpoText || "[not set]"}</span></div>
         </div>
@@ -5187,7 +5145,7 @@ function generateFirst30(){
       <div class="f30-block f30-donot">
         <h4>⛔ Do NOT</h4>
         <ul>
-          <li>Pay any ransom (DfE Academy Trust Handbook 2025 prohibits)</li>
+          <li>Pay any ransom (NCSC and Welsh Government strongly advise against)</li>
           <li>Power off affected devices (loses forensic evidence)</li>
           <li>Contact or negotiate with the attackers</li>
           <li>Communicate via email systems that may be compromised</li>
@@ -5198,10 +5156,10 @@ function generateFirst30(){
         <h4>📞 Escalation chain</h4>
         <ol>
           <li><strong>Internal:</strong> SLT digital lead → Headteacher → Chair of Governors</li>
-          <li><strong>Insurer:</strong> RPA cyber incident line <span class="f30-phone">0800 368 6378</span></li>
+          <li><strong>Insurer / cover:</strong> Local authority cyber lead or commercial cyber insurer (record yours in External Contacts)</li>
           <li><strong>Regulator:</strong> ICO breach reporting (within 72h if data involved)</li>
           <li><strong>Crime:</strong> Report Fraud <span class="f30-phone">0300 123 2040</span> + report to NCSC</li>
-          <li><strong>Regional support:</strong> ROCU Cyber PROTECT team (free advice)</li>
+          <li><strong>Regional support:</strong> TARIAN (S Wales / Gwent / Dyfed-Powys) or NWROCU (N Wales) Cyber PROTECT team &mdash; free advice</li>
         </ol>
       </div>
     </div>
@@ -5212,7 +5170,7 @@ function generateFirst30(){
         <strong>Print, laminate, post:</strong> by the Head's office, in the network room, in the bursar's drawer.
       </div>
       <div style="text-align:right">
-        Cyber Incident Response Planner &middot; cmaddocks-uk.github.io/cyber-response
+        Cyber Incident Response Planner &middot; cmaddocks-uk.github.io/cyber-response-cymru
       </div>
     </div>
   `;
@@ -5220,9 +5178,9 @@ function generateFirst30(){
 
 
 /* ============================================================== */
-/* TABLETOP EXERCISE — guided walkthrough of a real DfE Hub case   */
+/* TABLETOP EXERCISE — guided walkthrough of an anonymised case   */
 /* study, with the user's plan fields surfaced at each step. The    */
-/* summary doubles as evidence of plan testing for RPA cyber cover. */
+/* summary doubles as evidence of annual plan testing.              */
 /* ============================================================== */
 
 function generateTabletop(){
@@ -5264,9 +5222,9 @@ function renderTabletopSelection(){
       <h2>🎯 Tabletop Exercise</h2>
       <p class="muted">Test your incident response plan against an example ransomware scenario. Each scenario walks through the timeline of a real-world-inspired incident &mdash; at every step, the relevant fields from your own plan are surfaced so you can see what your plan actually says to do, capture your team's intended response, and identify gaps where the plan is silent.</p>
       <div style="padding:10px 14px; background:#fdf3e2; border-left:3px solid var(--amber); border-radius:0 4px 4px 0; margin-bottom:10px; font-size:13px; line-height:1.5">
-        <strong>About these scenarios:</strong> the tabletops below are <strong>illustrative example scenarios</strong> covering common patterns of UK education-sector cyber incidents (ransomware, business email compromise, account takeover, insider threat). They are <strong>not affiliated with, not endorsed by, and do not represent any specific school or trust</strong> &mdash; figures, names, dates and details are fictional. For sector context and authoritative published case studies, see the <a href="https://cyber-security-hub.education.gov.uk/" target="_blank" rel="noopener noreferrer">DfE Cyber Security Hub</a>.
+        <strong>About these scenarios:</strong> the tabletops below are <strong>illustrative example scenarios</strong> covering common patterns of UK education-sector cyber incidents (ransomware, business email compromise, account takeover, insider threat). They are <strong>not affiliated with, not endorsed by, and do not represent any specific school or trust</strong> &mdash; figures, names, dates and details are fictional. For free pre-incident advice tailored to Welsh schools, contact your regional ROCU Cyber PROTECT team: <a href="https://www.tarianrccu.org.uk/" target="_blank" rel="noopener noreferrer">TARIAN</a> (South Wales, Gwent, Dyfed-Powys) or <a href="https://www.nwrocu.police.uk/" target="_blank" rel="noopener noreferrer">NWROCU</a> (North Wales).
       </div>
-      <p class="muted" style="font-size:13px"><strong>RPA expects annual testing of your plan</strong> &mdash; this counts. Each tabletop takes roughly 15&ndash;25 minutes. Complete it with your SLT digital lead, IT lead, comms lead and DPO &mdash; that's the minimum quorum. Print the summary at the end as your record of testing.</p>
+      <p class="muted" style="font-size:13px"><strong>NCSC and most LA cyber cover arrangements expect annual testing of your plan</strong> &mdash; this counts. Each tabletop takes roughly 15&ndash;25 minutes. Complete it with your SLT digital lead, IT lead, comms lead and DPO &mdash; that's the minimum quorum. Print the summary at the end as your record of testing.</p>
     </div>
     <div class="card">
       <h3 style="margin-top:0">Choose a scenario</h3>
@@ -5555,7 +5513,7 @@ function renderTabletopSummary(scenario){
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap">
         <div>
           <h2 style="margin:0">Tabletop Summary</h2>
-          <p class="muted" style="margin:4px 0 0">Print or save this summary as evidence of plan testing. RPA expects annual testing.</p>
+          <p class="muted" style="margin:4px 0 0">Print or save this summary as evidence of plan testing. NCSC and most LA cyber cover arrangements expect annual testing.</p>
         </div>
         <div class="btn-row" style="margin:0">
           <button class="btn btn-primary" onclick="exportTabletopWord()">📄 Export to Word</button>
@@ -5589,8 +5547,8 @@ function renderTabletopSummary(scenario){
         </ul>
       ` : ""}
       <p style="margin-top:30px; font-size:12px; color:var(--muted); text-align:center; border-top:1px solid var(--line); padding-top:14px">
-        Generated by the Cyber Incident Response Planner &mdash; cmaddocks-uk.github.io/cyber-response<br>
-        This summary is intended as evidence of plan testing under RPA cyber cover requirements. Retain a copy with your incident response documentation.
+        Generated by the Cyber Incident Response Planner &mdash; cmaddocks-uk.github.io/cyber-response-cymru<br>
+        This summary is intended as evidence of annual plan testing &mdash; useful for governor assurance, Estyn evidence, and your local authority cyber cover arrangement. Retain a copy with your incident response documentation.
       </p>
     </div>
   `;
@@ -5734,9 +5692,9 @@ function generateActionPlan(){
     </table>
 
     <div style="background:#f7f9fc; border:1px solid var(--line); border-radius:8px; padding:14px 16px; font-size:12px; color:var(--text); line-height:1.6">
-      <strong style="color:var(--navy)">Suggested timescales (RPA / NCSC guidance):</strong>
+      <strong style="color:var(--navy)">Suggested timescales (NCSC-aligned good practice):</strong>
       <ul style="margin:6px 0 0; padding-left:20px">
-        <li><strong style="color:var(--red)">Red items</strong> &mdash; within one term (12 weeks). RPA cyber cover conditions and NCSC fundamentals.</li>
+        <li><strong style="color:var(--red)">Red items</strong> &mdash; within one term (12 weeks). NCSC fundamentals and most LA cyber cover conditions.</li>
         <li><strong style="color:var(--amber)">Amber items</strong> &mdash; within the academic year. Maturity improvements that strengthen the response capability.</li>
         <li><strong style="color:var(--green)">All actions</strong> &mdash; re-run the readiness check after each closure to confirm the gap is closed and not just paper-resolved.</li>
       </ul>
@@ -5811,14 +5769,14 @@ function generateGovernorReport(){
         <h2 style="font-size:18px; font-weight:700; color:var(--navy); margin:0 0 10px">Readiness check not yet started</h2>
         <p style="font-size:14px; color:var(--text); line-height:1.6; margin:0 0 20px; max-width:520px; margin-left:auto; margin-right:auto">
           To generate a meaningful Governor / Trustee Report, complete the 12-question readiness check first.
-          The report will then summarise readiness levels, surface priority areas, and produce Ofsted-style
+          The report will then summarise readiness levels, surface priority areas, and produce principles-based
           assurance questions for governors to ask at the next meeting.
         </p>
         <div class="no-print" style="margin-top:8px">
           <button class="btn btn-primary" onclick="goTab('readiness')">▶ Start the readiness check</button>
         </div>
         <p style="font-size:12px; color:var(--muted); margin:20px 0 0; font-style:italic">
-          Typically takes 15&ndash;25 minutes &middot; Mapped to NCSC, DfE Digital Standards 2030, RPA and Ofsted
+          Typically takes 15&ndash;25 minutes &middot; Mapped to NCSC, Welsh Government Cyber Resilient Wales, local authority cyber cover, and Estyn
         </p>
       </div>
     `;
@@ -5882,7 +5840,7 @@ function generateGovernorReport(){
     <!-- GOVERNOR QUESTIONS -->
     <div class="gov-questions-panel" style="background:#eaf2fd; border:1px solid #cdd9ed; border-radius:10px; padding:16px 20px; margin-bottom:24px">
       <h2 style="font-size:13px; font-weight:700; color:var(--navy); margin:0 0 8px; text-transform:uppercase; letter-spacing:.04em">Questions Governors Should Ask at the Next Meeting</h2>
-      <p style="font-size:12px; color:var(--muted); margin:0 0 10px; font-style:italic">Phrased to support the Ofsted-style "How do you assure yourselves..." line of inquiry.</p>
+      <p style="font-size:12px; color:var(--muted); margin:0 0 10px; font-style:italic">Phrased to support a principles-based "How do you assure yourselves..." line of inquiry &mdash; compatible with Estyn's inspection style.</p>
       <ol style="padding-left:20px; margin:0; display:flex; flex-direction:column; gap:8px">
         ${(() => {
           const ceQ = ceGovernorQuestion(p.meta);
@@ -5912,7 +5870,7 @@ function generateGovernorReport(){
         </div>
         <div style="background:rgba(255,255,255,.08); border-radius:8px; padding:12px 14px">
           <div style="font-size:11px; font-weight:700; color:#7fb4ff; margin-bottom:4px; letter-spacing:.04em">FOR GOVERNORS</div>
-          <p style="font-size:12px; color:rgba(255,255,255,.85); line-height:1.5; margin:0">Ensure this report is minuted &mdash; this evidences cyber assurance during Ofsted inspection. Request a written action plan from the SLT digital lead for any red or amber area, including investment implications and target dates.</p>
+          <p style="font-size:12px; color:rgba(255,255,255,.85); line-height:1.5; margin:0">Ensure this report is minuted &mdash; this evidences cyber assurance for governor oversight, useful in Estyn inspection contexts and for your local authority cyber cover arrangement. Request a written action plan from the SLT digital lead for any red or amber area, including investment implications and target dates.</p>
         </div>
       </div>
     </div>
@@ -5928,10 +5886,10 @@ function generateGovernorReport(){
     <div style="margin-top:24px; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:8px">
       <div>
         <p style="font-size:10px; font-weight:700; color:var(--navy); margin:0 0 2px">Cyber Incident Response Planner &middot; Governor Summary</p>
-        <p style="font-size:10px; color:var(--muted); margin:0">Built for UK schools and colleges &middot; cmaddocks-uk.github.io/cyber-response</p>
+        <p style="font-size:10px; color:var(--muted); margin:0">Built for Welsh schools &middot; cmaddocks-uk.github.io/cyber-response-cymru</p>
       </div>
       <div style="text-align:right">
-        <p style="font-size:10px; color:var(--muted); margin:0 0 2px">Frameworks: NCSC &middot; DfE Digital Standards 2030 &middot; DfE RPA &middot; Ofsted</p>
+        <p style="font-size:10px; color:var(--muted); margin:0 0 2px">Frameworks: NCSC &middot; Cyber Resilient Wales &middot; LA cyber cover &middot; Estyn &middot; TARIAN / NWROCU</p>
         <p style="font-size:10px; color:var(--muted); margin:0">Plan version ${escapeHtml(p.meta.planVersion)} &middot; Approved by ${emptyOr(p.meta.approvedBy, "[approver]")}</p>
       </div>
     </div>
@@ -5945,12 +5903,12 @@ function generatePlaybooks(pbs){
       steps:[
         "Disconnect affected devices from the network — do not power off (preserve evidence).",
         "Activate Severity 1 response. Notify CIRT and IT support immediately.",
-        "Do NOT pay the ransom. Refer to the ransomware policy in section 5. Notify RPA / cyber insurer before any external incident responder is engaged (if applicable).",
+        "Do NOT pay the ransom. Refer to the ransomware policy in section 5. Notify your local authority cyber lead / cyber insurer before any external incident responder is engaged.",
         "Identify scope of encryption. Do not reconnect any device until cleared.",
         "Notify NCSC, Report Fraud, and the ICO if personal data is affected (within 72 hours of awareness).",
         "Begin restoration from clean, immutable / off-site backups in the priority order set out in section 9.",
         "Force a full credential reset across the estate before restored systems are returned to production.",
-        "Capture evidence and engage forensic investigation per RPA / insurer requirements before reformatting any device."
+        "Capture evidence and engage forensic investigation per your LA cyber lead / insurer's requirements before reformatting any device."
       ]
     },
     dataBreach: {
@@ -6015,13 +5973,14 @@ function generatePlaybooks(pbs){
       ]
     },
     saasSupplierIncident: {
-      title:"SaaS supplier incident (Arbor / SIMS / Bromcom / ParentPay / CPOMS / M365 etc.)",
+      title:"SaaS supplier incident (Arbor / SIMS / Bromcom / ParentPay / CPOMS / M365 / Hwb services etc.)",
       steps:[
         "Verify the incident is real — confirm via the supplier's official channel (status page, account manager direct), NOT the email that told you about it. Phishing impersonating a supplier breach is increasingly common.",
         "Get the supplier's official Incident Notification in writing for the school's evidence pack. Note the supplier's reference number, date/time of confirmation, and the precise scope they've identified.",
-        "Convene CIRT including the DPO. Determine the scope of YOUR school's data affected: categories (pupil records, safeguarding, finance, contact details), volume (number of pupils / staff / parents), and any special category data (health, SEN, safeguarding).",
+        "Convene CIRT including the DPO. Determine the scope of YOUR school's data affected: categories (pupil records, safeguarding, finance, contact details), volume (number of pupils / staff / parents), and any special category data (health, ALN/ASN, safeguarding).",
         "ICO 72-hour clock starts when YOU become aware — not when the supplier does. The DPO assesses notifiability under UK GDPR Article 33. If notifiable, the school files at ico.org.uk/for-organisations/report-a-breach. The supplier's own notification to the ICO (if any) does NOT discharge the school's obligation.",
         "Article 34: if the breach is high-risk to data subjects, the school must inform them directly (parents, staff). The supplier's notification to the school is not the same as the school's notification to its data subjects.",
+        "Notify Welsh-specific contacts: the school's local authority cyber lead, the regional ROCU Cyber PROTECT team (TARIAN for South Wales / Gwent / Dyfed-Powys; NWROCU for North Wales), and any applicable Welsh Government / consortium digital education contact.",
         "Exercise the school's contractual right (UK GDPR Article 28 / Data Processing Agreement) to obtain a current copy of all data the supplier holds on the school's behalf — so the school can act independently if supplier service is degraded or unavailable.",
         "Maintain operational continuity. Trigger paper-fallback procedures where the supplier's service is unavailable (e.g. paper attendance register, paper safeguarding log) until the service is restored.",
         "Post-incident review: assess the supplier's root cause, remedial actions and any change to their security posture. Make a commercial decision on continuing the contract. Update the school's asset register (Plan section 9) with any changes to the supplier's incident contact, DPA review date, or recovery procedures."

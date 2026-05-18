@@ -1,0 +1,84 @@
+---
+import { withBase } from '~/lib/nav';
+
+// Reusable "this page is not migrated yet" block. Used by every interactive
+// route in the scaffold. Tells the future-port author exactly what to wire up
+// and where to find the v1.x reference implementation.
+
+export interface Props {
+  /** Page title — e.g. "Readiness Check". */
+  title: string;
+  /** One-line description of what this page does once ported. */
+  intro: string;
+  /** Bullet list of v1.x source artefacts to translate. */
+  sources: string[];
+  /** Bullet list of port steps in suggested order. */
+  steps: string[];
+  /** Optional v1.x function names (e.g. renderReadiness, generatePlan) the React island will replace. */
+  v1Functions?: string[];
+}
+
+const { title, intro, sources, steps, v1Functions = [] } = Astro.props;
+---
+
+<div class="card">
+  <div class="mb-2 flex items-center gap-2">
+    <span class="inline-block rounded-full bg-warning-soft px-3 py-1 text-[11px] font-bold uppercase tracking-[.06em] text-warning">
+      Stub — pending port
+    </span>
+  </div>
+  <h1 class="m-0 mb-2 text-[26px] font-extrabold text-navy">{title}</h1>
+  <p class="m-0 mb-4 text-sm text-muted">{intro}</p>
+
+  <div class="rounded-md border border-[#f4dba0] border-l-4 border-l-warning bg-[#fef9e7] p-4">
+    <p class="m-0 mb-2 text-sm">
+      This page is a placeholder in the Astro rebuild. The interactive
+      v1.x implementation works in the existing
+      <code class="rounded bg-white px-1 text-xs">index.html</code> on the legacy
+      branch — port it across when ready.
+    </p>
+  </div>
+
+  <h2 class="mb-2 mt-5 text-base font-bold text-navy">What this page does once ported</h2>
+  <p class="text-sm text-ink">{intro}</p>
+
+  <h2 class="mb-2 mt-5 text-base font-bold text-navy">v1.x source to migrate</h2>
+  <ul class="list-disc pl-5 text-sm text-ink">
+    {sources.map((s) => <li class="mb-1" set:html={s} />)}
+  </ul>
+
+  {
+    v1Functions.length > 0 && (
+      <>
+        <h2 class="mb-2 mt-5 text-base font-bold text-navy">v1.x functions that become React components / hooks</h2>
+        <ul class="list-disc pl-5 text-sm text-ink">
+          {v1Functions.map((fn) => (
+            <li class="mb-1">
+              <code class="rounded bg-[#f7f9fc] px-1 text-xs">{fn}</code>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
+  <h2 class="mb-2 mt-5 text-base font-bold text-navy">Suggested port order</h2>
+  <ol class="list-decimal pl-5 text-sm text-ink">
+    {steps.map((s) => <li class="mb-1" set:html={s} />)}
+  </ol>
+
+  <div class="mt-6 flex flex-wrap gap-2.5">
+    <a
+      href={withBase('/')}
+      class="rounded-md border border-line bg-white px-4 py-2 text-sm font-semibold text-navy no-underline transition hover:bg-[#f0f4fa] hover:!no-underline"
+    >
+      ← Home
+    </a>
+    <a
+      href={withBase('/changelog')}
+      class="rounded-md border border-line bg-white px-4 py-2 text-sm font-semibold text-navy no-underline transition hover:bg-[#f0f4fa] hover:!no-underline"
+    >
+      Changelog
+    </a>
+  </div>
+</div>

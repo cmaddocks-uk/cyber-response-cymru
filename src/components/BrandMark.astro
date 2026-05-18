@@ -1,0 +1,56 @@
+---
+// CIRP primary brand mark - refined threshold disc (v2.6.1).
+//
+// Half-shaded disc with a Fraunces 800 "30" straddling a deliberate vertical
+// kerf. The "30" references the first 30 minutes of a cyber incident - the
+// operationally load-bearing window where decisions are still technical.
+//
+// Themed by --ink and --paper CSS custom properties set inline per variant.
+//   variant="dark"  : ink=#0f1a2a, paper=#ffffff. For light surfaces.
+//   variant="light" : ink=#ffffff, paper=#0b2545. For dark surfaces (header).
+//
+// Fraunces 800 is loaded site-wide via Google Fonts in BaseLayout.astro,
+// so the inline <text> elements render with real Fraunces. Georgia fallback
+// is visually indistinguishable at the sizes this component is used.
+
+export interface Props {
+  variant?: 'dark' | 'light';
+  size?: number;
+  class?: string;
+}
+
+const { variant = 'dark', size = 40, class: className = '' } = Astro.props;
+const ink = variant === 'dark' ? '#0f1a2a' : '#ffffff';
+const paper = variant === 'dark' ? '#ffffff' : '#0b2545';
+// Per-render unique clipPath id - allows multiple instances on one page.
+const clipId = `bm-${Math.random().toString(36).slice(2, 10)}`;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  width={size}
+  height={size}
+  class={className}
+  role="img"
+  aria-label="Cyber Incident Response Planner"
+  style={`--ink:${ink};--paper:${paper};`}
+>
+  <defs>
+    <clipPath id={clipId}><circle cx="32" cy="32" r="30" /></clipPath>
+  </defs>
+  <g clip-path={`url(#${clipId})`} aria-hidden="true">
+    <rect width="32" height="64" fill="var(--paper)" />
+    <rect x="32" width="32" height="64" fill="var(--ink)" />
+    <line x1="32" y1="2" x2="32" y2="62"
+          stroke="var(--paper)" stroke-width="1.5" stroke-opacity="0.65" />
+  </g>
+  <circle cx="32" cy="32" r="30" fill="none"
+          stroke="var(--ink)" stroke-width="1.5" />
+  <text x="21" y="32" text-anchor="middle" dominant-baseline="central"
+        font-family="Fraunces, Georgia, serif" font-weight="800"
+        font-size="36" letter-spacing="-1" fill="var(--ink)">3</text>
+  <text x="43" y="32" text-anchor="middle" dominant-baseline="central"
+        font-family="Fraunces, Georgia, serif" font-weight="800"
+        font-size="36" letter-spacing="-1" fill="var(--paper)">0</text>
+</svg>

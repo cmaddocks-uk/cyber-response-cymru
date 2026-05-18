@@ -1,0 +1,15 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { ReadinessPage } from '~/components/readiness/ReadinessPage';
+---
+
+<BaseLayout title="Readiness check — Cyber Incident Response Planner">
+  <!--
+    client:only="react" — the whole interactive surface reads from
+    sessionStorage on first mount, which can't be done during SSR. Astro emits
+    a placeholder element and React mounts on the client. Trade-off: brief
+    empty state on slow networks; benefit: zero hydration-mismatch risk and
+    one less rendering pass.
+  -->
+  <ReadinessPage client:only="react" />
+</BaseLayout>

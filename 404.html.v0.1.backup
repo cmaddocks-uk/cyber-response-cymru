@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Page not found &mdash; Cyber Incident Response Planner</title>
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #5b6a82;
+      --accent: #1f6feb;
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --line: #e3e8ef;
+      --navy: #0b2545;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+    .wrap {
+      max-width: 560px;
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 32px 28px;
+      box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 4px 12px rgba(15,23,42,.06);
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #fbe9e7;
+      color: #b42318;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -.02em;
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    p { margin: 0 0 12px; }
+    a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    a:hover, a:focus { text-decoration: underline; }
+    .links {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: .9rem;
+    }
+    .links a { color: var(--accent); }
+    .small { font-size: .8rem; color: var(--muted); margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="badge">404 &mdash; Not Found</span>
+    <h1>That page doesn't exist here.</h1>
+    <p>You may have followed a stale link, or a URL that was never hosted on this domain.</p>
+    <p>This domain hosts the <strong>Cyber Incident Response Planner</strong> &mdash; a free planning tool for UK schools and colleges.</p>
+    <div class="links">
+      <a href="/cyber-response/">&rarr; Go to the Cyber Incident Response Planner</a>
+      <a href="/dfe-standards/">&rarr; Go to the DfE Digital Standards 2030 Self-Assessment Tool</a>
+      <a href="https://github.com/cmaddocks-uk/cyber-response/issues" rel="noopener noreferrer" target="_blank">&rarr; Report a broken link on GitHub</a>
+    </div>
+    <p class="small">If you arrived via an unfamiliar URL pretending to be from this site (Power Automate webhook, Microsoft 365 trigger, payment portal, etc.) &mdash; that wasn't us. This site only hosts public, static planning tools for schools.</p>
+  </div>
+</body>
+</html>

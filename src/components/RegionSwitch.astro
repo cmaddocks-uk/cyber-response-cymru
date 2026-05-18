@@ -1,0 +1,103 @@
+---
+// UK / Wales region switcher.
+//
+// Hybrid rendering by necessity:
+//   - UK: inline SVG Union Jack. Windows Segoe UI Emoji deliberately omits
+//     regional-indicator country flags, so 🇬🇧 renders blank on most Windows
+//     installs. SVG works everywhere.
+//   - Wales: native flag emoji 🏴󠁧󠁢󠁷󠁬󠁳󠁿. This uses tag characters rather than
+//     regional indicators and Windows renders it with full dragon detail
+//     (same glyph as the home-page Sister Tool card).
+
+const { currentRegion = 'wales' } = Astro.props as { currentRegion?: 'uk' | 'wales' };
+const WELSH_URL = 'https://cmaddocks-uk.github.io/cyber-response-cymru/';
+const UK_URL = 'https://cmaddocks-uk.github.io/cyber-response/';
+
+const CHIP_BASE =
+  'inline-flex h-11 items-center justify-center rounded-md border-2 px-2.5 leading-none transition';
+const CHIP_ACTIVE = `${CHIP_BASE} border-white bg-white shadow-[0_1px_3px_rgba(0,0,0,.25)]`;
+const CHIP_LINK = `${CHIP_BASE} border-white/40 bg-white/10 opacity-80 hover:scale-105 hover:border-white hover:bg-white/25 hover:opacity-100`;
+
+const WALES_EMOJI_CLASS =
+  'text-[32px] leading-none [font-family:"Segoe_UI_Emoji","Apple_Color_Emoji","Noto_Color_Emoji","Twemoji_Mozilla",sans-serif]';
+---
+
+<div class="flex shrink-0 items-center gap-2" role="navigation" aria-label="Region switcher">
+  {
+    currentRegion === 'uk' ? (
+      <span
+        class={CHIP_ACTIVE}
+        aria-current="true"
+        title="UK / English version (current)"
+        aria-label="You are here: UK / English version"
+      >
+        <svg
+          viewBox="0 0 60 30"
+          width="52"
+          height="26"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          class="block shrink-0 rounded-[2px]"
+        >
+          <clipPath id="ukclip-active"><rect width="60" height="30" /></clipPath>
+          <g clip-path="url(#ukclip-active)">
+            <rect width="60" height="30" fill="#012169" />
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+            <path d="M0,0 L60,30" stroke="#C8102E" stroke-width="3" stroke-dasharray="30,30" stroke-dashoffset="0" />
+            <path d="M60,0 L0,30" stroke="#C8102E" stroke-width="3" stroke-dasharray="30,30" stroke-dashoffset="30" />
+            <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6" />
+          </g>
+        </svg>
+      </span>
+    ) : (
+      <a
+        href={UK_URL}
+        class={CHIP_LINK}
+        aria-label="Switch to UK / English version"
+        title="Switch to UK / English version"
+      >
+        <svg
+          viewBox="0 0 60 30"
+          width="52"
+          height="26"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          class="block shrink-0 rounded-[2px]"
+        >
+          <clipPath id="ukclip-link"><rect width="60" height="30" /></clipPath>
+          <g clip-path="url(#ukclip-link)">
+            <rect width="60" height="30" fill="#012169" />
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+            <path d="M0,0 L60,30" stroke="#C8102E" stroke-width="3" stroke-dasharray="30,30" stroke-dashoffset="0" />
+            <path d="M60,0 L0,30" stroke="#C8102E" stroke-width="3" stroke-dasharray="30,30" stroke-dashoffset="30" />
+            <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6" />
+          </g>
+        </svg>
+      </a>
+    )
+  }
+
+  {
+    currentRegion === 'wales' ? (
+      <span
+        class={CHIP_ACTIVE}
+        aria-current="true"
+        title="Welsh / Cymru version (current)"
+        aria-label="You are here: Welsh / Cymru version"
+      >
+        <span class={WALES_EMOJI_CLASS} aria-hidden="true">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span>
+      </span>
+    ) : (
+      <a
+        href={WELSH_URL}
+        class={CHIP_LINK}
+        aria-label="Switch to the Welsh / Cymru version"
+        title="Switch to the Welsh / Cymru version"
+      >
+        <span class={WALES_EMOJI_CLASS} aria-hidden="true">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span>
+      </a>
+    )
+  }
+</div>

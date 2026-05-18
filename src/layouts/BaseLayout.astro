@@ -1,0 +1,196 @@
+---
+import '~/styles/global.css';
+import TopBar from '~/components/TopBar.astro';
+import BeerButton from '~/components/BeerButton.astro';
+import { buildCssVariables } from '~/lib/document-model/theme';
+import { withBase } from '~/lib/nav';
+
+// Theme palette → CSS custom properties, single source of truth. Inlined
+// (rather than imported as a stylesheet) so it ships in the document head
+// without an extra network round-trip and beats any later @import in the
+// cascade.
+const themeVars = buildCssVariables();
+
+export interface Props {
+  title?: string;
+  description?: string;
+  /** Override the og:url canonical for this page. Defaults to Astro.url. */
+  canonical?: string;
+}
+
+const {
+  title = 'Cyber Incident Response Planner — for Welsh Schools & Colleges',
+  description = 'A free planning tool for Welsh schools and colleges to assess cyber response readiness and generate a tailored Cyber Incident Response Plan, mapped to NCSC, Welsh Government Cyber Resilient Wales, local authority cyber cover and Estyn inspection arrangements.',
+  canonical = Astro.url.toString(),
+} = Astro.props;
+
+// Absolute URL to the social-share image. `Astro.site` is the site root from
+// astro.config.mjs (`https://cmaddocks-uk.github.io`); `withBase()` prepends
+// the project base path. Falls back to a relative path if `Astro.site` is
+// somehow unset (shouldn't happen in this project but keeps the build safe).
+const ogImageUrl = Astro.site
+  ? new URL(withBase('/og-image.png'), Astro.site).toString()
+  : withBase('/og-image.png');
+
+// CSP — `default-src 'none'` plus narrow allowlists for GoatCounter analytics
+// and Google Fonts. Astro emits hashed asset filenames under /assets/ which
+// the 'self' source covers.
+//
+// Notes on what's deliberately omitted:
+//   - `frame-ancestors` is ignored by the spec when delivered via <meta>; it
+//     only works as an HTTP response header, which GitHub Pages can't set.
+//   - In dev (`astro dev`), Vite needs a WebSocket to localhost for HMR.
+//     The dev-mode branch widens `connect-src` for that; prod stays locked.
+//   - Trusted Types directives are production-only. In dev, Vite's HMR runtime
+//     creates script elements dynamically and would trip the strict policy.
+const IS_DEV = import.meta.env.DEV;
+const CONNECT_SRC = IS_DEV
+  ? "connect-src https://cyber-response.goatcounter.com ws://localhost:* ws://127.0.0.1:*"
+  : "connect-src https://cyber-response.goatcounter.com";
+
+const TRUSTED_TYPES = IS_DEV
+  ? []
+  : [
+      // Chrome / Edge enforce; Firefox / Safari ignore but it doesn't hurt them.
+      // 'allow-duplicates' lets React (or any other lib) register a same-named
+      // policy if it ever needs to. The named policies we explicitly trust are
+      // `default` (our own, defined inline below) and `react` (React 19's
+      // internal policy for dangerouslySetInnerHTML).
+      "require-trusted-types-for 'script'",
+      "trusted-types 'allow-duplicates' default react",
+    ];
+
+const CSP = [
+  "default-src 'none'",
+  "script-src 'self' 'unsafe-inline' https://gc.zgo.at",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  "img-src 'self' data: https://cyber-response.goatcounter.com",
+  CONNECT_SRC,
+  "form-action 'none'",
+  "base-uri 'none'",
+  ...TRUSTED_TYPES,
+].join('; ');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content={CSP} />
+
+    {/*
+      Trusted Types default policy. Loaded inline in <head> before any other
+      script so it's established before React, Vite, or GoatCounter run.
+
+      - createHTML passes through: React's dangerouslySetInnerHTML on
+        compile-time-trusted playbook content needs this.
+      - createScript HARD-REJECTS: nothing in this codebase creates inline
+        <script> elements at runtime, so any attempt is an injection attack.
+      - createScriptURL is allowlisted to GoatCounter's count.js only: the
+        only legitimate runtime script-URL load on this site.
+
+      Chrome / Edge enforce; Firefox / Safari ignore. Production only — dev
+      omits the CSP directive (Vite HMR wouldn't survive the strict policy).
+    */}
+    <script is:inline>
+      (function () {
+        if (!window.trustedTypes || !window.trustedTypes.createPolicy) return;
+        try {
+          var ALLOWED_SCRIPT_URLS = ['https://gc.zgo.at/count.js'];
+          window.trustedTypes.createPolicy('default', {
+            createHTML: function (s) { return s; },
+            createScript: function () {
+              throw new TypeError(
+                'Trusted Types policy: dynamic script element creation is blocked.'
+              );
+            },
+            createScriptURL: function (s) {
+              if (ALLOWED_SCRIPT_URLS.indexOf(String(s)) === -1) {
+                throw new TypeError(
+                  'Trusted Types policy: script URL not allowlisted: ' + s
+                );
+              }
+              return s;
+            }
+          });
+        } catch (e) {
+          // Policy may already exist (e.g. if React registered one first).
+          // Either way, the CSP directive still enforces the Trusted Types
+          // requirement; missing default policy just means stricter calls.
+        }
+      })();
+    </script>
+
+    <style set:html={themeVars}></style>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    {/* Explicit favicon link — prevents the browser falling back to the
+        legacy /favicon.ico path at the domain root (which doesn't exist on
+        GitHub Pages because the site lives under /cyber-response/). */}
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+
+    {/* iOS home-screen icon. 180×180 PNG, solid navy, "30" in bold serif.
+        iOS applies its own rounded-square mask, so the source is square. */}
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+
+    <!--
+      Typography:
+      - IBM Plex Sans: body text. A neutral humanist sans that holds up at
+        small sizes in print, and pairs cleanly with a serif display face.
+      - Fraunces: display / headings. A modulated serif with school / civic
+        gravitas — fits the audience without looking corporate.
+      - Inter: kept as a fallback for legacy class references and as a final
+        web-safe option before the system-font cascade kicks in.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;600;700;800&display=swap"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Cyber Incident Response Planner" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Cyber Incident Response Planner — free planning tool for Welsh schools and colleges, mapped to NCSC, Welsh Government Cyber Resilient Wales, LA cyber cover, Estyn, TARIAN / NWROCU, ICO and Cyber Essentials." />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- GoatCounter — privacy-friendly, no cookies, GDPR-compliant. -->
+    <script
+      is:inline
+      data-goatcounter="https://cyber-response.goatcounter.com/count"
+      async
+      src="https://gc.zgo.at/count.js"></script>
+  </head>
+  <body>
+    <TopBar />
+    <main class="py-7 pb-16">
+      <div class="container-page">
+        <slot />
+      </div>
+    </main>
+    <BeerButton />
+  </body>
+</html>

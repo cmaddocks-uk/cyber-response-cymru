@@ -1,0 +1,71 @@
+# Build the Astro site on every push to main and publish to GitHub Pages.
+#
+# This is the "no local Node required" path: you edit files locally, commit
+# and push, and Node runs on GitHub's runners. The runner installs deps,
+# runs `astro build`, and uploads the dist/ folder as a Pages artifact which
+# is then deployed.
+#
+# First-time setup on GitHub:
+#   Settings -> Pages -> Build and deployment -> Source -> "GitHub Actions"
+# (Once that is selected, this workflow becomes the active deployer.)
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Allow manual triggering from the Actions tab — handy for re-deploying
+  # after changing repo settings without pushing a no-op commit.
+  workflow_dispatch:
+
+# Pages deployment needs these permissions; keep them minimal.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deployment at a time; if a newer push lands while an older
+# build is running, cancel the older one so we never deploy stale content.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          # Astro picks up `base` from astro.config.mjs; nothing to inject here.
+          # If you later move the site under a different repo name or to a
+          # custom domain, change `base` in astro.config.mjs (not here).
+          NODE_ENV: production
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

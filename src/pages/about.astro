@@ -1,0 +1,272 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import BrandMark from '~/components/BrandMark.astro';
+import { withBase } from '~/lib/nav';
+
+const stats = [
+  { num: '16', label: 'Readiness Qs' },
+  { num: '11', label: 'Plan sections' },
+  { num: '9', label: 'Playbooks' },
+  { num: '6', label: 'Tabletops' },
+  { num: '8', label: 'Frameworks' },
+  { num: '£0', label: 'No signup' },
+];
+
+const frameworkTiles = [
+  {
+    name: 'NCSC Incident Management',
+    body: 'Plan structure, severity grading, escalation, playbooks and post-incident review follow NCSC\'s published incident management guidance.',
+    url: 'https://www.ncsc.gov.uk/collection/incident-management',
+    accent: 'border-l-[#1f4ed8] text-[#1f4ed8]',
+  },
+  {
+    name: 'TARIAN ROCU & NWROCU — Cyber PROTECT',
+    body: 'TARIAN covers South Wales, Gwent and Dyfed-Powys; NWROCU covers North Wales. Both teams provide free pre-incident advice, training and exercises to Welsh schools and consortia.',
+    url: 'https://www.tarianrccu.org.uk/',
+    accent: 'border-l-[#0891b2] text-[#0e7490]',
+  },
+  {
+    name: 'Welsh Government — Cyber Resilient Wales',
+    body: 'The Cyber Resilient Wales strategy is the policy backdrop for cyber security across the Welsh public sector. Wales does not have a sector-specific equivalent of the DfE\'s Digital and Technology Standards 2030 for schools — readiness questions in this tool reflect NCSC-aligned good practice tailored for Welsh schools.',
+    url: 'https://www.gov.wales/cyber-resilient-wales-strategy',
+    accent: 'border-l-[#a04500] text-[#a04500]',
+  },
+  {
+    name: 'Local authority cyber cover (Wales)',
+    body: 'Wales does not have a national risk protection scheme equivalent to the DfE\'s RPA. Most maintained Welsh schools are covered through their local authority\'s cyber and IT insurance arrangement — record your LA cyber lead and any policy reference in the External Contacts section.',
+    url: 'https://www.gov.wales/cyber-resilient-wales-strategy',
+    accent: 'border-l-[#0a6a30] text-[#0a6a30]',
+  },
+  {
+    name: 'Estyn inspection arrangements',
+    body: 'Estyn does not currently inspect cyber security directly, but cyber response intersects with the safeguarding and the leadership and management aspects of inspection. The Governor Report uses Estyn-aligned assurance framing.',
+    url: 'https://www.estyn.gov.wales/inspection-guidance-resources',
+    accent: 'border-l-[#6b21a8] text-[#6b21a8]',
+  },
+  {
+    name: 'NCSC Cyber Assessment Framework (CAF)',
+    body: 'Welsh Government is piloting CAF across local authorities. This tool\'s plan structure aligns with CAF Objectives A (asset register), C (detection) and D (minimising impact) — a defensible answer for any CAF-aligned LA or insurer.',
+    url: 'https://www.ncsc.gov.uk/collection/cyber-assessment-framework',
+    accent: 'border-l-[#00838f] text-[#00838f]',
+  },
+  {
+    name: 'Hwb — Welsh Government\'s digital learning platform',
+    body: 'Hwb hosts Office 365, Adobe and other learning services for Welsh schools. The school remains data controller for pupil data held in Hwb-hosted services; the asset register and SaaS supplier playbook include a default Hwb row.',
+    url: 'https://hwb.gov.wales/',
+    accent: 'border-l-[#0891b2] text-[#0e7490]',
+  },
+  {
+    name: 'ICO Information & Cyber Security toolkit',
+    body: 'Readiness questions R13–R16 (DPO governance, remote-work coverage, risk register, DPIA linkage) map to the ICO\'s audit toolkit. Governor Report shows an ICO-style maturity rating.',
+    url: 'https://ico.org.uk/for-organisations/advice-and-services/audits/data-protection-audit-framework/toolkits/information-and-cyber-security/',
+    accent: 'border-l-[#9f1239] text-[#9f1239]',
+  },
+  {
+    name: 'Cyber Essentials (NCSC / IASME)',
+    body: 'Adjacent — CE is the prevention baseline. Readiness Q11 (MFA) maps to the CE "user access control" pillar. Plan Builder records CE status and surfaces the CE Plus deadline.',
+    url: 'https://www.ncsc.gov.uk/cyberessentials/overview',
+    accent: 'border-l-[#0e7490] text-[#0e7490]',
+  },
+];
+---
+
+<BaseLayout title="About — Cyber Incident Response Planner">
+  <!-- Hero — Lockup D (stacked brand mark: disc above, CIRP + descriptor below) -->
+  <div class="card px-6 pb-5 pt-7 text-center">
+    <div class="mb-3 flex flex-col items-center gap-2.5">
+      <BrandMark variant="dark" size={72} />
+      <div class="leading-none">
+        <div class="font-bold tracking-tight text-navy" style="font-family: Fraunces, Georgia, serif; font-size: 32px;">CIRP™</div>
+        <div class="mt-1.5 text-[10px] font-semibold uppercase tracking-[.06em] text-muted">
+          Cynllun Ymateb i Achosion Seiber
+        </div>
+      </div>
+    </div>
+    <h2 class="m-0 mb-1.5 text-xl font-bold text-navy">Cyber Incident Response Planner</h2>
+    <p class="mx-auto max-w-[640px] text-sm text-muted">
+      A free planning tool for Welsh schools and colleges. Build, test and
+      maintain a working Cyber Incident Response Plan — mapped to NCSC, the
+      Welsh Government Cyber Resilient Wales strategy, local authority cyber
+      cover, Estyn inspection arrangements, TARIAN / NWROCU Cyber PROTECT,
+      NCSC CAF, ICO and Cyber Essentials.
+    </p>
+    <div class="mx-auto mt-4 flex max-w-[780px] flex-wrap justify-center gap-2">
+      {
+        stats.map((s) => (
+          <div class="flex min-w-[78px] flex-col items-center rounded-lg border border-line bg-[#f7f9fc] px-3 py-2">
+            <span class="text-xl font-extrabold leading-none text-navy">{s.num}</span>
+            <span class="mt-1 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[.03em] text-muted">
+              {s.label}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+    <div class="no-print mt-4 flex flex-wrap justify-center gap-2.5">
+      <a
+        href={withBase('/readiness')}
+        class="rounded-md bg-accent px-6 py-3 text-sm font-semibold text-white no-underline transition hover:bg-[#1657b8] hover:!text-white hover:!no-underline"
+      >
+        ▶ Start the readiness check
+      </a>
+      <a
+        href={withBase('/plan')}
+        class="rounded-md border border-line bg-white px-6 py-3 text-sm font-semibold text-navy no-underline transition hover:bg-[#f0f4fa] hover:!no-underline"
+      >
+        📋 Skip to Plan Builder
+      </a>
+    </div>
+  </div>
+
+  <!-- What it does / doesn't -->
+  <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+    <div class="card">
+      <h3 class="m-0 mb-2 text-base font-bold text-navy">✅ What this tool does</h3>
+      <ul class="m-0 list-disc pl-5 text-sm">
+        <li class="mb-1">16-question readiness check with RAG scoring against five frameworks (incl. ICO toolkit)</li>
+        <li class="mb-1">11-section Plan Builder for a working incident response plan</li>
+        <li class="mb-1">9 pre-populated playbooks: ransomware, data breach, account compromise, phishing, <strong>BEC</strong>, <strong>extortion via AI</strong>, denial of service, insider threat, <strong>SaaS supplier incident</strong></li>
+        <li class="mb-1">6 tabletop scenarios covering ransomware, BEC, account compromise, insider threat and cloud/SaaS</li>
+        <li class="mb-1">Asset register &amp; Business Impact Analysis with UK GDPR data-controller framing for SaaS systems</li>
+        <li class="mb-1">Communication templates: parents, staff, ICO Article 33, governor/trustee briefing</li>
+        <li class="mb-1">Governor Report with ICO maturity rating · First 30 Minutes laminate-and-pin card</li>
+        <li>Word export · printable Event Log · save/restore as local JSON</li>
+      </ul>
+    </div>
+
+    <div class="card border-[#f4dba0] bg-[#fdf3e2]">
+      <h3 class="m-0 mb-2 text-base font-bold text-navy">⚠️ What this tool is not</h3>
+      <ul class="m-0 list-disc pl-5 text-sm">
+        <li class="mb-1">Not a substitute for NCSC's official incident management guidance</li>
+        <li class="mb-1">Not legal, regulatory or insurance advice</li>
+        <li class="mb-1">Not a guarantee of compliance with any framework</li>
+        <li class="mb-1">Not a replacement for an external incident response retainer</li>
+        <li>Not affiliated with the Welsh Government, NCSC, Estyn, TARIAN, NWROCU, HWB, ANME or any government body or insurer</li>
+      </ul>
+      <p class="m-0 mt-2.5 text-[13px] text-ink">
+        <strong>Always validate</strong> the final plan with your IT support, Data Protection Officer, SLT and governing body before relying on it.
+      </p>
+    </div>
+  </div>
+
+  <!-- Who is this for -->
+  <div class="card">
+    <h3 class="m-0 mb-2 text-base font-bold text-navy">👥 Who is this for?</h3>
+    <p class="m-0 mb-2 text-sm">
+      Any Welsh state, independent or further education setting writing or reviewing a cyber incident response plan:
+    </p>
+    <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+      <ul class="m-0 list-disc pl-5 text-sm">
+        <li class="mb-1">SLT digital leads</li>
+        <li class="mb-1">Network managers / in-house IT</li>
+        <li>Federation / consortium IT directors</li>
+      </ul>
+      <ul class="m-0 list-disc pl-5 text-sm">
+        <li class="mb-1">Business managers and bursars (LA cyber cover renewals)</li>
+        <li class="mb-1">Governors and trustees (cyber assurance)</li>
+        <li>Data Protection Officers (breach readiness)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Frameworks tile grid -->
+  <div class="card">
+    <h3 class="m-0 mb-2 text-base font-bold text-navy">📐 Frameworks and standards mapped</h3>
+    <p class="m-0 mb-1 text-sm">
+      Each readiness question and plan section is tagged to the framework(s) it maps to. Click any framework for the source guidance.
+    </p>
+    <div class="mt-3 grid grid-cols-1 gap-1.5 md:grid-cols-2">
+      {
+        frameworkTiles.map((f) => (
+          <div class={`flex flex-col gap-1 rounded-md border border-line border-l-4 bg-white p-3 ${f.accent}`}>
+            <div class="text-[11px] font-bold uppercase tracking-[.04em]">{f.name}</div>
+            <p class="m-0 text-[13px] leading-[1.45] text-ink">{f.body}</p>
+            <a
+              href={f.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-auto text-xs font-semibold"
+            >
+              Source →
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Privacy & security -->
+  <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+    <div class="card">
+      <h3 class="m-0 mb-2 text-base font-bold text-navy">🔒 Privacy</h3>
+      <ul class="m-0 list-disc pl-5 text-sm">
+        <li class="mb-1"><strong>No server.</strong> The tool runs entirely in your browser.</li>
+        <li class="mb-1"><strong>Your plan data never leaves your device.</strong> Held in your browser session and wiped on tab close.</li>
+        <li class="mb-1"><strong>Save to file.</strong> Progress is saved as a JSON file directly to your device. The author cannot see it.</li>
+        <li class="mb-1"><strong>Anonymous page-view counts only.</strong> A privacy-friendly analytics service (<a href="https://www.goatcounter.com/help/gdpr" target="_blank" rel="noopener noreferrer">GoatCounter</a>) records that someone visited a page. No cookies, no fingerprinting, no advertising trackers, GDPR-compliant.</li>
+        <li><strong>Open source.</strong> Anyone can review the source code on GitHub.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="m-0 mb-2 text-base font-bold text-navy">🛡️ Security posture</h3>
+      <ul class="m-0 list-disc pl-5 text-sm">
+        <li class="mb-1">Content Security Policy locks down remote content to a single trusted analytics endpoint — nothing else can load</li>
+        <li class="mb-1">JSON imports validated against schema (blocks prototype pollution and type confusion)</li>
+        <li class="mb-1">All user input HTML-escaped before rendering</li>
+        <li class="mb-1">External links use <code class="rounded bg-[#f7f9fc] px-1 text-xs">rel="noopener noreferrer"</code></li>
+        <li>Automated security test suite available in the repo</li>
+      </ul>
+      <p class="mt-2.5 text-xs">
+        <a href="https://github.com/cmaddocks-uk/cyber-response-cymru/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">
+          Read the full security policy →
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Author -->
+  <div class="card">
+    <div class="flex flex-wrap items-start gap-4">
+      <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-navy to-navy-2 text-xl font-extrabold tracking-[.02em] text-white" aria-hidden="true">
+        CM
+      </div>
+      <div class="min-w-[260px] flex-1">
+        <h3 class="m-0 mb-1 text-base font-bold text-navy">👤 Built by Christopher Maddocks</h3>
+        <p class="m-0 mb-2.5 text-[13px] text-muted">
+          Former <a href="https://anme.co.uk/" target="_blank" rel="noopener noreferrer">ANME</a> (Association of Network Managers in Education) Ambassador · a free contribution to the UK education community.
+        </p>
+        <p class="m-0 mb-2 text-[13px]">
+          Sister tool (England): <a href="https://cmaddocks-uk.github.io/cyber-response/" target="_blank" rel="noopener noreferrer">Cyber Incident Response Planner — for UK schools and colleges</a>, the English-context fork of this tool.
+        </p>
+        <p class="m-0 mb-3 text-[13px]">
+          Feedback, problems or contributions welcome — the 2-minute form below, or directly on <a href="https://github.com/cmaddocks-uk/cyber-response-cymru" target="_blank" rel="noopener noreferrer">GitHub</a>.
+        </p>
+        <div class="flex flex-wrap gap-2.5">
+          <a
+            href="https://forms.gle/5T11PrusSaRHBwab7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-1.5 text-[13px] font-semibold text-white no-underline transition hover:bg-[#1657b8] hover:!text-white hover:!no-underline"
+          >
+            💭 Share feedback (2-min form)
+          </a>
+          <a
+            href="https://buymeacoffee.com/cmaddocks"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 rounded-md border border-line bg-white px-3 py-1.5 text-[13px] font-semibold text-navy no-underline transition hover:bg-[#f0f4fa] hover:!no-underline"
+          >
+            🍺 Buy me a beer
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="card border-[#cdd9ed] bg-[#f0f4fa] px-4.5 py-3.5">
+    <p class="m-0 text-xs leading-[1.5] text-muted">
+      <strong>Disclaimer:</strong> Provided as-is, without warranty. Not legal, regulatory or insurance advice. Not affiliated with the Welsh Government, NCSC, Estyn, TARIAN, NWROCU, HWB, ICO, ANME or any government body or insurer. Does not guarantee compliance with any framework. Always validate your plan with your IT support, DPO, SLT and insurer. Licensed under the MIT licence.
+    </p>
+  </div>
+</BaseLayout>

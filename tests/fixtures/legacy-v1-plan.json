@@ -1,0 +1,80 @@
+{
+  "plan": {
+    "meta": {
+      "schoolName": "Anytown High &amp; Sixth Form",
+      "trustName": "Anytown Multi-Academy Trust",
+      "urn": "123456",
+      "planVersion": "1.0",
+      "planDate": "2025-09-01",
+      "nextReview": "2026-09-01",
+      "approvedBy": "Headteacher",
+      "approverRole": "Headteacher &amp; Accounting Officer",
+      "ceStatus": "Cyber Essentials",
+      "ceCertDate": "2025-12-01",
+      "schoolLogo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+    },
+    "team": {
+      "leadName": "Alice Lead",
+      "leadRole": "SLT Digital Lead",
+      "leadPhone": "01234 567890",
+      "leadEmail": "alice@example.school.uk",
+      "leadAlt": "",
+      "deputyName": "Bob Deputy",
+      "deputyRole": "Deputy Head",
+      "deputyPhone": "01234 567891",
+      "deputyEmail": "bob@example.school.uk",
+      "deputyAlt": "",
+      "itLeadName": "Carol IT",
+      "itLeadRole": "Head of IT",
+      "itLeadPhone": "01234 567892",
+      "itLeadEmail": "carol@example.school.uk",
+      "itLeadAlt": "",
+      "dpoName": "",
+      "dpoOrg": "",
+      "dpoPhone": "",
+      "dpoEmail": "",
+      "dpoAlt": "",
+      "commsLeadName": "",
+      "commsLeadRole": "",
+      "commsLeadPhone": "",
+      "commsLeadEmail": "",
+      "commsLeadAlt": "",
+      "members": [
+        { "name": "Diana Chair", "role": "Chair of Governors", "phone": "07000 000001", "email": "", "alt": "" }
+      ]
+    },
+    "external": {
+      "itProvider": { "name": "Acme IT &amp; Support", "contact": "support@acme.example", "phone": "", "email": "", "outOfHours": "" },
+      "ncscReport": "",
+      "actionFraud": "",
+      "ico": "",
+      "rpa": "",
+      "cyberInsurer": "",
+      "dfeContact": "",
+      "localAuthority": "",
+      "miSupplier": "",
+      "broadbandSupplier": "",
+      "legalAdviser": "",
+      "otherSuppliers": []
+    },
+    "playbooks": {
+      "ransomware": { "enabled": true, "notes": "Tested March 2025." },
+      "dataBreach": { "enabled": true, "notes": "" }
+    },
+    "polluted": "this field is not in the schema and must be dropped"
+  },
+  "readiness": { "R1": 3, "R2": 2, "R3": 1, "R4": 0 },
+  "tabletop": {
+    "activeScenario": "",
+    "currentStep": 0,
+    "scenarioAnswers": {
+      "active-learning-trust": {
+        "alt-step-1": "We disconnected the affected device and called the SLT Digital Lead."
+      }
+    },
+    "completed": {
+      "active-learning-trust": "2025-11-15"
+    }
+  },
+  "_v1Notes": "Top-level unknown key — should be dropped by deepMergeSchema."
+}

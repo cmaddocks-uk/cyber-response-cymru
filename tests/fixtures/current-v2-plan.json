@@ -1,0 +1,108 @@
+{
+  "plan": {
+    "meta": {
+      "schoolName": "Anytown High & Sixth Form",
+      "trustName": "Anytown Multi-Academy Trust",
+      "urn": "123456",
+      "planVersion": "2.1",
+      "planDate": "2026-05-15",
+      "nextReview": "2027-05-15",
+      "approvedBy": "Mrs J Approver",
+      "approverRole": "Headteacher",
+      "ceStatus": "Cyber Essentials Plus",
+      "ceCertDate": "2026-02-01",
+      "schoolLogo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+    },
+    "team": {
+      "leadName": "Alice Lead",
+      "leadRole": "SLT Digital Lead",
+      "leadPhone": "01234 567890",
+      "leadEmail": "alice@example.school.uk",
+      "leadAlt": "alice.alt@example.school.uk",
+      "deputyName": "Bob Deputy",
+      "deputyRole": "Deputy Head",
+      "deputyPhone": "01234 567891",
+      "deputyEmail": "bob@example.school.uk",
+      "deputyAlt": "",
+      "itLeadName": "Carol IT",
+      "itLeadRole": "Head of IT",
+      "itLeadPhone": "01234 567892",
+      "itLeadEmail": "carol@example.school.uk",
+      "itLeadAlt": "",
+      "dpoName": "Eve DPO",
+      "dpoOrg": "External DPO Ltd",
+      "dpoPhone": "01234 567893",
+      "dpoEmail": "dpo@external.example",
+      "dpoAlt": "",
+      "commsLeadName": "Frank Comms",
+      "commsLeadRole": "Head of Communications",
+      "commsLeadPhone": "01234 567894",
+      "commsLeadEmail": "frank@example.school.uk",
+      "commsLeadAlt": "",
+      "members": [
+        { "name": "Diana Chair", "role": "Chair of Governors", "phone": "07000 000001", "email": "diana@example.school.uk", "alt": "" }
+      ]
+    },
+    "external": {
+      "itProvider": {
+        "name": "Acme IT & Support",
+        "contact": "support@acme.example",
+        "phone": "0800 111 2222",
+        "email": "incident@acme.example",
+        "outOfHours": "0800 111 3333"
+      },
+      "ncscReport": "https://www.ncsc.gov.uk/section/about-this-website/contact-us",
+      "actionFraud": "0300 123 2040",
+      "ico": "0303 123 1113",
+      "rpa": "0800 368 6378",
+      "cyberInsurer": "",
+      "welshGovContact": "Welsh Government digital education contact",
+      "rocuCyberProtect": "TARIAN ROCU Cyber PROTECT",
+      "localAuthority": "Anytown County Council",
+      "miSupplier": "Capita SIMS",
+      "broadbandSupplier": "Schools Broadband Ltd",
+      "legalAdviser": "Law & Co LLP",
+      "otherSuppliers": []
+    },
+    "severity": {
+      "s1Desc": "Whole school offline; safeguarding-relevant systems unavailable.",
+      "s2Desc": "Major impact on operations.",
+      "s3Desc": "Limited impact on a subset of staff or students.",
+      "s4Desc": "Minor — single user or device."
+    },
+    "playbooks": {
+      "ransomware": { "enabled": true, "notes": "Tested annually with IT lead." },
+      "dataBreach": { "enabled": true, "notes": "" },
+      "accountCompromise": { "enabled": true, "notes": "" },
+      "phishing": { "enabled": true, "notes": "" },
+      "bec": { "enabled": true, "notes": "" },
+      "aiExtortion": { "enabled": false, "notes": "" },
+      "denialOfService": { "enabled": false, "notes": "" },
+      "insiderThreat": { "enabled": false, "notes": "" },
+      "saasSupplierIncident": { "enabled": true, "notes": "" }
+    },
+    "assets": {
+      "systems": [
+        { "name": "MIS / Capita SIMS", "supplier": "Capita SIMS", "dataHeld": "Pupil records", "hosting": "On-prem", "rto": "4h", "priority": "1", "incidentContact": "Capita support line", "lastExport": "2026-04-30", "notes": "" }
+      ],
+      "biaNotes": "MIS restoration is the critical path; safeguarding records have a 4-hour RTO."
+    }
+  },
+  "readiness": {
+    "R1": 3, "R2": 3, "R3": 2, "R4": 2, "R5": 1, "R6": 2, "R7": 3, "R8": 0,
+    "R9": 2, "R10": 3, "R11": 3, "R12": 2, "R13": 3, "R14": 2, "R15": 2, "R16": 1
+  },
+  "tabletop": {
+    "activeScenario": "",
+    "currentStep": 0,
+    "scenarioAnswers": {
+      "active-learning-trust": {
+        "alt-step-1": "Disconnected the device, called the SLT Digital Lead by phone.",
+        "alt-step-2": "Convened CIRT; opened the incident log; assessed severity as S2."
+      }
+    },
+    "completed": {
+      "active-learning-trust": "2026-04-20"
+    }
+  }
+}

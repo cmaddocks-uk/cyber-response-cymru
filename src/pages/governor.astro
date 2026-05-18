@@ -1,0 +1,10 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { GovernorPage } from '~/components/governor/GovernorPage';
+---
+
+<BaseLayout title="Governor report — Cyber Incident Response Planner">
+  <!-- client:only="react" because plan + readiness state live in
+       sessionStorage, which is browser-only. -->
+  <GovernorPage client:only="react" />
+</BaseLayout>

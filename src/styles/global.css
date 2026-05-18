@@ -1,0 +1,1024 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Project-wide layers
+   ---------------------------------------------------------------------------
+   Most styling lives on Tailwind utility classes in the component markup.
+   This file exists for the handful of things that don't belong on utilities:
+
+   - @page rules for print (margin boxes can't be set from utility classes)
+   - body-level defaults (font-feature-settings, antialiasing) that should
+     apply everywhere without needing the class on every <body>
+   - a tiny `.card` component class because we lean on it in many places and
+     the utility soup gets noisy without it
+   --------------------------------------------------------------------------- */
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html,
+  body {
+    @apply m-0 p-0;
+  }
+  body {
+    @apply bg-[#f7f9fc] text-ink font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    line-height: 1.55;
+  }
+  a {
+    @apply text-accent no-underline;
+  }
+  a:hover {
+    @apply underline;
+  }
+}
+
+@layer components {
+  /* The reusable "card" surface used throughout the tool. Keep this small —
+     anything page-specific should be utility classes in the markup. */
+  .card {
+    @apply bg-white border border-line rounded-card p-6 mb-4 shadow-card;
+  }
+  .container-page {
+    @apply max-w-[1280px] mx-auto px-5;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Plan-document styling — used by the generated Your Plan page (and by the
+   Governor Report / Action Plan when those land). Lives here rather than in
+   utility classes because the document is dense semantic HTML and Tailwind
+   utility soup would obscure it.
+
+   Headings use Fraunces (display) so the printed plan reads as a formal
+   document; body stays on IBM Plex Sans via the body-level cascade.
+   --------------------------------------------------------------------------- */
+.plan-doc h1,
+.plan-doc h2,
+.plan-doc h3,
+.plan-doc h4 {
+  font-family: 'Fraunces', Georgia, Cambria, 'Times New Roman', serif;
+  font-feature-settings: 'ss01';
+}
+.plan-doc h2 {
+  margin-top: 24px;
+  padding-bottom: 6px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0b2545;
+  border-bottom: 2px solid #0b2545;
+  scroll-margin-top: 14px;
+  letter-spacing: -0.005em;
+}
+.plan-doc h2:first-of-type {
+  margin-top: 0;
+}
+.plan-doc h3 {
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #13315c;
+}
+.plan-doc h4 {
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #13315c;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+}
+.plan-doc p {
+  margin: 0 0 12px;
+}
+.plan-doc ol,
+.plan-doc ul {
+  margin: 0 0 12px;
+  padding-left: 22px;
+}
+.plan-doc li {
+  margin-bottom: 4px;
+}
+.plan-doc table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 10px 0 14px;
+  font-size: 13px;
+  border: 1px solid #e3e8ef;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.plan-doc table th,
+.plan-doc table td {
+  border-bottom: 1px solid #eef2f7;
+  padding: 9px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+.plan-doc table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.plan-doc .doc-table thead th {
+  background: #0b2545;
+  color: #ffffff;
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 7px 9px;
+  border-bottom: 1px solid #0b2545;
+  white-space: normal;
+  word-break: normal;
+}
+.plan-doc .doc-table tbody .doc-row-zebra td {
+  background: #f7f9fc;
+}
+.plan-doc .doc-row-red td    { background: var(--sev-red-row); }
+.plan-doc .doc-row-amber td  { background: var(--sev-amber-row); }
+.plan-doc .doc-row-green td  { background: var(--sev-green-row); }
+.plan-doc .doc-kv th {
+  background: #f0f4fa;
+  font-weight: 700;
+  color: #13315c;
+  width: 38%;
+}
+.plan-doc .plan-empty {
+  color: #5b6a82;
+  font-style: italic;
+  font-size: 13px;
+}
+.plan-doc .doc-table-caption {
+  font-size: 12px;
+  color: #5b6a82;
+  font-style: italic;
+  margin: 0 0 6px;
+}
+
+/* ---------------------------------------------------------------------------
+   Document cover page — editorial v2.5.2 layout. Government / Big Four
+   strategy-paper aesthetic. Typography + whitespace only. No cards, no
+   gradients, no coloured panels.
+
+   Composition (top → bottom, flex column on an A4-portrait surface):
+     • Top third: centred logo (220 × 100 bounding box, aspect preserved)
+     • Middle: Fraunces title · school name · "Prepared for …"
+     • Lower: single inline metadata row (Version • Approved • Next review)
+     • Bottom: subtle narrow rule + "Prepared by [school]" in italic muted
+
+   The bottom block is pushed to the foot via flex `justify-content: space-
+   between`. Min-height fills the visible cover page.
+   --------------------------------------------------------------------------- */
+.doc-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  min-height: calc(297mm - 36mm);
+  padding: 32mm 24mm 28mm;
+  margin: 0 0 36px;
+  page-break-after: always;
+  break-after: page;
+  background: #ffffff;
+}
+.doc-cover-hero {
+  /* Children centred by `text-align: center` on the parent. */
+}
+.doc-cover-logo {
+  display: block;
+  max-width: 220px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 60px;
+}
+.doc-cover-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--c-navy);
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  margin: 0 0 18px;
+}
+.doc-cover-subtitle {
+  /* School name — IBM Plex medium, quiet under the title. */
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--c-navy2);
+  margin: 0 0 36px;
+}
+.doc-cover-preparedfor {
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--c-muted);
+  margin: 0 0 56px;
+}
+.doc-cover-meta {
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--c-muted);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+.doc-cover-footer {
+  margin-top: auto;
+}
+.doc-cover-rule {
+  border: 0;
+  border-top: 1px solid var(--c-line);
+  width: 80px;
+  margin: 0 auto 16px;
+}
+.doc-cover-preparedby {
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Document sections — heading rule, lede, dividers.
+   --------------------------------------------------------------------------- */
+.doc-section {
+  margin: 0 0 22px;
+}
+.doc-section + .doc-section {
+  margin-top: 18px;
+}
+.doc-section-title {
+  /* Inherits Fraunces, navy via .plan-doc h2 above. Tightened spacing. */
+  margin-top: 28px;
+}
+.doc-section-lede {
+  margin: -4px 0 12px;
+  font-size: 13px;
+  font-style: italic;
+  color: #5b6a82;
+}
+.doc-spacer {
+  height: 10px;
+}
+.doc-divider {
+  margin: 18px 0;
+  border-top: 1px solid #e3e8ef;
+  height: 0;
+}
+.doc-divider-labelled {
+  border-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.doc-divider-labelled::before,
+.doc-divider-labelled::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e3e8ef;
+}
+.doc-divider-label {
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5b6a82;
+}
+
+/* ---------------------------------------------------------------------------
+   Metric cards — executive summary grid. Each card has a tiny uppercase
+   label, a large display value, and an optional hint. Severity tints the
+   value text + the left edge.
+   --------------------------------------------------------------------------- */
+.doc-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 12px 0 18px;
+}
+.doc-card {
+  border: 1px solid #e3e8ef;
+  border-left: 4px solid #cdd9ed;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 14px 14px 12px;
+  text-align: center;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.doc-card-label {
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5b6a82;
+  margin-bottom: 6px;
+}
+.doc-card-value {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #0b2545;
+  margin: 0;
+}
+.doc-card-hint {
+  margin-top: 4px;
+  font-size: 11.5px;
+  color: #5b6a82;
+}
+.doc-card-red    { border-left-color: var(--c-danger, #b42318); }
+.doc-card-red .doc-card-value    { color: var(--sev-red-text); }
+.doc-card-amber  { border-left-color: var(--c-warning, #b45309); }
+.doc-card-amber .doc-card-value  { color: var(--sev-amber-text); }
+.doc-card-green  { border-left-color: var(--c-success, #0a8a3a); }
+.doc-card-green .doc-card-value  { color: var(--sev-green-text); }
+.doc-card-navy   { border-left-color: var(--c-navy); }
+.doc-card-navy .doc-card-value   { color: var(--c-navy); }
+.doc-card-muted  { border-left-color: var(--c-muted-soft); }
+.doc-card-muted .doc-card-value  { color: var(--c-muted); }
+
+/* ---------------------------------------------------------------------------
+   Callouts — bordered + tinted boxes. Severity drives accent + fill.
+   --------------------------------------------------------------------------- */
+.doc-callout {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-left: 4px solid #cdd9ed;
+  background: #f7f9fc;
+  border-radius: 0 6px 6px 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.doc-callout-title {
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.doc-callout-body {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.doc-callout-red    { background: var(--sev-red-row);    border-left-color: var(--c-danger,  #b42318); color: var(--sev-red-text); }
+.doc-callout-amber  { background: var(--sev-amber-row);  border-left-color: var(--c-warning, #b45309); color: var(--sev-amber-text); }
+.doc-callout-green  { background: var(--sev-green-row);  border-left-color: var(--c-success, #0a8a3a); color: var(--sev-green-text); }
+.doc-callout-navy   { background: var(--sev-navy-fill);  border-left-color: var(--c-navy);              color: var(--c-navy2); }
+.doc-callout-muted  { background: var(--sev-muted-fill); border-left-color: var(--c-muted-soft);        color: var(--c-muted); }
+
+/* ---------------------------------------------------------------------------
+   Progress bars — readiness, completion. Always rendered with a coloured
+   fill against a muted track. Severity drives the fill colour.
+   --------------------------------------------------------------------------- */
+.doc-progress {
+  margin: 10px 0 14px;
+}
+.doc-progress-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+.doc-progress-label {
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5b6a82;
+}
+.doc-progress-trailing {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0b2545;
+}
+.doc-progress-track {
+  background: #eef2f7;
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+.doc-progress-fill {
+  height: 100%;
+  background: #1f6feb;
+  border-radius: 999px;
+}
+.doc-progress-red   .doc-progress-fill { background: var(--c-danger,  #b42318); }
+.doc-progress-amber .doc-progress-fill { background: var(--c-warning, #b45309); }
+.doc-progress-green .doc-progress-fill { background: var(--c-success, #0a8a3a); }
+.doc-progress-navy  .doc-progress-fill { background: var(--c-navy); }
+.doc-progress-muted .doc-progress-fill { background: var(--c-muted-soft); }
+
+/* ---------------------------------------------------------------------------
+   Timeline — left time column + accent rule + dot + body. Each row stays
+   together across page breaks.
+   --------------------------------------------------------------------------- */
+.doc-timeline {
+  list-style: none;
+  margin: 12px 0 18px;
+  padding: 0;
+  position: relative;
+}
+.doc-timeline::before {
+  content: '';
+  position: absolute;
+  left: 88px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: #e3e8ef;
+}
+.doc-timeline-row {
+  display: grid;
+  grid-template-columns: 80px 18px 1fr;
+  gap: 0;
+  align-items: start;
+  padding: 8px 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.doc-timeline-time {
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #5b6a82;
+  padding-right: 10px;
+  text-align: right;
+}
+.doc-timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #0b2545;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 2px #0b2545;
+  margin-top: 4px;
+  margin-left: 2px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.doc-timeline-red   .doc-timeline-dot { background: var(--c-danger,  #b42318); box-shadow: 0 0 0 2px var(--c-danger,  #b42318); }
+.doc-timeline-amber .doc-timeline-dot { background: var(--c-warning, #b45309); box-shadow: 0 0 0 2px var(--c-warning, #b45309); }
+.doc-timeline-green .doc-timeline-dot { background: var(--c-success, #0a8a3a); box-shadow: 0 0 0 2px var(--c-success, #0a8a3a); }
+.doc-timeline-muted .doc-timeline-dot { background: var(--c-muted-soft); box-shadow: 0 0 0 2px var(--c-muted-soft); }
+.doc-timeline-body {
+  padding: 0 0 0 12px;
+}
+.doc-timeline-title {
+  font-weight: 700;
+  color: #0b2545;
+  margin-bottom: 2px;
+}
+.doc-timeline-detail {
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------------------------
+   Severity badges — shared across all reports (Plan, Governor, Action Plan,
+   Tabletop, First 30). Bright enough to be unmissable in print; -webkit-print-
+   color-adjust on @media print keeps the fill rendered, not a grey rectangle.
+   --------------------------------------------------------------------------- */
+.sev-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 8px;
+  border-radius: 999px;
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.sev-badge .sev-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: currentColor;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+}
+.sev-red    { background: var(--sev-red-fill);    color: var(--sev-red-text);    border-color: var(--sev-red-edge); }
+.sev-amber  { background: var(--sev-amber-fill);  color: var(--sev-amber-text);  border-color: var(--sev-amber-edge); }
+.sev-green  { background: var(--sev-green-fill);  color: var(--sev-green-text);  border-color: var(--sev-green-edge); }
+.sev-navy   { background: var(--sev-navy-fill);   color: var(--sev-navy-text);   border-color: var(--sev-navy-edge); }
+.sev-muted  { background: var(--sev-muted-fill);  color: var(--sev-muted-text);  border-color: var(--sev-muted-edge); }
+
+/* ---------------------------------------------------------------------------
+   First 30 Minutes laminate card. Single A4 sheet designed to be printed,
+   laminated and pinned by the head's office / network room / bursar's drawer.
+   Distinct from the multi-page Word export of the same data (which uses the
+   document model). Restored in v2.4.1 with v2.4 theme tokens applied:
+   Fraunces title, IBM Plex Sans body, refined letter-spacing.
+   --------------------------------------------------------------------------- */
+.first30-card {
+  background: #fff;
+  border: 3px solid #0b2545;
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin: 0;
+  font-family: 'IBM Plex Sans', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color: #1f2937;
+}
+.f30-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 3px solid #b42318;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+.f30-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0;
+  color: #b42318;
+  letter-spacing: -0.012em;
+}
+.f30-title small {
+  display: block;
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0b2545;
+  margin-top: 3px;
+  letter-spacing: 0.01em;
+}
+.f30-meta {
+  font-size: 11px;
+  color: #5b6a82;
+  text-align: right;
+  line-height: 1.55;
+}
+.f30-meta strong {
+  color: #0b2545;
+  font-size: 13px;
+}
+.f30-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.f30-phase {
+  background: #f7f9fc;
+  border: 2px solid #cdd9ed;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.f30-p1 {
+  border-color: #b42318;
+  background: #fdf2f0;
+}
+.f30-p2 {
+  border-color: #b45309;
+  background: #fdf7eb;
+}
+.f30-p3 {
+  border-color: #0a8a3a;
+  background: #f1f8f4;
+}
+.f30-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.f30-p1 .f30-clock { color: #8e1b12; }
+.f30-p2 .f30-clock { color: #7a3a07; }
+.f30-p3 .f30-clock { color: #0a4b22; }
+.f30-phase h3 {
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  margin: 0 0 8px;
+  color: #0b2545;
+  letter-spacing: -0.005em;
+}
+.f30-phase ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.f30-phase li {
+  margin-bottom: 4px;
+  padding-left: 18px;
+  position: relative;
+}
+.f30-phase li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  font-size: 14px;
+  color: #0d1b2a;
+  font-weight: 700;
+}
+.f30-contacts {
+  background: #fff;
+  border: 1px solid #d0d7e2;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.f30-contact-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.f30-lbl {
+  font-weight: 600;
+  color: #374151;
+}
+.f30-val {
+  font-weight: 700;
+  color: #0d1b2a;
+  text-align: right;
+}
+.f30-val-empty {
+  color: #9ca3af;
+  font-style: italic;
+  font-weight: 500;
+}
+.f30-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.f30-block {
+  border: 2px solid #cdd9ed;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #fff;
+}
+.f30-block h4 {
+  font-family: 'IBM Plex Sans', Inter, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  margin: 0 0 8px;
+  color: #0b2545;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #e3e8ef;
+  padding-bottom: 6px;
+}
+.f30-donot {
+  border-color: #b42318;
+  background: #fdf2f0;
+}
+.f30-donot h4 {
+  color: #8e1b12;
+  border-color: #f4c5c0;
+}
+.f30-donot ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #0d1b2a;
+}
+.f30-donot li {
+  padding-left: 22px;
+  position: relative;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.f30-donot li::before {
+  content: '✗';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  color: #b42318;
+  font-weight: 900;
+  font-size: 16px;
+}
+.f30-escalation {
+  border-color: #1f6feb;
+}
+.f30-escalation h4 {
+  color: #1f6feb;
+  border-color: #cdd9ed;
+}
+.f30-escalation ol {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.f30-escalation li {
+  margin-bottom: 3px;
+}
+.f30-escalation strong {
+  color: #0d1b2a;
+}
+.f30-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 2px solid #cdd9ed;
+  padding-top: 8px;
+  margin-top: 6px;
+  font-size: 10.5px;
+  color: #555;
+  line-height: 1.5;
+}
+.f30-footer strong {
+  color: #0d1b2a;
+}
+/* Highlight critical phone numbers so they're readable from across a room. */
+.f30-phone {
+  display: inline-block;
+  padding: 1px 7px;
+  margin: 0 1px;
+  background: #fff8d6;
+  border: 1px solid #f4dba0;
+  border-radius: 4px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-weight: 800;
+  font-size: 13px;
+  color: #0d1b2a;
+  letter-spacing: 0.02em;
+}
+
+/* ---------------------------------------------------------------------------
+   Print rules. Targets A4 portrait. Ported from v1.7.0 with the same
+   page-break + colour-preservation logic.
+   --------------------------------------------------------------------------- */
+@page {
+  size: A4 portrait;
+  margin: 18mm 16mm 18mm 16mm;
+  @top-left {
+    content: '';
+  }
+  @top-center {
+    content: '';
+  }
+  @top-right {
+    content: '';
+  }
+  @bottom-center {
+    content: '';
+  }
+}
+@page :first {
+  margin-top: 14mm;
+}
+
+@media print {
+  /* Page is white, no shadows. */
+  html,
+  body {
+    background: #fff !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  body {
+    color: #000;
+    font-size: 11pt;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+  }
+  .container-page {
+    max-width: none !important;
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Hide chrome. */
+  .no-print,
+  header.topbar,
+  .beer-btn {
+    display: none !important;
+  }
+
+  /* Cards lose their boxed look in print — flow as document sections. */
+  .card {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 0 14px !important;
+    background: transparent !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .plan-doc {
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  /* Avoid orphaned headings at page bottoms. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  p,
+  li,
+  td {
+    orphans: 3;
+    widows: 3;
+  }
+  tr,
+  li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  table {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  /* Force tables to a fixed layout so a single long URL / email can't push
+     them past the right page edge. */
+  .plan-doc table {
+    table-layout: fixed;
+    width: 100% !important;
+    max-width: 100%;
+  }
+  .plan-doc table td,
+  .plan-doc table th {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    vertical-align: top;
+  }
+
+  /* Asset register has 7 columns — drop font size so they fit cleanly. */
+  .asset-register-table {
+    font-size: 10pt;
+  }
+  .asset-register-table th,
+  .asset-register-table td {
+    padding: 4px 6px;
+  }
+
+  /* Document-model components must not split mid-element. */
+  .doc-card,
+  .doc-callout,
+  .doc-cover,
+  .doc-progress,
+  .doc-timeline-row,
+  .sev-badge {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Cards grid drops to a 2-column print layout so 3+ cards still fit. */
+  .doc-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Cover page always starts a fresh page; the body never crowds it. */
+  .doc-cover {
+    border: 0 !important;
+    background: transparent !important;
+    padding: 24mm 8mm 16mm !important;
+  }
+  .doc-cover-title {
+    font-size: 28pt;
+  }
+  .doc-cover-subtitle {
+    font-size: 14pt;
+  }
+
+  /* Section titles must not orphan from their first child. */
+  .doc-section-title {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Timeline rule stays visible in print. */
+  .doc-timeline::before {
+    background: #cdd9ed !important;
+  }
+
+  /* Event-log template starts on a fresh page and uses taller rows so the
+     printed copy has room to handwrite during an incident. */
+  .event-log-table {
+    page-break-before: always;
+    font-size: 10pt;
+  }
+  .event-log-table th,
+  .event-log-table td {
+    padding: 4px 6px;
+  }
+  .event-log-table tbody td {
+    height: 32px;
+  }
+
+  /* Print-friendly link colour — auto-appending href is too noisy. */
+  a {
+    color: #0d1b2a;
+    text-decoration: none;
+  }
+  a[href]:after {
+    content: '';
+  }
+
+  /* First 30 Minutes card — must fit on a single A4 sheet. Tighter than
+     screen sizing; everything scaled down to leave breathing room. */
+  .first30-card {
+    border-width: 2px;
+    padding: 14px 16px;
+    max-width: none;
+    margin: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .first30-card,
+  .first30-card * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .f30-title {
+    font-size: 19px;
+  }
+  .f30-phase {
+    padding: 8px 10px;
+  }
+  .f30-phase ul {
+    font-size: 11.5px;
+  }
+  .f30-contacts {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+  .f30-block {
+    padding: 8px 10px;
+  }
+  .f30-donot ul,
+  .f30-escalation ol {
+    font-size: 11.5px;
+  }
+  .f30-footer {
+    font-size: 9.5px;
+  }
+}

@@ -1,0 +1,10 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { ActionPlanPage } from '~/components/action-plan/ActionPlanPage';
+---
+
+<BaseLayout title="Prioritised action plan — Cyber Incident Response Planner">
+  <!-- client:only="react" because readiness + plan state live in
+       sessionStorage, which is browser-only. -->
+  <ActionPlanPage client:only="react" />
+</BaseLayout>

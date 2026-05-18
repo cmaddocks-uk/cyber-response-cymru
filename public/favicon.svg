@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CIRP favicon - monolithic chip variant.
+
+  Rounded square with a Fraunces 800 "30" mask-cut as negative space.
+  Used at favicon size because the primary disc's internal structure
+  (kerf, half-fill, two glyphs) degrades below ~24 px.
+
+  The chip fills with currentColor and the "30" is the background
+  showing through, so it works on any tab background.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+     role="img" aria-labelledby="cirp-title cirp-desc"
+     style="color:#0f1a2a;">
+  <title id="cirp-title">CIRP</title>
+  <desc id="cirp-desc">Cyber Incident Response Planner</desc>
+  <defs>
+    <mask id="cirp-chip-cut">
+      <rect width="32" height="32" rx="7.5" fill="white"/>
+      <text x="16" y="16" text-anchor="middle" dominant-baseline="central"
+            font-family="Fraunces, Georgia, serif" font-weight="800"
+            font-size="20" letter-spacing="-1.2" fill="black">30</text>
+    </mask>
+  </defs>
+  <rect width="32" height="32" rx="7.5"
+        fill="currentColor" mask="url(#cirp-chip-cut)"/>
+</svg>

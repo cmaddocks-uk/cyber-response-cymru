@@ -1,0 +1,10 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { OutputPage } from '~/components/output/OutputPage';
+---
+
+<BaseLayout title="Your plan — Cyber Incident Response Planner">
+  <!-- client:only="react" because the plan state lives in sessionStorage,
+       which is browser-only. -->
+  <OutputPage client:only="react" />
+</BaseLayout>

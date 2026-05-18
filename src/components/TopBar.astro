@@ -1,0 +1,59 @@
+---
+import { TABS, withBase, isActive } from '~/lib/nav';
+import RegionSwitch from './RegionSwitch.astro';
+import BrandMark from './BrandMark.astro';
+
+const current = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 border-b-[3px] border-accent bg-navy text-white">
+  <!--
+    Single-row header. Three columns via grid:
+      [shield link] [nav, centred] [region switcher]
+
+    The shield doubles as the "home" link (replaces the old brand text block).
+    The full tool name still appears in the page <h1> on Home and in <title>
+    on every page, so we keep brand identity without duplicating the wordmark
+    in the header.
+
+    Generous py-5 keeps the header vertically substantial despite being one
+    row — matches the visual weight of the previous two-row layout.
+  -->
+  <div class="container-page grid grid-cols-[auto_1fr_auto] items-center gap-3 py-5">
+    <a
+      href={withBase('/')}
+      class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-white no-underline transition hover:bg-white/10 hover:no-underline"
+      title="Cyber Incident Response Planner — Home"
+      aria-label="Cyber Incident Response Planner — Home"
+    >
+      <BrandMark variant="dark" size={32} />
+    </a>
+
+    <nav
+      class="flex flex-wrap items-center justify-center gap-0.5"
+      aria-label="Primary"
+    >
+      {
+        TABS.map((tab) => {
+          const active = isActive(tab.href, current);
+          return (
+            <a
+              href={withBase(tab.href)}
+              class:list={[
+                'rounded-md px-2.5 py-1.5 text-[13px] font-semibold whitespace-nowrap transition-colors no-underline',
+                active
+                  ? 'bg-white text-navy hover:no-underline'
+                  : 'text-white hover:bg-white/10 hover:no-underline',
+              ]}
+              aria-current={active ? 'page' : undefined}
+            >
+              {tab.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <RegionSwitch />
+  </div>
+</header>
