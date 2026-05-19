@@ -1,6 +1,6 @@
 // Playwright config for visual-regression smoke tests against the production
 // build. Boots `astro preview` once per run, then drives Chromium against
-// http://localhost:4322/cyber-response/ to capture screenshots of the
+// http://localhost:4322/cyber-response-cymru/ to capture screenshots of the
 // document-renderer output for Governor + Action Plan reports.
 //
 // Baselines are platform-specific by design (Playwright suffixes them with
@@ -27,8 +27,8 @@ export default defineConfig({
   },
   use: {
     // Trailing slash so `page.goto('governor')` resolves under the
-    // /cyber-response/ base path used by the GitHub-Pages-style deploy.
-    baseURL: 'http://localhost:4322/cyber-response/',
+    // /cyber-response-cymru/ base path used by the GitHub-Pages-style deploy.
+    baseURL: 'http://localhost:4322/cyber-response-cymru/',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     viewport: { width: 1280, height: 900 },
@@ -43,7 +43,7 @@ export default defineConfig({
     // `astro preview` would otherwise auto-pick the next free port if 4321
     // was in use, leaving Playwright waiting on the wrong URL.
     command: 'npx astro preview --port 4322',
-    url: 'http://localhost:4322/cyber-response',
+    url: 'http://localhost:4322/cyber-response-cymru',
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,
   },
